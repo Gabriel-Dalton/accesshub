@@ -1,1 +1,454 @@
-<h1>Content coming soon...</h1>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Web-Ready Access Hub | Technical Justification</title>
+		<meta
+			name="description"
+			content="Technical justification for WRA Hub equipment procurement and project impact."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--ink: #0b0f14;
+				--sky: #e8f7ff;
+				--sun: #fff2d9;
+				--sea: #0e5c68;
+				--mint: #c8f2e6;
+				--clay: #f5d4c2;
+				--glow: #fff7ea;
+				--accent: #ff6f4a;
+				--accent-2: #1957ff;
+				--card: #ffffff;
+				--shadow: 0 24px 60px rgba(10, 30, 60, 0.16);
+				--radius: 24px;
+			}
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: "Work Sans", "Segoe UI", sans-serif;
+				color: var(--ink);
+				background:
+					radial-gradient(1200px 800px at 15% 10%, var(--glow), transparent 60%),
+					radial-gradient(900px 600px at 85% 20%, #e7e9ff, transparent 70%),
+					linear-gradient(135deg, var(--sky), var(--sun));
+				min-height: 100vh;
+			}
+
+			main {
+				position: relative;
+				overflow: hidden;
+			}
+
+			.hero {
+				padding: 96px 8vw 64px;
+				display: grid;
+				gap: 40px;
+				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+				align-items: center;
+			}
+
+			.badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				background: rgba(255, 255, 255, 0.7);
+				border-radius: 999px;
+				padding: 8px 18px;
+				font-size: 0.9rem;
+				font-weight: 500;
+				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+			}
+
+			.badge span {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: linear-gradient(135deg, var(--accent), var(--accent-2));
+			}
+
+			h1,
+			h2,
+			h3 {
+				font-family: "Fraunces", "Times New Roman", serif;
+				letter-spacing: -0.02em;
+			}
+
+			h1 {
+				font-size: clamp(2.4rem, 4vw, 4rem);
+				line-height: 1.05;
+				margin: 18px 0 16px;
+			}
+
+			.hero p {
+				font-size: 1.05rem;
+				line-height: 1.6;
+				max-width: 520px;
+			}
+
+			.cta-row {
+				margin-top: 28px;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+			}
+
+			.cta {
+				padding: 12px 20px;
+				border-radius: 999px;
+				border: none;
+				font-weight: 600;
+				cursor: pointer;
+				transition: transform 0.2s ease, box-shadow 0.2s ease;
+			}
+
+			.cta.primary {
+				background: var(--accent);
+				color: #ffffff;
+				box-shadow: 0 10px 20px rgba(255, 111, 74, 0.3);
+			}
+
+			.cta.secondary {
+				background: rgba(255, 255, 255, 0.7);
+				color: var(--ink);
+				border: 1px solid rgba(11, 15, 20, 0.1);
+			}
+
+			.cta:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+			}
+
+			.hero-card {
+				background: var(--card);
+				border-radius: var(--radius);
+				box-shadow: var(--shadow);
+				padding: 32px;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.hero-card::after {
+				content: "";
+				position: absolute;
+				width: 240px;
+				height: 240px;
+				border-radius: 50%;
+				background: linear-gradient(135deg, var(--mint), var(--sky));
+				top: -80px;
+				right: -90px;
+				opacity: 0.8;
+			}
+
+			.metric-grid {
+				margin-top: 18px;
+				display: grid;
+				gap: 18px;
+				grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+			}
+
+			.metric {
+				background: #f7fbff;
+				border-radius: 16px;
+				padding: 16px;
+			}
+
+			.metric h3 {
+				font-size: 1.6rem;
+			}
+
+			.section {
+				padding: 64px 8vw;
+			}
+
+			.section-title {
+				margin-bottom: 32px;
+				font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+			}
+
+			.cards {
+				display: grid;
+				gap: 22px;
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			}
+
+			.card {
+				background: var(--card);
+				padding: 24px;
+				border-radius: 20px;
+				box-shadow: var(--shadow);
+				border: 1px solid rgba(11, 15, 20, 0.06);
+				position: relative;
+			}
+
+			.card::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				border-radius: 20px;
+				background: linear-gradient(120deg, rgba(255, 111, 74, 0.12), transparent 60%);
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+
+			.card:hover::before {
+				opacity: 1;
+			}
+
+			.card h3 {
+				margin-bottom: 10px;
+				font-size: 1.2rem;
+			}
+
+			.timeline {
+				display: grid;
+				gap: 18px;
+			}
+
+			.timeline-item {
+				background: rgba(255, 255, 255, 0.75);
+				border-radius: 18px;
+				padding: 18px 22px;
+				border-left: 4px solid var(--accent-2);
+			}
+
+			.footer {
+				padding: 40px 8vw 64px;
+				display: grid;
+				gap: 20px;
+				background: linear-gradient(135deg, var(--mint), var(--clay));
+			}
+
+			.footer strong {
+				font-weight: 600;
+			}
+
+			.orb {
+				position: absolute;
+				border-radius: 50%;
+				filter: blur(0px);
+				opacity: 0.6;
+			}
+
+			.orb.one {
+				width: 180px;
+				height: 180px;
+				background: var(--clay);
+				top: 60px;
+				left: -60px;
+			}
+
+			.orb.two {
+				width: 240px;
+				height: 240px;
+				background: var(--mint);
+				bottom: 120px;
+				right: -90px;
+			}
+
+			.fade-in {
+				animation: fadeUp 0.9s ease forwards;
+				opacity: 0;
+			}
+
+			.delay-1 {
+				animation-delay: 0.15s;
+			}
+
+			.delay-2 {
+				animation-delay: 0.3s;
+			}
+
+			.delay-3 {
+				animation-delay: 0.45s;
+			}
+
+			@keyframes fadeUp {
+				from {
+					opacity: 0;
+					transform: translateY(16px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@media (max-width: 720px) {
+				.hero {
+					padding-top: 72px;
+				}
+
+				.cta-row {
+					flex-direction: column;
+					align-items: stretch;
+				}
+
+				.hero-card::after {
+					width: 180px;
+					height: 180px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="orb one" aria-hidden="true"></div>
+			<div class="orb two" aria-hidden="true"></div>
+
+			<section class="hero">
+				<div class="fade-in">
+					<div class="badge"><span></span> Web-Ready Access Hub</div>
+					<h1>Technical justification for WRA Hub equipment procurement.</h1>
+					<p>
+						This report supports the acquisition of core technology to deliver a
+						free, centralized digital resource for Canadian nonprofits. The WRA
+						Hub is a youth-led initiative hosted by Oasis of Change, funded by
+						Canada Service Corps at Employment and Social Development Canada and
+						administered by the GLOCAL Foundation of Canada through the
+						CANConnect Micro-grant Diversity program.
+					</p>
+					<div class="cta-row">
+						<button class="cta primary" type="button">View justification</button>
+						<button class="cta secondary" type="button">Explore impact plan</button>
+					</div>
+				</div>
+
+				<div class="hero-card fade-in delay-1">
+					<h2>Why procurement matters</h2>
+					<p>
+						Equipment enables a resilient hub that can prototype, audit, and
+						publish accessible sites at speed while training youth leaders and
+						nonprofit partners to sustain their digital presence.
+					</p>
+					<div class="metric-grid">
+						<div class="metric">
+							<h3>Free</h3>
+							<p>Centralized access to tools, templates, and guidance.</p>
+						</div>
+						<div class="metric">
+							<h3>Accessible</h3>
+							<p>Inclusive design and compliance-first build standards.</p>
+						</div>
+						<div class="metric">
+							<h3>Sustainable</h3>
+							<p>Long-term capacity building for nonprofit teams.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2 class="section-title">Project objectives</h2>
+				<div class="cards">
+					<article class="card fade-in delay-1">
+						<h3>Centralize support</h3>
+						<p>
+							Deliver a one-stop hub for Canadian nonprofits to access digital
+							strategy, accessible templates, and in-kind tech grant guidance.
+						</p>
+					</article>
+					<article class="card fade-in delay-2">
+						<h3>Build skills</h3>
+						<p>
+							Train youth leaders and nonprofit staff to maintain accessible,
+							secure, and sustainable web platforms.
+						</p>
+					</article>
+					<article class="card fade-in delay-3">
+						<h3>Expand reach</h3>
+						<p>
+							Strengthen digital inclusion by helping organizations serve their
+							communities with modern, multilingual websites.
+						</p>
+					</article>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2 class="section-title">Technical justification highlights</h2>
+				<div class="cards">
+					<article class="card">
+						<h3>Research & audits</h3>
+						<p>
+							Hardware supports accessibility testing, performance analysis, and
+							inclusive user research sessions led by youth teams.
+						</p>
+					</article>
+					<article class="card">
+						<h3>Production workflows</h3>
+						<p>
+							Reliable equipment streamlines design, content, and deployment for
+							multiple nonprofit partners in parallel.
+						</p>
+					</article>
+					<article class="card">
+						<h3>Community delivery</h3>
+						<p>
+							A shared tech stack ensures the hub remains available, secure, and
+							scalable for future cohorts and partner organizations.
+						</p>
+					</article>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2 class="section-title">Implementation timeline</h2>
+				<div class="timeline">
+					<div class="timeline-item">
+						<h3>Phase 01: Procurement & setup</h3>
+						<p>
+							Acquire equipment, configure secure environments, and validate
+							accessibility testing tools.
+						</p>
+					</div>
+					<div class="timeline-item">
+						<h3>Phase 02: Hub build & training</h3>
+						<p>
+							Launch core hub resources, onboard nonprofit partners, and deliver
+							youth-led skill sessions.
+						</p>
+					</div>
+					<div class="timeline-item">
+						<h3>Phase 03: Scale & sustain</h3>
+						<p>
+							Expand partner network, refine resources, and secure long-term
+							in-kind technology grant pathways.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="footer">
+				<div>
+					<h2>About WRA Hub</h2>
+					<p>
+						The Web-Ready Access Hub is hosted by Oasis of Change and powered by
+						Canada Service Corps and Employment and Social Development Canada,
+						with program administration by the GLOCAL Foundation of Canada.
+					</p>
+				</div>
+				<div>
+					<strong>Project focus:</strong>
+					<p>
+						A free, centralized digital resource that enables accessible,
+						sustainable websites and unlocks essential in-kind technology grants
+						for Canadian nonprofits.
+					</p>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

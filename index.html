@@ -3,480 +3,116 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Web-Ready Access Hub | Empower Nonprofits</title>
+		<title>Access Hub | Coming Soon</title>
 		<meta
 			name="description"
-			content="A youth-led program equipping nonprofits with accessible web guides, sustainability practices, and in-kind tech grant strategies."
+			content="Access Hub — empowering nonprofits with accessible web tools, sustainability practices, and in-kind tech grants. Coming soon."
 		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
 			rel="stylesheet"
 		/>
 		<style>
-			:root {
-				--ink: #0b0f14;
-				--sky: #e8f7ff;
-				--sun: #fff2d9;
-				--sea: #0e5c68;
-				--mint: #c8f2e6;
-				--clay: #f5d4c2;
-				--glow: #fff7ea;
-				--accent: #ff6f4a;
-				--accent-2: #1957ff;
-				--card: #ffffff;
-				--shadow: 0 24px 60px rgba(10, 30, 60, 0.16);
-				--radius: 24px;
-			}
-
 			* {
 				box-sizing: border-box;
 				margin: 0;
 				padding: 0;
 			}
 
+			html, body {
+				height: 100%;
+				overflow: hidden;
+			}
+
 			body {
 				font-family: "Work Sans", "Segoe UI", sans-serif;
-				color: var(--ink);
-				background: #ffffff;
-				min-height: 100vh;
-			}
-
-			main {
-				position: relative;
-				overflow: hidden;
-			}
-
-			.hero {
-				padding: 96px 8vw 64px;
-				display: grid;
-				gap: 40px;
-				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-				align-items: center;
-			}
-
-			.badge {
-				display: inline-flex;
-				align-items: center;
-				gap: 10px;
-				background: rgba(255, 255, 255, 0.7);
-				border-radius: 999px;
-				padding: 8px 18px;
-				font-size: 0.9rem;
-				font-weight: 500;
-				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-			}
-
-			.badge span {
-				display: inline-block;
-				width: 10px;
-				height: 10px;
-				border-radius: 50%;
-				background: linear-gradient(135deg, var(--accent), var(--accent-2));
-			}
-
-			h1,
-			h2,
-			h3 {
-				font-family: "Fraunces", "Times New Roman", serif;
-				letter-spacing: -0.02em;
-			}
-
-			h1 {
-				font-size: clamp(2.4rem, 4vw, 4rem);
-				line-height: 1.05;
-				margin: 18px 0 16px;
-			}
-
-			.hero p {
-				font-size: 1.05rem;
-				line-height: 1.6;
-				max-width: 520px;
-			}
-
-			.cta-row {
-				margin-top: 28px;
-				display: flex;
-				flex-wrap: wrap;
-				gap: 12px;
-			}
-
-			.cta {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				text-decoration: none;
-				padding: 12px 20px;
-				border-radius: 999px;
-				border: none;
-				font-weight: 600;
-				cursor: pointer;
-				transition: transform 0.2s ease, box-shadow 0.2s ease;
-			}
-
-			.cta:focus-visible {
-				outline: 3px solid rgba(25, 87, 255, 0.4);
-				outline-offset: 2px;
-			}
-
-			.cta.primary {
-				background: var(--accent);
+				background: #ff6b35;
 				color: #ffffff;
-				box-shadow: 0 10px 20px rgba(255, 111, 74, 0.3);
-			}
-
-			.cta.secondary {
-				background: rgba(255, 255, 255, 0.7);
-				color: var(--ink);
-				border: 1px solid rgba(11, 15, 20, 0.1);
-			}
-
-			.cta:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
-			}
-
-			.hero-card {
-				background: var(--card);
-				border-radius: var(--radius);
-				box-shadow: var(--shadow);
-				padding: 32px;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.hero-card::after {
-				content: "";
-				position: absolute;
-				width: 240px;
-				height: 240px;
-				border-radius: 50%;
-				background: linear-gradient(135deg, var(--mint), var(--sky));
-				top: -80px;
-				right: -90px;
-				opacity: 0.8;
-			}
-
-			.metric-grid {
-				margin-top: 18px;
-				display: grid;
-				gap: 18px;
-				grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-			}
-
-			.metric {
-				background: #f7fbff;
-				border-radius: 16px;
-				padding: 16px;
-			}
-
-			.metric h3 {
-				font-size: 1.6rem;
-			}
-
-			.section {
-				padding: 64px 8vw;
-			}
-
-			.section-title {
-				margin-bottom: 32px;
-				font-size: clamp(1.6rem, 2.4vw, 2.4rem);
-			}
-
-			.cards {
-				display: grid;
-				gap: 22px;
-				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-			}
-
-			.card {
-				background: var(--card);
-				padding: 24px;
-				border-radius: 20px;
-				box-shadow: var(--shadow);
-				border: 1px solid rgba(11, 15, 20, 0.06);
-				position: relative;
-			}
-
-			.card::before {
-				content: "";
-				position: absolute;
-				inset: 0;
-				border-radius: 20px;
-				background: linear-gradient(120deg, rgba(255, 111, 74, 0.12), transparent 60%);
-				opacity: 0;
-				transition: opacity 0.3s ease;
-			}
-
-			.card:hover::before {
-				opacity: 1;
-			}
-
-			.card h3 {
-				margin-bottom: 10px;
-				font-size: 1.2rem;
-			}
-
-			.timeline {
-				display: grid;
-				gap: 18px;
-			}
-
-			.timeline-item {
-				background: rgba(255, 255, 255, 0.75);
-				border-radius: 18px;
-				padding: 18px 22px;
-				border-left: 4px solid var(--accent-2);
-			}
-
-			.footer {
-				padding: 40px 8vw 64px;
-				display: grid;
-				gap: 20px;
-				background: linear-gradient(135deg, var(--mint), var(--clay));
-			}
-
-			.footer-logos {
 				display: flex;
-				flex-wrap: wrap;
-				gap: 16px;
-				align-items: center;
-				background: #ffffff;
-				padding: 12px 14px;
-				border-radius: 12px;
-				box-shadow: 0 10px 20px rgba(11, 15, 20, 0.08);
+				flex-direction: column;
+				justify-content: center;
+				padding: 60px 8vw;
 			}
 
-			.footer-logos img {
-				height: 34px;
+			.content {
+				max-width: 640px;
+			}
+
+			.headline {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 700;
+				font-size: clamp(3.2rem, 9vw, 6.5rem);
+				line-height: 1.05;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+				margin-bottom: 24px;
+			}
+
+			.tagline {
+				font-size: clamp(1rem, 2.2vw, 1.2rem);
+				line-height: 1.7;
+				color: rgba(255, 255, 255, 0.85);
+				font-weight: 400;
+				max-width: 480px;
+			}
+
+			.supported {
+				position: fixed;
+				bottom: 32px;
+				left: 8vw;
+				display: flex;
+				align-items: center;
+				gap: 20px;
+			}
+
+			.supported span {
+				font-size: 0.8rem;
+				font-weight: 500;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				color: rgba(255, 255, 255, 0.6);
+			}
+
+			.supported img {
+				height: 36px;
 				width: auto;
 				object-fit: contain;
+				mix-blend-mode: multiply;
 			}
 
-			.footer strong {
-				font-weight: 600;
-			}
-
-			.orb {
-				position: absolute;
-				border-radius: 50%;
-				filter: blur(0px);
-				opacity: 0.6;
-			}
-
-			.orb.one {
-				width: 180px;
-				height: 180px;
-				background: var(--clay);
-				top: 60px;
-				left: -60px;
-			}
-
-			.orb.two {
-				width: 240px;
-				height: 240px;
-				background: var(--mint);
-				bottom: 120px;
-				right: -90px;
-			}
-
-			.fade-in {
-				animation: fadeUp 0.9s ease forwards;
-				opacity: 0;
-			}
-
-			.delay-1 {
-				animation-delay: 0.15s;
-			}
-
-			.delay-2 {
-				animation-delay: 0.3s;
-			}
-
-			.delay-3 {
-				animation-delay: 0.45s;
-			}
-
-			.stat-block {
-				background: var(--card);
-				padding: 24px;
-				border-radius: 20px;
-				box-shadow: var(--shadow);
-				border: 1px solid rgba(11, 15, 20, 0.06);
-			}
-
-			.stat-block h3 {
-				font-size: 2.2rem;
-				margin-bottom: 8px;
-				color: var(--accent);
-			}
-
-			.partners-grid {
-				display: grid;
-				gap: 16px;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-			}
-
-			.partner-item {
-				background: rgba(255, 255, 255, 0.7);
-				padding: 16px;
-				border-radius: 12px;
-				border: 1px solid rgba(11, 15, 20, 0.08);
-				font-weight: 500;
-			}
-
-			@keyframes fadeUp {
-				from {
-					opacity: 0;
-					transform: translateY(16px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-
-			@media (max-width: 720px) {
-				.hero {
-					padding-top: 72px;
+			@media (max-width: 600px) {
+				body {
+					padding: 48px 7vw;
 				}
 
-				.cta-row {
-					flex-direction: column;
-					align-items: stretch;
+				.supported {
+					bottom: 24px;
+					left: 7vw;
+					gap: 14px;
 				}
 
-				.hero-card::after {
-					width: 180px;
-					height: 180px;
+				.supported img {
+					height: 28px;
 				}
 			}
 		</style>
 	</head>
 	<body>
-		<main>
-			<div class="orb one" aria-hidden="true"></div>
-			<div class="orb two" aria-hidden="true"></div>
+		<div class="content">
+			<h1 class="headline">Something cool is coming.</h1>
+			<p class="tagline">
+				We're building the go-to resource for nonprofits to unlock
+				accessible web tools, sustainable design, and thousands in
+				free technology grants.
+			</p>
+		</div>
 
-			<section class="hero" id="overview">
-				<div class="fade-in">
-					<div class="badge"><span></span> Web-Ready Access Hub</div>
-					<h1>Empower nonprofits with accessible web tools and in-kind tech grants.</h1>
-					<p>
-						A youth-led program by Oasis of Change equipping nonprofits with the
-						knowledge and resources to build accessible, sustainable websites and
-						unlock hundreds of thousands in free technology. Currently in development.
-					</p>
-					<div class="cta-row">
-						<a class="cta primary" href="#opportunity">Learn more</a>
-						<a class="cta secondary" href="#contact">Get updated</a>
-					</div>
-				</div>
-
-				<div class="hero-card fade-in delay-1">
-					<h2>What we provide</h2>
-					<p>
-						Clear, practical guides on web accessibility, sustainable digital design,
-						and step-by-step strategies for securing in-kind technology grants.
-					</p>
-					<div class="metric-grid">
-						<div class="metric">
-							<h3>Accessible</h3>
-							<p>Web design standards that include everyone.</p>
-						</div>
-						<div class="metric">
-							<h3>Sustainable</h3>
-							<p>Reduce digital carbon footprints.</p>
-						</div>
-						<div class="metric">
-							<h3>Funded</h3>
-							<p>Access free tools and grants.</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="section" id="opportunity">
-				<h2 class="section-title">The opportunity</h2>
-				<div class="cards">
-					<article class="card fade-in delay-1">
-						<h3>Expand your reach</h3>
-						<p>
-							Accessible websites serve more people. Inclusive design means your
-							nonprofit's message reaches communities you might otherwise miss.
-						</p>
-					</article>
-					<article class="card fade-in delay-2">
-						<h3>Operate efficiently</h3>
-						<p>
-							Sustainable design practices reduce hosting costs and improve user
-							engagement. Do more with less.
-						</p>
-					</article>
-					<article class="card fade-in delay-3">
-						<h3>Unlock free tools</h3>
-						<p>
-							Learn how to access Google Ad Grants, Microsoft for Nonprofits, Canva for
-							Nonprofits, and more. Hundreds of thousands in free resources.
-						</p>
-					</article>
-				</div>
-			</section>
-
-			<section class="section" id="expertise">
-				<h2 class="section-title">Built on proven expertise</h2>
-				<div style="max-width: 800px; margin: 0 auto;">
-					<p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 24px;">
-						WRA Hub content is developed with advisors who have collectively secured
-						over <strong>$860,000 CAD in in-kind technology grants per year</strong>
-						across multiple organizations. This is not theory—it's tested, practical
-						strategy.
-					</p>
-					<div class="stat-block fade-in delay-1">
-						<h3>$860,000+</h3>
-						<p>Annual in-kind grants secured by our expert team</p>
-					</div>
-				</div>
-			</section>
-
-			<section class="footer" id="contact">
-				<div>
-					<h2>About WRA Hub</h2>
-					<p>
-						The Web-Ready Access Hub is a youth-led program hosted by Oasis of Change.
-						It combines three pillars—accessibility, sustainability, and funding
-						support—to help nonprofits expand their reach, operate efficiently, and
-						serve their communities more inclusively.
-					</p>
-				</div>
-				<div>
-					<strong>Our mission:</strong>
-					<p>
-						Equip Canadian nonprofits with the knowledge, tools, and connections needed
-						to build accessible, sustainable web presences and unlock in-kind
-						technology grants.
-					</p>
-				</div>
-				<div>
-					<strong>Funding & contact:</strong>
-					<p>
-						This pilot is funded by our partners below and is currently building the
-						Access Hub playbook for nonprofit web accessibility, sustainability, and
-						in-kind grant readiness.
-					</p>
-					<p>
-						Contact: <a href="mailto:info@w-ra.org">info@w-ra.org</a>
-					</p>
-					<div class="footer-logos" aria-label="Funding partners">
-						<img src="assets/GLOCAL-Foundation.webp" alt="GLOCAL Foundation logo" />
-						<img src="assets/Government_Canada.png" alt="Government of Canada logo" />
-					</div>
-				</div>
-				<div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(11, 15, 20, 0.2);">
-					<small>Currently in development. Content and resources coming soon.</small>
-				</div>
-			</section>
-		</main>
+		<div class="supported">
+			<span>Supported by</span>
+			<img src="assets/GLOCAL-Foundation.webp" alt="GLOCAL Foundation" />
+			<img src="assets/Government_Canada.png" alt="Government of Canada" />
+		</div>
 	</body>
 </html>

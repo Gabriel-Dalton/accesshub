@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Access Hub | Coming Soon</title>
+		<title>Access Hub | Nonprofit Web Playbook</title>
 		<meta
 			name="description"
-			content="Access Hub — empowering nonprofits with accessible web tools, sustainability practices, and in-kind tech grants. Coming soon."
+			content="Access Hub helps nonprofits learn accessibility, sustainable web practices, and nonprofit tech grants through practical guides."
 		/>
 		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
@@ -27,69 +27,119 @@
 				padding: 0;
 			}
 
-			html, body {
-				height: 100%;
-				overflow: hidden;
-			}
-
 			body {
 				font-family: "Work Sans", "Segoe UI", sans-serif;
 				background: #ff6b35;
 				color: #ffffff;
+				min-height: 100vh;
+				padding: 36px 8vw 28px;
 				display: flex;
 				flex-direction: column;
-				justify-content: space-between;
-				padding: 0 8vw;
+				gap: 28px;
 			}
 
-			.content {
-				max-width: 700px;
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				padding-bottom: 10vh;
+			.hero {
+				max-width: 780px;
 			}
 
 			.headline {
 				font-family: "Fredoka", sans-serif;
 				font-weight: 700;
-				font-size: clamp(2.6rem, 9vw, 6.5rem);
+				font-size: clamp(2.2rem, 7.5vw, 5.8rem);
 				line-height: 1.05;
 				letter-spacing: -0.02em;
-				color: #ffffff;
-				margin-bottom: 20px;
+				margin-bottom: 16px;
 			}
 
 			.tagline {
-				font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+				font-size: clamp(1rem, 2.1vw, 1.2rem);
 				line-height: 1.7;
-				color: rgba(255, 255, 255, 0.85);
-				font-weight: 400;
-				max-width: 480px;
+				color: rgba(255, 255, 255, 0.9);
+				max-width: 620px;
+			}
+
+			.actions {
+				margin-top: 22px;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+			}
+
+			.button {
+				display: inline-block;
+				text-decoration: none;
+				font-weight: 600;
+				padding: 12px 18px;
+				border-radius: 12px;
+				transition: transform 120ms ease;
+			}
+
+			.button:focus-visible,
+			.quick-link:focus-visible {
+				outline: 2px solid #ffffff;
+				outline-offset: 2px;
+			}
+
+			.button:hover {
+				transform: translateY(-1px);
+			}
+
+			.button-primary {
+				background: #ffffff;
+				color: #db4f1f;
+			}
+
+			.button-secondary {
+				background: rgba(255, 255, 255, 0.16);
+				color: #ffffff;
+			}
+
+			.quick-links {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+				gap: 12px;
+				max-width: 980px;
+			}
+
+			.quick-link {
+				text-decoration: none;
+				background: rgba(255, 255, 255, 0.14);
+				color: #ffffff;
+				padding: 14px;
+				border-radius: 14px;
+				border: 1px solid rgba(255, 255, 255, 0.18);
+				display: block;
+			}
+
+			.quick-link span {
+				display: block;
+				font-size: 0.82rem;
+				text-transform: uppercase;
+				letter-spacing: 0.07em;
+				color: rgba(255, 255, 255, 0.7);
+				margin-bottom: 6px;
 			}
 
 			.supported {
-				padding: 32px 0;
+				margin-top: auto;
+				padding-top: 10px;
 				display: flex;
 				align-items: center;
-				gap: 20px;
-				flex-shrink: 0;
+				flex-wrap: wrap;
+				gap: 16px;
 			}
 
-			.supported span {
-				font-size: 0.85rem;
-				font-weight: 500;
+			.supported strong {
+				font-size: 0.82rem;
+				letter-spacing: 0.07em;
 				text-transform: uppercase;
-				letter-spacing: 0.06em;
-				color: rgba(255, 255, 255, 0.55);
-				white-space: nowrap;
+				color: rgba(255, 255, 255, 0.7);
 			}
 
 			.logo-pill {
 				display: inline-flex;
 				align-items: center;
-				padding: 8px 18px;
+				padding: 8px 16px;
 				background: rgba(255, 255, 255, 0.15);
 				border-radius: 12px;
 				backdrop-filter: blur(4px);
@@ -97,7 +147,7 @@
 			}
 
 			.logo-pill img {
-				height: 36px;
+				height: 30px;
 				width: auto;
 				object-fit: contain;
 				filter: brightness(0) invert(1);
@@ -105,78 +155,52 @@
 
 			@media (max-width: 768px) {
 				body {
-					padding: 0 7vw;
-				}
-
-				.headline {
-					font-size: clamp(2.2rem, 11vw, 3.5rem);
-					margin-bottom: 16px;
-				}
-
-				.tagline {
-					font-size: 0.95rem;
-				}
-
-				.supported {
-					padding: 20px 0;
-					gap: 10px;
-					flex-wrap: wrap;
-				}
-
-				.logo-pill {
-					padding: 6px 14px;
+					padding: 24px 7vw 22px;
 				}
 
 				.logo-pill img {
-					height: 28px;
-				}
-			}
-
-			@media (max-width: 380px) {
-				.headline {
-					font-size: 2rem;
-				}
-
-				.supported {
-					gap: 8px;
-				}
-
-				.logo-pill img {
-					height: 22px;
-				}
-			}
-
-			@media (max-height: 500px) {
-				.headline {
-					font-size: clamp(1.8rem, 6vw, 3rem);
-					margin-bottom: 12px;
-				}
-
-				.supported {
-					padding: 12px 0;
+					height: 25px;
 				}
 			}
 		</style>
 	</head>
 	<body>
-		<div class="content">
-			<h1 class="headline">The nonprofit web playbook, almost ready.</h1>
+		<header class="hero">
+			<h1 class="headline">The nonprofit web playbook, now in progress.</h1>
 			<p class="tagline">
-				Access Hub is a youth-led resource helping nonprofits
-				build accessible websites, adopt sustainable design, and
-				tap into $100,000s in free tech grants. We're putting the
-				finishing touches on it now.
+				Access Hub is now organized into guided tracks so teams can choose
+				what to learn first: accessibility, sustainability, or nonprofit
+				tech grants. Start with the hub, then dive into the topic pages.
 			</p>
-		</div>
+			<div class="actions">
+				<a class="button button-primary" href="hub.html">Open the learning hub</a>
+				<a class="button button-secondary" href="getting-started.html">Read getting started</a>
+			</div>
+		</header>
 
-		<div class="supported">
-			<span>Supported by</span>
+		<main class="quick-links" aria-label="Quick paths">
+			<a class="quick-link" href="accessibility.html">
+				<span>Track 01</span>
+				Accessibility essentials for nonprofit websites
+			</a>
+			<a class="quick-link" href="sustainability.html">
+				<span>Track 02</span>
+				Sustainable web practices that reduce footprint and cost
+			</a>
+			<a class="quick-link" href="tech-grants.html">
+				<span>Track 03</span>
+				Tech grant playbook and in-kind funding opportunities
+			</a>
+		</main>
+
+		<footer class="supported">
+			<strong>Supported by</strong>
 			<div class="logo-pill">
 				<img src="assets/GLOCAL-Foundation.avif" alt="GLOCAL Foundation" />
 			</div>
 			<div class="logo-pill">
 				<img src="assets/Government_Canada.avif" alt="Government of Canada" />
 			</div>
-		</div>
+		</footer>
 	</body>
 </html>

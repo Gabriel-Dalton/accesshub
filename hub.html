@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Access Hub | Learning Hub</title>
+		<meta
+			name="description"
+			content="Choose your Access Hub learning track: accessibility, sustainability, or nonprofit tech grants."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="hub-theme.css" />
+	</head>
+	<body class="docs" data-page="hub">
+		<div class="docs-shell">
+			<aside class="sidebar" aria-label="Documentation sidebar">
+				<div class="brand">
+					<strong>Access Hub</strong>
+					<button id="theme-toggle" class="theme-toggle" type="button">Dark mode</button>
+				</div>
+				<nav>
+					<ul class="nav-section">
+						<li><a href="hub.html" data-page-link="hub">Overview</a></li>
+						<li><a href="getting-started.html" data-page-link="getting-started">Getting Started</a></li>
+						<li><a href="accessibility.html" data-page-link="accessibility">Accessibility</a></li>
+						<li><a href="sustainability.html" data-page-link="sustainability">Sustainability</a></li>
+						<li><a href="tech-grants.html" data-page-link="tech-grants">Nonprofit Tech Grants</a></li>
+						<li><a href="index.html">Back to Landing</a></li>
+					</ul>
+				</nav>
+				<p class="sidebar-note">
+					Documentation-first layout for fast scanning, quick switching, and easy onboarding.
+				</p>
+			</aside>
+
+			<main class="main">
+				<span class="kicker">Hub Overview</span>
+				<h1>Pick a track and start learning.</h1>
+				<p class="lead">
+					This is your docs home: choose Accessibility, Sustainability, or Nonprofit Tech Grants.
+					Use the switcher below for a quick preview, then open the full section page.
+				</p>
+
+				<div class="switcher" role="tablist" aria-label="Learning tracks">
+					<button type="button" role="tab" aria-selected="true" data-track="accessibility">
+						Accessibility
+					</button>
+					<button type="button" role="tab" aria-selected="false" data-track="sustainability">
+						Sustainability
+					</button>
+					<button type="button" role="tab" aria-selected="false" data-track="grants">
+						Nonprofit Tech Grants
+					</button>
+				</div>
+
+				<section class="panel" id="panel" aria-live="polite">
+					<div>
+						<h2 id="panel-title">Accessibility essentials</h2>
+						<p id="panel-text">
+							Build pages that everyone can use by default: better contrast,
+							keyboard-friendly navigation, clear heading structure, alt text,
+							and inclusive form patterns.
+						</p>
+						<div class="toolbar">
+							<a class="btn btn-primary" id="panel-link" href="accessibility.html">Open this track</a>
+							<a class="btn" href="getting-started.html">Implementation order</a>
+						</div>
+					</div>
+					<ul class="checklist" id="panel-list">
+						<li>Contrast and typography rules for readability</li>
+						<li>Keyboard and focus states for every interactive element</li>
+						<li>Alt text, labels, and semantic structure checklist</li>
+					</ul>
+				</section>
+			</main>
+		</div>
+
+		<script src="hub-theme.js"></script>
+		<script>
+			const trackData = {
+				accessibility: {
+					title: "Accessibility essentials",
+					text: "Build pages that everyone can use by default: better contrast, keyboard-friendly navigation, clear heading structure, alt text, and inclusive form patterns.",
+					link: "accessibility.html",
+					items: [
+						"Contrast and typography rules for readability",
+						"Keyboard and focus states for every interactive element",
+						"Alt text, labels, and semantic structure checklist"
+					]
+				},
+				sustainability: {
+					title: "Sustainable web operations",
+					text: "Reduce your digital footprint with practical changes: lighter pages, smarter media, cleaner hosting choices, and team rituals that prevent waste over time.",
+					link: "sustainability.html",
+					items: [
+						"Carbon-aware performance wins that lower hosting costs",
+						"Media and asset budgeting for low-bandwidth users",
+						"Sustainable governance practices for content teams"
+					]
+				},
+				grants: {
+					title: "Nonprofit tech grants playbook",
+					text: "Find and apply for in-kind and cash support with less guesswork. Build your grant library, improve eligibility readiness, and create reusable application assets.",
+					link: "tech-grants.html",
+					items: [
+						"Grant landscape map by category and effort level",
+						"Readiness checklist for policy and financial materials",
+						"Reusable narrative templates for stronger submissions"
+					]
+				}
+			};
+
+			const tabButtons = document.querySelectorAll("[data-track]");
+			const titleEl = document.getElementById("panel-title");
+			const textEl = document.getElementById("panel-text");
+			const linkEl = document.getElementById("panel-link");
+			const listEl = document.getElementById("panel-list");
+
+			function renderTrack(trackId) {
+				const data = trackData[trackId];
+				titleEl.textContent = data.title;
+				textEl.textContent = data.text;
+				linkEl.href = data.link;
+				listEl.innerHTML = data.items.map((item) => "<li>" + item + "</li>").join("");
+
+				tabButtons.forEach((button) => {
+					button.setAttribute(
+						"aria-selected",
+						button.dataset.track === trackId ? "true" : "false"
+					);
+				});
+			}
+
+			tabButtons.forEach((button) => {
+				button.addEventListener("click", () => renderTrack(button.dataset.track));
+			});
+		</script>
+	</body>
+</html>

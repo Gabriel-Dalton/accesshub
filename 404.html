@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>404 | Access Hub</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				font-family: "Work Sans", "Segoe UI", sans-serif;
+				background: #ff6b35;
+				color: #ffffff;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				padding: 24px;
+			}
+
+			.wrap {
+				max-width: 520px;
+			}
+
+			.code {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 700;
+				font-size: clamp(6rem, 20vw, 12rem);
+				line-height: 1;
+				letter-spacing: -0.04em;
+				opacity: 0.25;
+			}
+
+			h1 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 700;
+				font-size: clamp(1.6rem, 5vw, 2.6rem);
+				line-height: 1.15;
+				margin: 8px 0 14px;
+			}
+
+			p {
+				font-size: clamp(0.95rem, 2vw, 1.1rem);
+				line-height: 1.7;
+				color: rgba(255, 255, 255, 0.85);
+				margin-bottom: 24px;
+			}
+
+			.btn {
+				display: inline-block;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 0.95rem;
+				padding: 12px 22px;
+				border-radius: 12px;
+				background: #ffffff;
+				color: #db4f1f;
+				transition: transform 120ms ease;
+			}
+
+			.btn:hover {
+				transform: translateY(-1px);
+			}
+
+			.btn:focus-visible {
+				outline: 2px solid #ffffff;
+				outline-offset: 3px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="code">404</div>
+			<h1>This page applied for a tech grant and got denied.</h1>
+			<p>
+				Either it never existed, it moved somewhere more accessible,
+				or it's still putting the finishing touches on its application.
+				Let's get you back on track.
+			</p>
+			<a class="btn" href="/">Back to Access Hub</a>
+		</div>
+	</body>
+</html>

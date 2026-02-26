@@ -1,8 +1,11 @@
 (function () {
-	const storageKey = "accesshub-theme";
-	const root = document.documentElement;
-	const toggle = document.getElementById("theme-toggle");
-	const pageKey = document.body.dataset.page;
+	var themeKey = "accesshub-theme";
+	var sidebarKey = "accesshub-sidebar";
+	var root = document.documentElement;
+	var body = document.body;
+	var isMobile = window.matchMedia("(max-width: 860px)");
+
+	/* ---- Theme ---- */
 
 	function getSystemTheme() {
 		return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -10,27 +13,68 @@
 
 	function applyTheme(theme) {
 		root.setAttribute("data-theme", theme);
-		if (toggle) {
-			toggle.textContent = theme === "dark" ? "Light mode" : "Dark mode";
-			toggle.setAttribute("aria-label", "Switch to " + (theme === "dark" ? "light" : "dark") + " mode");
-		}
 	}
 
-	const initialTheme = localStorage.getItem(storageKey) || getSystemTheme();
+	var initialTheme = localStorage.getItem(themeKey) || getSystemTheme();
 	applyTheme(initialTheme);
 
-	if (toggle) {
-		toggle.addEventListener("click", function () {
-			const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-			localStorage.setItem(storageKey, nextTheme);
-			applyTheme(nextTheme);
+	var themeBtn = document.getElementById("theme-toggle");
+	if (themeBtn) {
+		themeBtn.addEventListener("click", function () {
+			var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+			localStorage.setItem(themeKey, next);
+			applyTheme(next);
 		});
 	}
 
-	if (pageKey) {
-		const activeLink = document.querySelector('[data-page-link="' + pageKey + '"]');
-		if (activeLink) {
-			activeLink.classList.add("active");
+	/* ---- Sidebar ---- */
+
+	var backdrop = document.getElementById("backdrop");
+
+	function closeSidebar() {
+		if (isMobile.matches) {
+			body.classList.remove("sidebar-open");
+			if (backdrop) backdrop.classList.remove("visible");
+		} else {
+			body.classList.add("sidebar-collapsed");
+			localStorage.setItem(sidebarKey, "collapsed");
 		}
+	}
+
+	function openSidebar() {
+		if (isMobile.matches) {
+			body.classList.add("sidebar-open");
+			if (backdrop) backdrop.classList.add("visible");
+		} else {
+			body.classList.remove("sidebar-collapsed");
+			localStorage.setItem(sidebarKey, "open");
+		}
+	}
+
+	function toggleSidebar() {
+		if (isMobile.matches) {
+			body.classList.contains("sidebar-open") ? closeSidebar() : openSidebar();
+		} else {
+			body.classList.contains("sidebar-collapsed") ? openSidebar() : closeSidebar();
+		}
+	}
+
+	if (!isMobile.matches && localStorage.getItem(sidebarKey) === "collapsed") {
+		body.classList.add("sidebar-collapsed");
+	}
+
+	var openBtn = document.getElementById("sidebar-open");
+	var closeBtn = document.getElementById("sidebar-close");
+
+	if (openBtn) openBtn.addEventListener("click", toggleSidebar);
+	if (closeBtn) closeBtn.addEventListener("click", closeSidebar);
+	if (backdrop) backdrop.addEventListener("click", closeSidebar);
+
+	/* ---- Active nav link ---- */
+
+	var pageKey = body.dataset.page;
+	if (pageKey) {
+		var link = document.querySelector('[data-page-link="' + pageKey + '"]');
+		if (link) link.classList.add("active");
 	}
 })();

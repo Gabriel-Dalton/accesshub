@@ -4,46 +4,66 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Access Hub | Sustainability Track</title>
-		<meta
-			name="description"
-			content="Sustainability documentation track for nonprofits: lower digital footprint, improve performance, and reduce costs."
-		/>
+		<meta name="description" content="Sustainability documentation track for nonprofits: lower digital footprint, improve performance, and reduce costs." />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap"
-			rel="stylesheet"
-		/>
+		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="hub-theme.css" />
 	</head>
 	<body class="docs" data-page="sustainability">
-		<div class="docs-shell">
-			<aside class="sidebar" aria-label="Documentation sidebar">
-				<div class="brand">
-					<strong>Access Hub</strong>
-					<button id="theme-toggle" class="theme-toggle" type="button">Dark mode</button>
+
+		<aside class="sidebar" id="sidebar">
+			<div class="sidebar-top">
+				<a href="hub.html" class="logo">Access Hub</a>
+				<button class="icon-btn" id="sidebar-close" type="button" aria-label="Close sidebar">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+				</button>
+			</div>
+			<div class="sidebar-nav">
+				<div class="nav-group">
+					<span class="nav-label">Documentation</span>
+					<a href="hub.html" data-page-link="hub">Overview</a>
+					<a href="getting-started.html" data-page-link="getting-started">Getting Started</a>
 				</div>
-				<nav>
-					<ul class="nav-section">
-						<li><a href="hub.html" data-page-link="hub">Overview</a></li>
-						<li><a href="getting-started.html" data-page-link="getting-started">Getting Started</a></li>
-						<li><a href="accessibility.html" data-page-link="accessibility">Accessibility</a></li>
-						<li><a href="sustainability.html" data-page-link="sustainability">Sustainability</a></li>
-						<li><a href="tech-grants.html" data-page-link="tech-grants">Nonprofit Tech Grants</a></li>
-						<li><a href="index.html">Back to Landing</a></li>
-					</ul>
-				</nav>
-				<p class="sidebar-note">
-					Reduce digital footprint while improving speed, resilience, and content quality.
-				</p>
-			</aside>
+				<div class="nav-group">
+					<span class="nav-label">Tracks</span>
+					<a href="accessibility.html" data-page-link="accessibility">Accessibility</a>
+					<a href="sustainability.html" data-page-link="sustainability">Sustainability</a>
+					<a href="tech-grants.html" data-page-link="tech-grants">Tech Grants</a>
+				</div>
+			</div>
+			<div class="sidebar-bottom">
+				<a href="index.html" class="back-link">
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+					Back to landing
+				</a>
+			</div>
+		</aside>
+
+		<div class="backdrop" id="backdrop"></div>
+
+		<div class="content-wrapper">
+			<header class="topbar">
+				<div class="topbar-left">
+					<button class="icon-btn" id="sidebar-open" type="button" aria-label="Toggle sidebar">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+					</button>
+					<span class="topbar-crumb">Sustainability</span>
+				</div>
+				<div class="topbar-right">
+					<button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme">
+						<svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+						<svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+					</button>
+				</div>
+			</header>
 
 			<main class="main">
 				<span class="kicker">Track 02</span>
 				<h1>Sustainability documentation</h1>
 				<p class="lead">
 					Make your digital presence lighter, faster, and more resilient.
-					Sustainability means practical choices that lower emissions and improve experience.
+					Practical choices that lower emissions and improve experience.
 				</p>
 
 				<section class="card-grid">
@@ -79,10 +99,11 @@
 				</section>
 
 				<p class="callout">
-					Next: use these wins as evidence in your <a href="tech-grants.html">Tech Grants track</a> applications.
+					Next: use these wins as evidence in your <a href="tech-grants.html">Tech Grants</a> applications.
 				</p>
 			</main>
 		</div>
+
 		<script src="hub-theme.js"></script>
 	</body>
 </html>

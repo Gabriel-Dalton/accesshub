@@ -87,17 +87,17 @@
 			var subNav = document.createElement("div");
 			subNav.className = "nav-sub";
 
-			headings.forEach(function (h, i) {
-				if (h.closest(".footnotes") || h.closest(".completion-section")) return;
-				var id = h.id || "section-" + i;
-				h.id = id;
+		headings.forEach(function (h, i) {
+			if (h.closest(".footnotes") || h.closest(".completion-section") || h.closest(".card")) return;
+			var id = h.id || "section-" + i;
+			h.id = id;
 
-				var a = document.createElement("a");
-				a.href = "#" + id;
-				a.textContent = h.textContent;
-				a.dataset.section = id;
-				subNav.appendChild(a);
-			});
+			var a = document.createElement("a");
+			a.href = "#" + id;
+			a.textContent = h.textContent;
+			a.dataset.section = id;
+			subNav.appendChild(a);
+		});
 
 			activeLink.parentNode.insertBefore(subNav, activeLink.nextSibling);
 
@@ -105,19 +105,24 @@
 			var sectionIds = [];
 			subLinks.forEach(function (a) { sectionIds.push(a.dataset.section); });
 
-			function updateActiveSection() {
-				var scrollY = window.scrollY + 100;
-				var current = null;
+		function updateActiveSection() {
+			var scrollY = window.scrollY + 100;
+			var current = null;
 
+			var atBottom = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 30);
+			if (atBottom && sectionIds.length > 0) {
+				current = sectionIds[sectionIds.length - 1];
+			} else {
 				sectionIds.forEach(function (id) {
 					var el = document.getElementById(id);
 					if (el && el.offsetTop <= scrollY) current = id;
 				});
-
-				subLinks.forEach(function (a) {
-					a.classList.toggle("active", a.dataset.section === current);
-				});
 			}
+
+			subLinks.forEach(function (a) {
+				a.classList.toggle("active", a.dataset.section === current);
+			});
+		}
 
 			var scrollTimer;
 			window.addEventListener("scroll", function () {

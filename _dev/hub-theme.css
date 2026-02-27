@@ -96,7 +96,7 @@ body.sidebar-collapsed .sidebar {
 }
 
 .logo {
-	font-family: "Fredoka", sans-serif;
+	font-family: "Work Sans", system-ui, -apple-system, sans-serif;
 	font-weight: 600;
 	font-size: 1.05rem;
 	color: var(--text);
@@ -302,8 +302,8 @@ body.sidebar-collapsed .content-wrapper {
 	margin-bottom: 6px;
 }
 
-h1 {
-	font-family: "Fredoka", sans-serif;
+.main h1 {
+	font-family: "Work Sans", system-ui, -apple-system, sans-serif;
 	font-size: clamp(1.7rem, 3.6vw, 2.5rem);
 	font-weight: 600;
 	line-height: 1.15;
@@ -341,7 +341,7 @@ h1 {
 
 .card h2,
 .card h3 {
-	font-family: "Fredoka", sans-serif;
+	font-family: "Work Sans", system-ui, -apple-system, sans-serif;
 	font-size: 1.05rem;
 	font-weight: 600;
 	margin-bottom: 6px;
@@ -459,7 +459,7 @@ h1 {
 }
 
 .panel h2 {
-	font-family: "Fredoka", sans-serif;
+	font-family: "Work Sans", system-ui, -apple-system, sans-serif;
 	font-size: 1.15rem;
 	font-weight: 600;
 	margin-bottom: 8px;

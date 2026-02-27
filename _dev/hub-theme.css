@@ -1184,6 +1184,46 @@ body[data-page="hub"] .main {
 	line-height: 1.6;
 	color: var(--text-muted);
 	margin-bottom: 6px;
+	padding: 6px 8px;
+	margin-left: -8px;
+	margin-right: -8px;
+	border-radius: var(--radius-sm);
+	transition: background 0.3s ease, color 0.3s ease;
+}
+
+.footnotes p:target,
+.footnotes p.fn-highlight {
+	background: rgba(37, 99, 235, 0.1);
+	color: var(--text-secondary);
+}
+
+[data-theme="dark"] .footnotes p:target,
+[data-theme="dark"] .footnotes p.fn-highlight {
+	background: rgba(96, 165, 250, 0.12);
+}
+
+.footnotes p.fn-highlight {
+	animation: fn-flash 2.5s ease-out forwards;
+}
+
+@keyframes fn-flash {
+	0% { background: rgba(37, 99, 235, 0.18); }
+	70% { background: rgba(37, 99, 235, 0.1); }
+	100% { background: transparent; color: var(--text-muted); }
+}
+
+[data-theme="dark"] .footnotes p.fn-highlight {
+	animation: fn-flash-dark 2.5s ease-out forwards;
+}
+
+@keyframes fn-flash-dark {
+	0% { background: rgba(96, 165, 250, 0.22); }
+	70% { background: rgba(96, 165, 250, 0.12); }
+	100% { background: transparent; color: var(--text-muted); }
+}
+
+.footnotes p a {
+	word-break: break-all;
 }
 
 .disclaimer {

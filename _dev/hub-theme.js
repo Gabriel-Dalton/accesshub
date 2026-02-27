@@ -339,6 +339,35 @@
 		}
 	}
 
+	/* ---- External links open in new tab (keep hub open) ---- */
+
+	document.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach(function (a) {
+		a.setAttribute("target", "_blank");
+	});
+
+	/* ---- Footnote highlight ---- */
+
+	document.querySelectorAll('.prose sup a[href^="#fn-"]').forEach(function (link) {
+		link.addEventListener("click", function (e) {
+			var id = this.getAttribute("href").slice(1);
+			var target = document.getElementById(id);
+			if (!target) return;
+
+			e.preventDefault();
+
+			document.querySelectorAll(".footnotes p.fn-highlight").forEach(function (el) {
+				el.classList.remove("fn-highlight");
+			});
+
+			target.scrollIntoView({ behavior: "smooth", block: "center" });
+
+			void target.offsetWidth;
+			target.classList.add("fn-highlight");
+
+			history.replaceState(null, "", "#" + id);
+		});
+	});
+
 	document.addEventListener("keydown", function (e) {
 		if ((e.metaKey || e.ctrlKey) && e.key === "k") {
 			e.preventDefault();

@@ -24,8 +24,8 @@
 				</div>
 				<div class="nav-group">
 					<span class="nav-label">Tracks</span>
-					<a href="accessibility.html" data-page-link="accessibility">Accessibility</a>
 					<a href="sustainability.html" data-page-link="sustainability">Sustainability</a>
+					<a href="accessibility.html" data-page-link="accessibility">Accessibility</a>
 					<a href="tech-grants.html" data-page-link="tech-grants">Tech Grants</a>
 				</div>
 			</div>
@@ -56,48 +56,287 @@
 			</header>
 
 			<main class="main">
-				<span class="kicker">Track 01</span>
-				<h1>Accessibility documentation</h1>
-				<p class="lead">
-					Design and build for real-world users from day one.
-					Core documentation blocks your nonprofit team should maintain.
-				</p>
+				<span class="kicker">Track 02</span>
+				<h1>Web Accessibility</h1>
+				<p class="lead">Make your website usable for everyone, including people with disabilities, and understand the legal requirements.</p>
 
-				<section class="card-grid">
-					<article class="card">
-						<h2>Design rules</h2>
-						<p>Define defaults so new pages start accessible:</p>
-						<ul>
-							<li>Color contrast minimums for text and controls</li>
-							<li>Type scale with comfortable line height and spacing</li>
-							<li>Clear link and button states including visible focus</li>
-						</ul>
-					</article>
+				<div class="prose">
+					<h2>What is web accessibility?</h2>
+					<p>Web accessibility means designing and building websites so that everyone can use them, including people with disabilities. This includes people who are blind or have low vision, people who are deaf or hard of hearing, people with motor disabilities who cannot use a mouse, people with cognitive disabilities, and people with temporary impairments like a broken arm or situational limitations like using a phone in bright sunlight.</p>
+					<p>Accessible design makes sure your website works with assistive technologies like screen readers, keyboard-only navigation, voice controls, and switch devices. But accessibility also benefits everyone. Clear headings help all users navigate. Captions help people watching video in noisy environments. Readable fonts benefit users of all ages.</p>
+					<p>In practical terms, an accessible website is one where every visitor, regardless of their abilities, the devices they use, or the conditions they are browsing in, can perceive, navigate, understand, and interact with all content and functionality.</p>
 
-					<article class="card">
-						<h2>Content standards</h2>
-						<p>Create editorial guardrails for contributors:</p>
-						<ul>
-							<li>Heading hierarchy rules for screen reader navigation</li>
-							<li>Alt text guidance for informative and decorative images</li>
-							<li>Plain-language checks for readability and clarity</li>
-						</ul>
-					</article>
+					<h2>Why is being accessible online important?</h2>
 
-					<article class="card">
-						<h2>QA checklist</h2>
-						<p>Run this before every launch:</p>
-						<ul>
-							<li>Keyboard-only pass across menus, forms, and dialogs</li>
-							<li>Screen reader spot-check on critical user journeys</li>
-							<li>Automated scan for common WCAG issues</li>
-						</ul>
-					</article>
-				</section>
+					<h3>It is the right thing to do</h3>
+					<p>Your nonprofit exists to serve people. If your website excludes anyone from accessing your services, information, or support, you are unintentionally working against your own mission. According to the CDC, more than 1 in 4 adults (28.7%) in the United States reported having a disability in 2022, which is over 70 million people. These are your beneficiaries, donors, volunteers, and community members.</p>
 
-				<p class="callout">
-					Next: move to <a href="sustainability.html">Sustainability</a> to reduce page weight while preserving accessibility.
-				</p>
+					<h3>It may be legally required</h3>
+					<p>In the United States, Title III of the Americans with Disabilities Act (ADA) prohibits discrimination in places of public accommodation, and courts have increasingly ruled that websites are public accommodations. This applies to nonprofits regardless of whether they receive federal funding. In 2024, the Department of Justice updated Title II of the ADA to explicitly require web accessibility for state and local government websites. In February 2025, a federal judge in Minnesota ruled that websites qualify as places of public accommodation under Title III.</p>
+					<p>Web accessibility lawsuits are rising. In 2023 alone, over 2,280 website accessibility lawsuits were filed in the United States. Nonprofits are not exempt from these legal actions. As of mid-2025, nonprofit websites are not explicitly required to fully comply with WCAG at the federal level, but court rulings increasingly treat websites as public accommodations under ADA Title III.</p>
+
+					<h3>It expands your reach</h3>
+					<p>Over 70 million adults in the United States live with a disability. Globally, the number exceeds one billion. By making your website accessible, you open your doors to a significantly larger audience of potential donors, volunteers, and beneficiaries. Yet according to the 2025 WebAIM Million report, 94.8% of the top one million home pages still have detectable WCAG failures, with an average of 51 accessibility errors per page. Low contrast text alone was found on 79.1% of home pages. The web is still overwhelmingly inaccessible, and any nonprofit that prioritizes accessibility will stand out.</p>
+
+					<h3>It improves SEO</h3>
+					<p>Many accessibility practices, such as proper heading structures, descriptive alt text, clean HTML, and clear navigation, are also SEO best practices. Accessible websites tend to rank better on search engines because they are better organized and more machine-readable.</p>
+
+					<h3>It costs less to build it right from the start</h3>
+					<p>Retrofitting a website for accessibility after it is built is far more expensive and time-consuming than incorporating accessibility from the beginning. Research suggests accessibility improvements can generate up to $100 in value for every $1 invested when you consider the expanded audience, improved user experience, and reduced legal risk.</p>
+
+					<h2>Laws and standards around web accessibility</h2>
+					<p>Web accessibility requirements vary by country, but they share a common reference point: the Web Content Accessibility Guidelines (WCAG).</p>
+
+					<h3>WCAG: The international standard</h3>
+					<p>The Web Content Accessibility Guidelines (WCAG) are developed by the World Wide Web Consortium (W3C), the international body that sets web standards. WCAG is not a law itself, but it is the technical standard that most accessibility laws reference.</p>
+					<p>WCAG 2.2 (published October 2023) is the most current version, with 13 guidelines organized under four principles:</p>
+					<ul>
+						<li><strong>Perceivable</strong> &mdash; Information and interface components must be presented in ways users can perceive (for example, alt text for images, captions for videos)</li>
+						<li><strong>Operable</strong> &mdash; Interface components and navigation must be operable by everyone (for example, keyboard navigable, no seizure-inducing content)</li>
+						<li><strong>Understandable</strong> &mdash; Information and operation must be understandable (for example, readable text, predictable navigation, error prevention)</li>
+						<li><strong>Robust</strong> &mdash; Content must work with current and future assistive technologies (for example, valid HTML, proper ARIA roles)</li>
+					</ul>
+					<p>WCAG defines three conformance levels:</p>
+					<ul>
+						<li><strong>Level A</strong> &mdash; Minimum accessibility. Addresses the most critical barriers.</li>
+						<li><strong>Level AA</strong> &mdash; Mid-range. Addresses the most common barriers. This is the level most laws require and what most organizations should target.</li>
+						<li><strong>Level AAA</strong> &mdash; Highest level. Addresses the broadest range of needs. Not typically required by law, but ideal where feasible.</li>
+					</ul>
+					<blockquote><p><strong>Note:</strong> Content that meets WCAG 2.2 also meets WCAG 2.1 and WCAG 2.0. If you target WCAG 2.2, you do not need to worry about earlier versions separately.</p></blockquote>
+
+					<h3>United States</h3>
+					<ul>
+						<li><strong>ADA (Americans with Disabilities Act):</strong> Title III covers private entities (including nonprofits) that are places of public accommodation. Courts have increasingly ruled this includes websites. WCAG 2.1 Level AA is the de facto standard.</li>
+						<li><strong>ADA Title II (2024 Update):</strong> The Department of Justice now explicitly requires state and local government websites to meet WCAG 2.1 Level AA. Entities serving over 50,000 people must comply by 2026; smaller entities by 2027.</li>
+						<li><strong>Section 508:</strong> Applies to federal agencies and organizations receiving federal funding. Requires WCAG 2.0 Level AA conformance.</li>
+					</ul>
+
+					<h3>Canada</h3>
+					<ul>
+						<li><strong>Accessible Canada Act (ACA):</strong> Federal legislation requiring federally regulated organizations to identify and remove accessibility barriers, including digital ones.</li>
+						<li><strong>Accessibility for Ontarians with Disabilities Act (AODA):</strong> Ontario's provincial law requires organizations with 50 or more employees to make their websites WCAG 2.0 Level AA compliant. Other provinces are developing similar legislation.</li>
+						<li><strong>Standard on Web Accessibility (Government of Canada):</strong> Requires all Government of Canada websites to meet WCAG 2.0 Level AA.</li>
+					</ul>
+
+					<h3>European Union</h3>
+					<ul>
+						<li><strong>European Accessibility Act (EAA):</strong> Took effect June 2025. Requires a wide range of products and services, including websites and mobile apps, to be accessible. References EN 301 549, which aligns with WCAG 2.1.</li>
+						<li><strong>Web Accessibility Directive:</strong> Requires all public sector websites and mobile apps in EU member states to meet WCAG 2.1 Level AA.</li>
+					</ul>
+
+					<h3>United Kingdom</h3>
+					<ul>
+						<li><strong>Equality Act 2010:</strong> Prohibits discrimination against disabled people, interpreted to include websites.</li>
+						<li><strong>Public Sector Bodies Accessibility Regulations 2018:</strong> Requires public sector websites to meet WCAG 2.1 Level AA.</li>
+					</ul>
+
+					<h3>Australia</h3>
+					<ul>
+						<li><strong>Disability Discrimination Act 1992 (DDA):</strong> Courts have ruled that websites are covered. The Australian government references WCAG 2.0 as the standard.</li>
+					</ul>
+
+					<h3>Key takeaway for nonprofits</h3>
+					<p>Even in jurisdictions where web accessibility is not explicitly mandated for nonprofits by statute, the legal trend is clearly toward requiring it. Courts are increasingly favorable to plaintiffs in accessibility lawsuits, and demonstrating good-faith efforts to comply (having an accessibility statement, using testing tools, and committing to ongoing improvement) provides meaningful protection.</p>
+					<blockquote><p><strong>Disclaimer:</strong> This guide provides general information about web accessibility laws and is not legal advice. Laws and court interpretations change. Consult with a legal professional familiar with accessibility law in your jurisdiction for advice specific to your organization.</p></blockquote>
+
+					<h2>What is an accessibility audit?</h2>
+					<p>An accessibility audit is a systematic evaluation of your website to identify barriers that prevent people with disabilities from using it. Think of it as a health check for your website's inclusivity.</p>
+
+					<h3>What an audit typically involves</h3>
+					<ul>
+						<li><strong>Automated scanning</strong> &mdash; Tools crawl your website to identify technical violations (missing alt text, low color contrast, missing form labels, and so on)</li>
+						<li><strong>Manual testing</strong> &mdash; A trained evaluator navigates your site using assistive technologies (screen readers, keyboard-only, and so on) to find issues automated tools miss</li>
+						<li><strong>Reporting</strong> &mdash; A detailed report listing each issue found, its severity, which WCAG criteria it violates, and how to fix it</li>
+						<li><strong>Prioritization</strong> &mdash; Issues ranked by impact and effort required, so you know what to address first</li>
+					</ul>
+
+					<h3>Who performs accessibility audits?</h3>
+					<ul>
+						<li><strong>Specialized accessibility consultancies</strong> &mdash; Companies like Deque, WebAIM, Level Access, and The Paciello Group focus exclusively on digital accessibility</li>
+						<li><strong>Web development agencies</strong> &mdash; Many agencies that build nonprofit websites offer accessibility auditing as part of their services</li>
+						<li><strong>Freelance accessibility specialists</strong> &mdash; Independent consultants certified in accessibility (look for IAAP-certified professionals)</li>
+					</ul>
+
+					<h3>How much do audits cost?</h3>
+					<p>Costs vary widely. Automated-only scans can be free (using the tools listed below). A professional manual audit typically ranges from $3,000 to $15,000 depending on website complexity, number of pages, and depth of testing. Some organizations offer discounted or pro bono services for nonprofits.</p>
+
+					<h3>Should your nonprofit get an audit?</h3>
+					<p>If you have the budget, a professional audit is the gold standard. If you do not, the free tools and techniques outlined in this playbook can get you surprisingly far. Start with what you can do today and build from there.</p>
+
+					<h2>Companies and organizations that can help</h2>
+					<p>Here are reputable organizations that provide accessibility auditing services:</p>
+					<ul>
+						<li><strong>Deque Systems</strong> (deque.com) &mdash; Industry leader in digital accessibility. Offers both automated tools (axe) and consulting services.</li>
+						<li><strong>WebAIM</strong> (webaim.org) &mdash; A nonprofit organization at Utah State University dedicated to web accessibility. Offers audits, training, and the popular WAVE evaluation tool.</li>
+						<li><strong>Level Access</strong> (levelaccess.com) &mdash; Provides auditing, monitoring, and remediation services with a focus on enterprise clients.</li>
+						<li><strong>Bureau of Internet Accessibility (BOIA)</strong> (boia.org) &mdash; Offers accessibility auditing and compliance services, including services tailored for nonprofits.</li>
+						<li><strong>AudioEye</strong> (audioeye.com) &mdash; Combines automated and manual testing with ongoing monitoring.</li>
+						<li><strong>Siteimprove</strong> (siteimprove.com) &mdash; Offers website governance tools including accessibility checking and content quality assurance.</li>
+						<li><strong>Accessible Web</strong> (accessibleweb.com) &mdash; Provides WCAG auditing and certification services.</li>
+					</ul>
+					<blockquote><p><strong>Important note about accessibility overlay tools:</strong> Be cautious of companies selling JavaScript &ldquo;widget&rdquo; or &ldquo;overlay&rdquo; solutions that claim to make your website accessible with a single line of code. These overlay tools (such as AccessiBe, UserWay, and similar products) have been widely criticized by the accessibility community. They do not make websites truly accessible, can actually interfere with assistive technology, and do not protect you from legal liability. Genuine accessibility requires addressing the underlying code and design of your website, not adding a surface-level overlay on top.</p></blockquote>
+
+					<h2>Easy fixes that non-technical people can do</h2>
+					<p>You do not need to be a developer to make meaningful accessibility improvements. Here are changes anyone managing a website can make today.</p>
+
+					<h3>Add alt text to every image</h3>
+					<p>Every image on your website should have alternative text (alt text), a brief description of what the image shows. Screen readers read this aloud for users who cannot see the image. Most website platforms (WordPress, Squarespace, Wix, and so on) let you add alt text when you upload or edit an image.</p>
+					<p><strong>Good alt text:</strong> &ldquo;Volunteers planting trees in Stanley Park, Vancouver&rdquo;<br>
+					<strong>Bad alt text:</strong> &ldquo;image1.jpg&rdquo; or &ldquo;photo&rdquo;<br>
+					<strong>For decorative images:</strong> Use empty alt text (<code>alt=""</code>) so screen readers skip them.</p>
+
+					<h3>Ensure sufficient color contrast</h3>
+					<p>Text must have enough contrast against its background to be readable. Low contrast text is the single most common accessibility issue on the web, found on 79.1% of home pages in 2025. The minimum contrast ratio for normal text is 4.5:1 (WCAG Level AA). For large text (18pt and above), the minimum is 3:1. Use a free contrast checker like the <a href="https://webaim.org/resources/contrastchecker">WebAIM Color Contrast Checker</a> to verify your combinations.</p>
+
+					<h3>Use descriptive link text</h3>
+					<p>Avoid links that say &ldquo;click here&rdquo; or &ldquo;read more.&rdquo; Instead, use link text that describes where the link goes: &ldquo;Read our 2025 impact report&rdquo; or &ldquo;Donate to support tree planting.&rdquo; Screen reader users often navigate by jumping between links, so each link should make sense on its own.</p>
+
+					<h3>Structure your content with headings</h3>
+					<p>Use proper heading tags (H1, H2, H3, and so on) to organize your content. Do not just make text bold or larger. Headings create a navigable outline that screen reader users rely on. Use them in order (do not skip from H1 to H4) and have only one H1 per page (typically the page title).</p>
+
+					<h3>Add captions to videos</h3>
+					<p>All video content should have captions, not just for deaf and hard-of-hearing users, but for anyone watching in a noisy environment or without headphones. YouTube and Vimeo can auto-generate captions, but always review and correct them for accuracy.</p>
+
+					<h3>Label all form fields</h3>
+					<p>Every input field (name, email, phone, donation amount, and so on) must have a visible label that is properly associated with the field in the code. In most website builders, this happens automatically if you add a label or title to each field. Never rely solely on placeholder text inside the field, because it disappears when users start typing.</p>
+
+					<h3>Do not rely solely on color to convey information</h3>
+					<p>If you use a red dot to indicate &ldquo;unavailable&rdquo; and a green dot for &ldquo;available,&rdquo; users who are colorblind will not get the message. Always pair color with another indicator: text labels, icons, patterns, or shapes.</p>
+
+					<h3>Ensure keyboard navigation works</h3>
+					<p>Try navigating your website using only your keyboard (Tab to move forward, Shift+Tab to move backward, Enter to activate). Can you reach every link, button, and form field? Can you always see which element is focused? If not, there are issues to fix.</p>
+
+					<h3>Write in plain language</h3>
+					<p>Use clear, simple language. Avoid jargon, acronyms without explanation, and unnecessarily complex sentences. This helps users with cognitive disabilities, non-native speakers, and really, everyone.</p>
+
+					<h3>Make sure your site works on mobile</h3>
+					<p>Responsive design is an accessibility issue. Many users with disabilities rely on mobile devices, and mobile-friendly sites tend to be more accessible overall. Test your site on different screen sizes.</p>
+
+					<h2>Techniques a web developer can use</h2>
+					<p>Developers have additional tools and techniques to achieve deeper accessibility compliance.</p>
+
+					<h3>Use semantic HTML</h3>
+					<p>Use the correct HTML elements for their intended purpose: <code>&lt;nav&gt;</code> for navigation, <code>&lt;main&gt;</code> for main content, <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> for their respective areas, <code>&lt;button&gt;</code> for buttons (not styled <code>&lt;div&gt;</code> elements), <code>&lt;table&gt;</code> for tabular data, and <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code> for lists. Semantic HTML provides built-in accessibility without extra work.</p>
+
+					<h3>Implement ARIA attributes thoughtfully</h3>
+					<p>ARIA (Accessible Rich Internet Applications) attributes can add accessibility to dynamic content and complex widgets, but they should supplement, not replace, proper semantic HTML. The first rule of ARIA is: &ldquo;Do not use ARIA if you can use a native HTML element.&rdquo; When ARIA is needed, test thoroughly with screen readers.</p>
+
+					<h3>Manage keyboard focus</h3>
+					<p>Make sure the tab order through the page is logical. Use <code>tabindex="0"</code> to make non-interactive elements focusable when necessary, and <code>tabindex="-1"</code> for programmatic focus management. Never use tabindex values greater than 0 because they create confusing navigation. Implement visible focus indicators (<code>:focus</code> styles) that are clearly distinguishable.</p>
+
+					<h3>Build accessible forms</h3>
+					<ul>
+						<li>Associate every <code>&lt;input&gt;</code> with a <code>&lt;label&gt;</code> using for/id pairing</li>
+						<li>Group related fields with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code></li>
+						<li>Provide clear error messages that identify the specific field and describe how to fix the error</li>
+						<li>Use <code>aria-describedby</code> to connect additional instructions to form fields</li>
+						<li>Do not use CAPTCHAs without accessible alternatives</li>
+					</ul>
+
+					<h3>Make dynamic content accessible</h3>
+					<p>When content updates dynamically (AJAX loading, notifications, modals, and so on), use ARIA live regions (<code>aria-live="polite"</code> or <code>aria-live="assertive"</code>) to announce changes to screen readers. Make sure modals trap focus appropriately and can be closed with the Escape key.</p>
+
+					<h3>Provide skip navigation links</h3>
+					<p>Add a &ldquo;Skip to main content&rdquo; link at the top of each page that becomes visible on keyboard focus. This allows keyboard users to bypass repetitive navigation menus.</p>
+
+					<h3>Handle multimedia properly</h3>
+					<ul>
+						<li>Provide captions (synchronized text alternatives) for all video content</li>
+						<li>Provide audio descriptions for video content where visual information is not conveyed through audio alone</li>
+						<li>Provide transcripts for audio-only content (podcasts, and so on)</li>
+						<li>Make sure media players are keyboard accessible and screen reader compatible</li>
+					</ul>
+
+					<h3>Test with real assistive technologies</h3>
+					<p>Do not rely solely on automated tools. Test with actual screen readers (NVDA is free for Windows, VoiceOver is built into macOS and iOS), keyboard-only navigation, and browser zoom at 200%. Consider user testing with people who have disabilities.</p>
+
+					<h3>Implement a consistent, visible focus indicator</h3>
+					<p>The default browser focus ring is often too subtle. Create a custom focus style that provides clear visual indication of the focused element, using a combination of outline and contrast that works across all backgrounds on your site.</p>
+
+					<h2>Free accessibility testing tools</h2>
+					<p>These tools can help you evaluate your website's accessibility at no cost.</p>
+
+					<div class="tool-item">
+						<h3>WAVE</h3>
+						<p><strong>Website:</strong> <a href="https://wave.webaim.org">wave.webaim.org</a></p>
+						<p>The most popular free web accessibility evaluation tool. Available as a website tool and browser extension. Highlights issues directly on your page.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>axe DevTools</h3>
+						<p><strong>Website:</strong> <a href="https://www.deque.com/axe">deque.com/axe</a></p>
+						<p>Browser extension that tests pages against WCAG criteria. Highly respected in the development community. Available for Chrome, Firefox, and Edge.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>Google Lighthouse</h3>
+						<p>Built into Chrome DevTools (press F12, then go to the Lighthouse tab). Provides an accessibility score and detailed recommendations.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>ANDI</h3>
+						<p><strong>Website:</strong> <a href="https://www.ssa.gov/accessibility/andi">ssa.gov/accessibility/andi</a></p>
+						<p>A free accessibility testing tool developed by the US Social Security Administration. A bookmarklet that runs on any web page.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>Colour Contrast Analyser</h3>
+						<p><strong>Website:</strong> <a href="https://www.tpgi.com/color-contrast-checker">tpgi.com/color-contrast-checker</a></p>
+						<p>Free desktop application for checking color contrast ratios.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>WebAIM Contrast Checker</h3>
+						<p><strong>Website:</strong> <a href="https://webaim.org/resources/contrastchecker">webaim.org/resources/contrastchecker</a></p>
+						<p>Web-based tool for testing color combinations against WCAG contrast requirements.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>Accessibility Checker</h3>
+						<p><strong>Website:</strong> <a href="https://accessibilitychecker.org">accessibilitychecker.org</a></p>
+						<p>Enter your URL to receive recommendations based on ADA and WCAG standards.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>Silktide</h3>
+						<p>Browser extension for Chrome and Edge that checks for 200 WCAG issues and includes a disability simulator.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>HeadingsMap</h3>
+						<p>Browser extension that shows the heading structure of any page, making it easy to spot heading hierarchy issues.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>Google PageSpeed Insights</h3>
+						<p><strong>Website:</strong> <a href="https://pagespeed.web.dev">pagespeed.web.dev</a></p>
+						<p>While primarily a performance tool, it includes accessibility scoring based on Lighthouse.</p>
+					</div>
+
+					<h2>Creating an accessibility statement</h2>
+					<p>Every nonprofit website should include an accessibility statement. This page publicly communicates your commitment to accessibility and provides contact information for users who encounter barriers. Include:</p>
+					<ol>
+						<li>Your organization's commitment to accessibility</li>
+						<li>The standard you are working toward (for example, WCAG 2.2 Level AA)</li>
+						<li>Known limitations (if any) and your timeline for addressing them</li>
+						<li>How users can report accessibility issues (email, phone, form)</li>
+						<li>The date the statement was last updated</li>
+					</ol>
+					<p>Having an accessibility statement demonstrates good faith and provides a channel for feedback, which courts look favorably upon in accessibility disputes.</p>
+
+					<div class="footnotes">
+						<h2>Sources</h2>
+						<p>[13] CDC, Disability and Health Data System, 2024. More than 1 in 4 (28.7%) adults in the United States reported having a disability in 2022. That is over 70 million adults.</p>
+						<p>[14] WebAIM, &ldquo;The WebAIM Million,&rdquo; 2025. 94.8% of the top one million home pages had detectable WCAG 2 failures, with an average of 51 errors per page.</p>
+						<p>[15] WebAIM, &ldquo;The WebAIM Million,&rdquo; 2024. 95.9% of home pages had detectable WCAG 2 failures, with an average of 56.8 errors per page.</p>
+						<p>[16] WebAIM, &ldquo;The WebAIM Million,&rdquo; 2025. Low contrast text was found on 79.1% of home pages, making it the most commonly detected accessibility issue.</p>
+						<p>[17] DNL OmniMedia, &ldquo;Nonprofit Web Accessibility and Compliance: The Complete Guide,&rdquo; 2025. As of mid-2025, nonprofit websites are not required to fully comply with WCAG at the federal level, but court rulings increasingly interpret websites as public accommodations under ADA Title III.</p>
+						<p>[18] W3C, &ldquo;WCAG 2 Overview.&rdquo; WCAG 2.2 was published October 2023 with 13 guidelines organized under 4 principles.</p>
+						<p>[26] Accessibility.Works, &ldquo;2025 ADA Web Accessibility Standards,&rdquo; July 2025. Only about 4% of websites are ADA compliant. ADA Title II updated April 2024 requires state and local government web accessibility by 2026 for entities over 50K and 2027 for smaller entities.</p>
+						<p>[27] Trajectory Web Design, &ldquo;Website Accessibility for Nonprofits.&rdquo; Accessibility improvements can generate up to $100 for every $1 invested. In 2023, 2,281 website accessibility lawsuits were filed.</p>
+						<p>[28] WHO, World Report on Disability. Over 1 billion people globally live with some form of disability.</p>
+					</div>
+				</div>
 			</main>
 		</div>
 

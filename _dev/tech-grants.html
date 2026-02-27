@@ -9,12 +9,20 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="hub-theme.css" />
+		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));</script>
 	</head>
 	<body class="docs" data-page="tech-grants">
 
 		<aside class="sidebar" id="sidebar">
 			<div class="sidebar-top">
 				<a href="hub.html" class="logo">Web-Ready Access Hub</a>
+			</div>
+			<div class="sidebar-search">
+				<div class="search-wrapper">
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+					<input type="text" class="search-input" id="sidebar-search" placeholder="Search... (Ctrl+K)" autocomplete="off" />
+					<div class="search-results" id="search-results"></div>
+				</div>
 			</div>
 			<div class="sidebar-nav">
 				<div class="nav-group">
@@ -76,7 +84,7 @@
 					<ol>
 						<li>Visit <a href="https://percent.com">percent.com</a> or the relevant link from the tech company's nonprofit page</li>
 						<li>Submit your organization's registration documents (for example, your 501(c)(3) letter in the US, or equivalent charitable registration in your country)</li>
-						<li>Verification typically takes 2 to 14 business days</li>
+						<li>Verification typically takes 2 to 14 business days<sup><a href="#fn-25">[25]</a></sup></li>
 						<li>Once verified, your status is recognized across all companies that use Percent/Goodstack</li>
 					</ol>
 
@@ -90,7 +98,7 @@
 					<p>Google for Nonprofits is one of the most valuable programs available. It provides a suite of free tools.</p>
 
 					<h3>Google Ad Grants</h3>
-					<p>Google provides eligible nonprofits with up to $10,000 per month (up to $120,000 per year) in free Google Search advertising credits. Your ads appear when people search for terms related to your mission. Since its launch in 2003, the program has distributed over $10 billion in free advertising to more than 115,000 nonprofit organizations across 51 countries.</p>
+					<p>Google provides eligible nonprofits with up to $10,000 per month (up to $120,000 per year) in free Google Search advertising credits. Your ads appear when people search for terms related to your mission. Since its launch in 2003, the program has distributed over $10 billion in free advertising to more than 115,000 nonprofit organizations across 51 countries.<sup><a href="#fn-19">[19]</a></sup></p>
 					<blockquote><p><strong>Disclaimer:</strong> The $10,000 monthly figure and $120,000 annual figure represent the maximum eligible spending limit, not a guaranteed payout. Actual ad spend will depend on your campaigns, keyword competitiveness, compliance, and management. Many organizations do not use the full allocation. The grant provides search ad credits only and does not apply to display, video, or Shopping ads.</p></blockquote>
 
 					<p><strong>What you can use it for:</strong></p>
@@ -152,9 +160,9 @@
 					<p>Microsoft offers a range of technology grants and deep discounts to eligible nonprofits.</p>
 
 					<h3>What is currently available (as of early 2026)</h3>
-					<p><strong>Microsoft 365 Business Basic, FREE for up to 300 users</strong></p>
+					<p><strong>Microsoft 365 Business Basic, FREE for up to 300 users<sup><a href="#fn-20">[20]</a></sup></strong></p>
 					<p>Includes web and mobile versions of Outlook, Teams, Word, Excel, PowerPoint, OneDrive (1TB per user), SharePoint, and more. This is the core of Microsoft's nonprofit offering and it is completely free.</p>
-					<blockquote><p><strong>Important 2025 Update:</strong> As of July 2025, Microsoft discontinued its free grants for Microsoft 365 Business Premium and Office 365 E1. However, Microsoft 365 Business Basic remains free for up to 300 users. Business Premium and E1 are now available at approximately 75% off commercial pricing (around $6.60 per user per month for Business Premium, $2.50 per user per month for E1 at nonprofit discounted rates).</p></blockquote>
+					<blockquote><p><strong>Important 2025 Update:</strong> As of July 2025, Microsoft discontinued its free grants for Microsoft 365 Business Premium and Office 365 E1.<sup><a href="#fn-23">[23]</a></sup> However, Microsoft 365 Business Basic remains free for up to 300 users. Business Premium and E1 are now available at approximately 75% off commercial pricing (around $6.60 per user per month for Business Premium, $2.50 per user per month for E1 at nonprofit discounted rates).</p></blockquote>
 					<p><strong>Other Microsoft nonprofit offers:</strong></p>
 					<ul>
 						<li><strong>Azure credits</strong> &mdash; Cloud computing credits for eligible nonprofits</li>
@@ -178,14 +186,14 @@
 						<li>Discounted licenses are available for all staff and volunteers</li>
 						<li>You must maintain at least 85% utilization of granted licenses (remove unused ones)</li>
 						<li>Organizations cannot share licenses with partner or sister organizations</li>
-						<li>Microsoft provides up to 75% discounts on core products and up to 60% on premium products</li>
+						<li>Microsoft provides up to 75% discounts on core products and up to 60% on premium products<sup><a href="#fn-20">[20]</a></sup></li>
 					</ul>
-					<blockquote><p><strong>Note:</strong> Microsoft ended its Ads for Social Impact (Bing Ads) grant program in December 2025. Free advertising grants are no longer available through Microsoft's advertising platform. Nonprofits that still have active campaigns should pause them to avoid being automatically charged.</p></blockquote>
+					<blockquote><p><strong>Note:</strong> Microsoft ended its Ads for Social Impact (Bing Ads) grant program in December 2025.<sup><a href="#fn-24">[24]</a></sup> Free advertising grants are no longer available through Microsoft's advertising platform. Nonprofits that still have active campaigns should pause them to avoid being automatically charged.</p></blockquote>
 
 					<h2>Canva for Nonprofits</h2>
 					<p><strong>Maximum eligible value: Approximately $1,500+ per year in design tools for a team of up to 50</strong></p>
 					<p><strong>Website:</strong> <a href="https://www.canva.com/canva-for-nonprofits">canva.com/canva-for-nonprofits</a></p>
-					<p>Canva for Nonprofits provides free access to Canva Pro, the premium version of the popular design platform, for eligible nonprofit organizations.</p>
+					<p>Canva for Nonprofits provides free access to Canva Pro<sup><a href="#fn-21">[21]</a></sup>, the premium version of the popular design platform, for eligible nonprofit organizations.</p>
 
 					<h3>What you get</h3>
 					<ul>
@@ -227,7 +235,7 @@
 					</ul>
 
 					<h2>Atlassian for Nonprofits</h2>
-					<p><strong>NEW: As of February 25, 2026, Atlassian is offering 100% off for small social impact teams</strong></p>
+					<p><strong>NEW: As of February 25, 2026, Atlassian is offering 100% off<sup><a href="#fn-22">[22]</a></sup> for small social impact teams</strong></p>
 					<p><strong>Website:</strong> <a href="https://www.atlassian.com">atlassian.com</a> (navigate to their community/social impact section)</p>
 					<p>Atlassian (makers of Jira, Confluence, Loom, and Trello) has significantly expanded its nonprofit offering.</p>
 
@@ -377,13 +385,27 @@
 
 					<div class="footnotes">
 						<h2>Sources</h2>
-						<p>[19] Google Ad Grants, google.com/grants. Provides eligible nonprofits with up to $10,000 USD per month in Search ads. Program has distributed over $10 billion since 2003 to 115,000+ nonprofits.</p>
-						<p>[20] Microsoft for Nonprofits, nonprofit.microsoft.com. Up to 300 free licenses of Microsoft 365 Business Basic. Discounts of up to 75% on other Microsoft 365 plans.</p>
-						<p>[21] Canva for Nonprofits, canva.com/canva-for-nonprofits. Free access to Canva Pro for one team of up to 50 users.</p>
-						<p>[22] Atlassian for Nonprofits, announcement February 25, 2026. 100% off annual subscriptions for social impact teams with 25 seats or fewer on Jira, Confluence, Loom, and Teamwork Collection.</p>
-						<p>[23] Pax8, &ldquo;Microsoft 365 Licensing Changes for Nonprofits,&rdquo; June 2025. Microsoft discontinued free grants for Business Premium and Office 365 E1 as of July 1, 2025. Business Basic remains free for up to 300 users.</p>
-						<p>[24] Search Engine Land, &ldquo;Microsoft to end nonprofit ad grant program in December,&rdquo; October 2025. Microsoft ended its Ads for Social Impact program in December 2025.</p>
-						<p>[25] HawkSEM, &ldquo;Google Ad Grants for Nonprofits,&rdquo; December 2025. Google's partner Percent handles verification, which can take 2 to 14 days.</p>
+						<p id="fn-19">[19] Google Ad Grants, google.com/grants. Provides eligible nonprofits with up to $10,000 USD per month in Search ads. Program has distributed over $10 billion since 2003 to 115,000+ nonprofits.</p>
+						<p id="fn-20">[20] Microsoft for Nonprofits, nonprofit.microsoft.com. Up to 300 free licenses of Microsoft 365 Business Basic. Discounts of up to 75% on other Microsoft 365 plans.</p>
+						<p id="fn-21">[21] Canva for Nonprofits, canva.com/canva-for-nonprofits. Free access to Canva Pro for one team of up to 50 users.</p>
+						<p id="fn-22">[22] Atlassian for Nonprofits, announcement February 25, 2026. 100% off annual subscriptions for social impact teams with 25 seats or fewer on Jira, Confluence, Loom, and Teamwork Collection.</p>
+						<p id="fn-23">[23] Pax8, &ldquo;Microsoft 365 Licensing Changes for Nonprofits,&rdquo; June 2025. Microsoft discontinued free grants for Business Premium and Office 365 E1 as of July 1, 2025. Business Basic remains free for up to 300 users.</p>
+						<p id="fn-24">[24] Search Engine Land, &ldquo;Microsoft to end nonprofit ad grant program in December,&rdquo; October 2025. Microsoft ended its Ads for Social Impact program in December 2025.</p>
+						<p id="fn-25">[25] HawkSEM, &ldquo;Google Ad Grants for Nonprofits,&rdquo; December 2025. Google's partner Percent handles verification, which can take 2 to 14 days.</p>
+					</div>
+
+					<nav class="section-nav">
+						<a href="accessibility.html">
+							<span class="nav-direction">&larr; Previous track</span>
+							<span class="nav-title">Web Accessibility</span>
+						</a>
+					</nav>
+
+					<div class="completion-section">
+						<h2>That's it!</h2>
+						<p>You have reached the end of the Web-Ready Access Hub playbook. You now have a complete guide to digital sustainability, web accessibility, and in-kind technology grants for your nonprofit.</p>
+						<p>Remember: you do not need to tackle everything at once. Pick one track, start with the easiest wins, and build from there.</p>
+						<a href="hub.html" class="btn btn-primary">Back to overview</a>
 					</div>
 				</div>
 			</main>

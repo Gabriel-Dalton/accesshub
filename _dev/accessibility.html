@@ -9,12 +9,20 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="hub-theme.css" />
+		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));</script>
 	</head>
 	<body class="docs" data-page="accessibility">
 
 		<aside class="sidebar" id="sidebar">
 			<div class="sidebar-top">
 				<a href="hub.html" class="logo">Web-Ready Access Hub</a>
+			</div>
+			<div class="sidebar-search">
+				<div class="search-wrapper">
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+					<input type="text" class="search-input" id="sidebar-search" placeholder="Search... (Ctrl+K)" autocomplete="off" />
+					<div class="search-results" id="search-results"></div>
+				</div>
 			</div>
 			<div class="sidebar-nav">
 				<div class="nav-group">
@@ -69,27 +77,27 @@
 					<h2>Why is being accessible online important?</h2>
 
 					<h3>It is the right thing to do</h3>
-					<p>Your nonprofit exists to serve people. If your website excludes anyone from accessing your services, information, or support, you are unintentionally working against your own mission. According to the CDC, more than 1 in 4 adults (28.7%) in the United States reported having a disability in 2022, which is over 70 million people. These are your beneficiaries, donors, volunteers, and community members.</p>
+					<p>Your nonprofit exists to serve people. If your website excludes anyone from accessing your services, information, or support, you are unintentionally working against your own mission. According to the CDC, more than 1 in 4 adults (28.7%) in the United States reported having a disability in 2022, which is over 70 million people.<sup><a href="#fn-13">[13]</a></sup> These are your beneficiaries, donors, volunteers, and community members.</p>
 
 					<h3>It may be legally required</h3>
 					<p>In the United States, Title III of the Americans with Disabilities Act (ADA) prohibits discrimination in places of public accommodation, and courts have increasingly ruled that websites are public accommodations. This applies to nonprofits regardless of whether they receive federal funding. In 2024, the Department of Justice updated Title II of the ADA to explicitly require web accessibility for state and local government websites. In February 2025, a federal judge in Minnesota ruled that websites qualify as places of public accommodation under Title III.</p>
-					<p>Web accessibility lawsuits are rising. In 2023 alone, over 2,280 website accessibility lawsuits were filed in the United States. Nonprofits are not exempt from these legal actions. As of mid-2025, nonprofit websites are not explicitly required to fully comply with WCAG at the federal level, but court rulings increasingly treat websites as public accommodations under ADA Title III.</p>
+					<p>Web accessibility lawsuits are rising. In 2023 alone, over 2,280 website accessibility lawsuits were filed in the United States.<sup><a href="#fn-27">[27]</a></sup> Nonprofits are not exempt from these legal actions. As of mid-2025, nonprofit websites are not explicitly required to fully comply with WCAG at the federal level<sup><a href="#fn-17">[17]</a></sup>, but court rulings increasingly treat websites as public accommodations under ADA Title III.</p>
 
 					<h3>It expands your reach</h3>
-					<p>Over 70 million adults in the United States live with a disability. Globally, the number exceeds one billion. By making your website accessible, you open your doors to a significantly larger audience of potential donors, volunteers, and beneficiaries. Yet according to the 2025 WebAIM Million report, 94.8% of the top one million home pages still have detectable WCAG failures, with an average of 51 accessibility errors per page. Low contrast text alone was found on 79.1% of home pages. The web is still overwhelmingly inaccessible, and any nonprofit that prioritizes accessibility will stand out.</p>
+					<p>Over 70 million adults in the United States live with a disability.<sup><a href="#fn-13">[13]</a></sup> Globally, the number exceeds one billion.<sup><a href="#fn-28">[28]</a></sup> By making your website accessible, you open your doors to a significantly larger audience of potential donors, volunteers, and beneficiaries. Yet according to the 2025 WebAIM Million report, 94.8% of the top one million home pages still have detectable WCAG failures, with an average of 51 accessibility errors per page.<sup><a href="#fn-14">[14]</a></sup> Low contrast text alone was found on 79.1% of home pages.<sup><a href="#fn-16">[16]</a></sup> Only about 4% of websites are ADA compliant.<sup><a href="#fn-26">[26]</a></sup> The web is still overwhelmingly inaccessible, and any nonprofit that prioritizes accessibility will stand out.</p>
 
 					<h3>It improves SEO</h3>
 					<p>Many accessibility practices, such as proper heading structures, descriptive alt text, clean HTML, and clear navigation, are also SEO best practices. Accessible websites tend to rank better on search engines because they are better organized and more machine-readable.</p>
 
 					<h3>It costs less to build it right from the start</h3>
-					<p>Retrofitting a website for accessibility after it is built is far more expensive and time-consuming than incorporating accessibility from the beginning. Research suggests accessibility improvements can generate up to $100 in value for every $1 invested when you consider the expanded audience, improved user experience, and reduced legal risk.</p>
+					<p>Retrofitting a website for accessibility after it is built is far more expensive and time-consuming than incorporating accessibility from the beginning. Research suggests accessibility improvements can generate up to $100 in value for every $1 invested<sup><a href="#fn-27">[27]</a></sup> when you consider the expanded audience, improved user experience, and reduced legal risk.</p>
 
 					<h2>Laws and standards around web accessibility</h2>
 					<p>Web accessibility requirements vary by country, but they share a common reference point: the Web Content Accessibility Guidelines (WCAG).</p>
 
 					<h3>WCAG: The international standard</h3>
 					<p>The Web Content Accessibility Guidelines (WCAG) are developed by the World Wide Web Consortium (W3C), the international body that sets web standards. WCAG is not a law itself, but it is the technical standard that most accessibility laws reference.</p>
-					<p>WCAG 2.2 (published October 2023) is the most current version, with 13 guidelines organized under four principles:</p>
+					<p>WCAG 2.2 (published October 2023) is the most current version, with 13 guidelines organized under four principles:<sup><a href="#fn-18">[18]</a></sup></p>
 					<ul>
 						<li><strong>Perceivable</strong> &mdash; Information and interface components must be presented in ways users can perceive (for example, alt text for images, captions for videos)</li>
 						<li><strong>Operable</strong> &mdash; Interface components and navigation must be operable by everyone (for example, keyboard navigable, no seizure-inducing content)</li>
@@ -107,7 +115,7 @@
 					<h3>United States</h3>
 					<ul>
 						<li><strong>ADA (Americans with Disabilities Act):</strong> Title III covers private entities (including nonprofits) that are places of public accommodation. Courts have increasingly ruled this includes websites. WCAG 2.1 Level AA is the de facto standard.</li>
-						<li><strong>ADA Title II (2024 Update):</strong> The Department of Justice now explicitly requires state and local government websites to meet WCAG 2.1 Level AA. Entities serving over 50,000 people must comply by 2026; smaller entities by 2027.</li>
+						<li><strong>ADA Title II (2024 Update):</strong> The Department of Justice now explicitly requires state and local government websites to meet WCAG 2.1 Level AA. Entities serving over 50,000 people must comply by 2026; smaller entities by 2027.<sup><a href="#fn-26">[26]</a></sup></li>
 						<li><strong>Section 508:</strong> Applies to federal agencies and organizations receiving federal funding. Requires WCAG 2.0 Level AA conformance.</li>
 					</ul>
 
@@ -186,7 +194,7 @@
 					<strong>For decorative images:</strong> Use empty alt text (<code>alt=""</code>) so screen readers skip them.</p>
 
 					<h3>Ensure sufficient color contrast</h3>
-					<p>Text must have enough contrast against its background to be readable. Low contrast text is the single most common accessibility issue on the web, found on 79.1% of home pages in 2025. The minimum contrast ratio for normal text is 4.5:1 (WCAG Level AA). For large text (18pt and above), the minimum is 3:1. Use a free contrast checker like the <a href="https://webaim.org/resources/contrastchecker">WebAIM Color Contrast Checker</a> to verify your combinations.</p>
+					<p>Text must have enough contrast against its background to be readable. Low contrast text is the single most common accessibility issue on the web, found on 79.1% of home pages in 2025<sup><a href="#fn-16">[16]</a></sup>. The minimum contrast ratio for normal text is 4.5:1 (WCAG Level AA). For large text (18pt and above), the minimum is 3:1. Use a free contrast checker like the <a href="https://webaim.org/resources/contrastchecker">WebAIM Color Contrast Checker</a> to verify your combinations.</p>
 
 					<h3>Use descriptive link text</h3>
 					<p>Avoid links that say &ldquo;click here&rdquo; or &ldquo;read more.&rdquo; Instead, use link text that describes where the link goes: &ldquo;Read our 2025 impact report&rdquo; or &ldquo;Donate to support tree planting.&rdquo; Screen reader users often navigate by jumping between links, so each link should make sense on its own.</p>
@@ -326,16 +334,26 @@
 
 					<div class="footnotes">
 						<h2>Sources</h2>
-						<p>[13] CDC, Disability and Health Data System, 2024. More than 1 in 4 (28.7%) adults in the United States reported having a disability in 2022. That is over 70 million adults.</p>
-						<p>[14] WebAIM, &ldquo;The WebAIM Million,&rdquo; 2025. 94.8% of the top one million home pages had detectable WCAG 2 failures, with an average of 51 errors per page.</p>
-						<p>[15] WebAIM, &ldquo;The WebAIM Million,&rdquo; 2024. 95.9% of home pages had detectable WCAG 2 failures, with an average of 56.8 errors per page.</p>
-						<p>[16] WebAIM, &ldquo;The WebAIM Million,&rdquo; 2025. Low contrast text was found on 79.1% of home pages, making it the most commonly detected accessibility issue.</p>
-						<p>[17] DNL OmniMedia, &ldquo;Nonprofit Web Accessibility and Compliance: The Complete Guide,&rdquo; 2025. As of mid-2025, nonprofit websites are not required to fully comply with WCAG at the federal level, but court rulings increasingly interpret websites as public accommodations under ADA Title III.</p>
-						<p>[18] W3C, &ldquo;WCAG 2 Overview.&rdquo; WCAG 2.2 was published October 2023 with 13 guidelines organized under 4 principles.</p>
-						<p>[26] Accessibility.Works, &ldquo;2025 ADA Web Accessibility Standards,&rdquo; July 2025. Only about 4% of websites are ADA compliant. ADA Title II updated April 2024 requires state and local government web accessibility by 2026 for entities over 50K and 2027 for smaller entities.</p>
-						<p>[27] Trajectory Web Design, &ldquo;Website Accessibility for Nonprofits.&rdquo; Accessibility improvements can generate up to $100 for every $1 invested. In 2023, 2,281 website accessibility lawsuits were filed.</p>
-						<p>[28] WHO, World Report on Disability. Over 1 billion people globally live with some form of disability.</p>
+						<p id="fn-13">[13] CDC, Disability and Health Data System, 2024. More than 1 in 4 (28.7%) adults in the United States reported having a disability in 2022. That is over 70 million adults.</p>
+						<p id="fn-14">[14] WebAIM, &ldquo;The WebAIM Million,&rdquo; 2025. 94.8% of the top one million home pages had detectable WCAG 2 failures, with an average of 51 errors per page.</p>
+						<p id="fn-15">[15] WebAIM, &ldquo;The WebAIM Million,&rdquo; 2024. 95.9% of home pages had detectable WCAG 2 failures, with an average of 56.8 errors per page.</p>
+						<p id="fn-16">[16] WebAIM, &ldquo;The WebAIM Million,&rdquo; 2025. Low contrast text was found on 79.1% of home pages, making it the most commonly detected accessibility issue.</p>
+						<p id="fn-17">[17] DNL OmniMedia, &ldquo;Nonprofit Web Accessibility and Compliance: The Complete Guide,&rdquo; 2025. As of mid-2025, nonprofit websites are not required to fully comply with WCAG at the federal level, but court rulings increasingly interpret websites as public accommodations under ADA Title III.</p>
+						<p id="fn-18">[18] W3C, &ldquo;WCAG 2 Overview.&rdquo; WCAG 2.2 was published October 2023 with 13 guidelines organized under 4 principles.</p>
+						<p id="fn-26">[26] Accessibility.Works, &ldquo;2025 ADA Web Accessibility Standards,&rdquo; July 2025. Only about 4% of websites are ADA compliant. ADA Title II updated April 2024 requires state and local government web accessibility by 2026 for entities over 50K and 2027 for smaller entities.</p>
+						<p id="fn-27">[27] Trajectory Web Design, &ldquo;Website Accessibility for Nonprofits.&rdquo; Accessibility improvements can generate up to $100 for every $1 invested. In 2023, 2,281 website accessibility lawsuits were filed.</p>
+						<p id="fn-28">[28] WHO, World Report on Disability. Over 1 billion people globally live with some form of disability.</p>
 					</div>
+				<nav class="section-nav">
+					<a href="sustainability.html">
+						<span class="nav-direction">&larr; Previous track</span>
+						<span class="nav-title">Digital Sustainability</span>
+					</a>
+					<a href="tech-grants.html" class="next">
+						<span class="nav-direction">Next track</span>
+						<span class="nav-title">In-Kind Technology Grants &rarr;</span>
+					</a>
+				</nav>
 				</div>
 			</main>
 		</div>

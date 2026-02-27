@@ -9,12 +9,20 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="hub-theme.css" />
+		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));</script>
 	</head>
 	<body class="docs" data-page="sustainability">
 
 		<aside class="sidebar" id="sidebar">
 			<div class="sidebar-top">
 				<a href="hub.html" class="logo">Web-Ready Access Hub</a>
+			</div>
+			<div class="sidebar-search">
+				<div class="search-wrapper">
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+					<input type="text" class="search-input" id="sidebar-search" placeholder="Search... (Ctrl+K)" autocomplete="off" />
+					<div class="search-results" id="search-results"></div>
+				</div>
 			</div>
 			<div class="sidebar-nav">
 				<div class="nav-group">
@@ -63,8 +71,8 @@
 				<div class="prose">
 					<h2>What does digital sustainability mean?</h2>
 					<p>Digital sustainability is the practice of being aware that the internet has a real environmental impact and taking steps to reduce it. Every time someone visits a website, energy is consumed by the device loading the page, by the servers hosting the content, and by the network infrastructure delivering the data. All of that energy produces carbon emissions.</p>
-					<p>The internet as a whole is responsible for roughly 1.5 to 4 percent of global greenhouse gas emissions, comparable to the aviation industry. A 2024 joint report by the World Bank and ITU confirmed that at least 1.7 percent of global emissions stem from the ICT sector, though this is considered a conservative estimate due to a lack of regulated emissions reporting. In 2025, global data centers alone are expected to consume approximately 536 terawatt-hours of electricity, accounting for around 2 percent of total global electricity use, and that number could double by 2030.</p>
-					<p>The average web page produces approximately 0.36 grams of CO2 per page view. That might sound small, but for a website receiving 10,000 monthly visits, that adds up to about 43 kilograms of CO2 per year. For high-traffic sites, those numbers scale quickly.</p>
+					<p>The internet as a whole is responsible for roughly 1.5 to 4 percent of global greenhouse gas emissions<sup><a href="#fn-1">[1]</a></sup><sup><a href="#fn-3">[3]</a></sup><sup><a href="#fn-4">[4]</a></sup>, comparable to the aviation industry. A 2024 joint report by the World Bank and ITU confirmed that at least 1.7 percent of global emissions stem from the ICT sector<sup><a href="#fn-1">[1]</a></sup>, though this is considered a conservative estimate due to a lack of regulated emissions reporting. In 2025, global data centers alone are expected to consume approximately 536 terawatt-hours of electricity, accounting for around 2 percent of total global electricity use<sup><a href="#fn-5">[5]</a></sup>, and that number could double by 2030.</p>
+					<p>The average web page produces approximately 0.36 grams of CO2 per page view<sup><a href="#fn-2">[2]</a></sup>. That might sound small, but for a website receiving 10,000 monthly visits, that adds up to about 43 kilograms of CO2 per year. For high-traffic sites, those numbers scale quickly.</p>
 					<p>Being sustainable online means designing, building, and maintaining your website so it uses less energy, which means fewer carbon emissions and a smaller digital carbon footprint.</p>
 					<div class="highlight-box"><p>A sustainable website is a lighter, faster, and cleaner website.</p></div>
 
@@ -78,13 +86,13 @@
 					<p>Reducing your digital carbon footprint delivers a range of benefits that go well beyond the environment.</p>
 
 					<h3>Faster loading times</h3>
-					<p>The same techniques that reduce carbon emissions (compressing images, minifying code, reducing third-party scripts) also make your website faster. A faster site means visitors do not get frustrated and leave before learning about your mission. Research from Google found that 53% of mobile site visits are abandoned if pages take longer than 3 seconds to load. Nearly half (47%) of users expect a website to load in 2 seconds or less. The BBC found that it loses 10% of its visitors for every additional second of page load time. And sites that pass Google's Core Web Vitals thresholds see visitors 24% less likely to abandon during loading.</p>
+					<p>The same techniques that reduce carbon emissions (compressing images, minifying code, reducing third-party scripts) also make your website faster. A faster site means visitors do not get frustrated and leave before learning about your mission. Research from Google found that 53% of mobile site visits are abandoned if pages take longer than 3 seconds to load<sup><a href="#fn-6">[6]</a></sup><sup><a href="#fn-29">[29]</a></sup>. Nearly half (47%) of users expect a website to load in 2 seconds or less<sup><a href="#fn-7">[7]</a></sup>. The BBC found that it loses 10% of its visitors for every additional second of page load time<sup><a href="#fn-8">[8]</a></sup>. And sites that pass Google's Core Web Vitals thresholds see visitors 24% less likely to abandon during loading<sup><a href="#fn-9">[9]</a></sup>.</p>
 
 					<h3>Better search engine rankings</h3>
-					<p>Google and Bing use page speed and performance as ranking factors. The Core Web Vitals that Google measures (loading performance, interactivity, and visual stability) are all improved by sustainable web design practices. The average page load speed for a first-page Google search result is 1.65 seconds, and slow domains rank 3.7 percentage points worse on average than fast domains. A faster, cleaner website ranks higher, which means more people find your organization.</p>
+					<p>Google and Bing use page speed and performance as ranking factors. The Core Web Vitals that Google measures (loading performance, interactivity, and visual stability) are all improved by sustainable web design practices. The average page load speed for a first-page Google search result is 1.65 seconds, and slow domains rank 3.7 percentage points worse on average than fast domains<sup><a href="#fn-30">[30]</a></sup>. A faster, cleaner website ranks higher, which means more people find your organization.</p>
 
 					<h3>Lower hosting costs</h3>
-					<p>A lighter website uses less bandwidth and fewer server resources. That translates directly to lower hosting bills, something every nonprofit with a tight budget appreciates. On top of that, HubSpot research found that for every second of delay between 0 and 5 seconds, the conversion rate drops by 4.42%. Speed saves both money and supporters.</p>
+					<p>A lighter website uses less bandwidth and fewer server resources. That translates directly to lower hosting bills, something every nonprofit with a tight budget appreciates. On top of that, HubSpot research found that for every second of delay between 0 and 5 seconds, the conversion rate drops by 4.42%<sup><a href="#fn-31">[31]</a></sup>. Speed saves both money and supporters.</p>
 
 					<h3>Improved user experience</h3>
 					<p>Clean, efficient design is not just green. It is better design. Removing unnecessary elements, using clear layouts, and prioritizing content over clutter makes websites easier to navigate and more pleasant to use.</p>
@@ -99,17 +107,17 @@
 					<p>You do not need to be a developer to start reducing your website's carbon footprint. Here are practical, actionable techniques organized from easiest to more advanced.</p>
 
 					<h3>For anyone (no technical skills needed)</h3>
-					<p><strong>Optimize your images.</strong> Images typically account for 60 to 70 percent of a web page's total file size. Before uploading any image to your website, compress it. Free tools like <a href="https://tinypng.com">TinyPNG</a>, <a href="https://squoosh.dev">Squoosh</a>, and <a href="https://shortpixel.com">ShortPixel</a> can reduce image file sizes by 70 percent or more without visible quality loss. Use JPEG for photographs and PNG for graphics with transparency. Better yet, use modern formats like WebP when your platform supports it.</p>
+					<p><strong>Optimize your images.</strong> Images typically account for 60 to 70 percent of a web page's total file size<sup><a href="#fn-10">[10]</a></sup>. Before uploading any image to your website, compress it. Free tools like <a href="https://tinypng.com">TinyPNG</a>, <a href="https://squoosh.dev">Squoosh</a>, and <a href="https://shortpixel.com">ShortPixel</a> can reduce image file sizes by 70 percent or more without visible quality loss. Use JPEG for photographs and PNG for graphics with transparency. Better yet, use modern formats like WebP when your platform supports it.</p>
 					<p><strong>Audit your content.</strong> Remove pages, blog posts, and media files that are outdated or no longer relevant. Every page on your website is stored on a server and uses energy when crawled by search engines, even if nobody visits it.</p>
 					<p><strong>Limit embedded videos.</strong> Embedded video players, especially auto-playing ones, are among the most energy-intensive elements on any web page. Instead of embedding a full video, use a thumbnail image with a play button that loads the video only when clicked. This is sometimes called &ldquo;lazy loading&rdquo; for videos.</p>
 					<p><strong>Reduce third-party scripts.</strong> Every social media widget, analytics tracker, chat plugin, and embedded tool adds external requests and increases your page's carbon footprint. Audit your plugins and remove any that are not essential. If you do not actively use a live chat tool, remove it. If you have multiple analytics scripts, consolidate to one.</p>
-					<p><strong>Choose a green hosting provider.</strong> Your web host's energy source has a major impact. Hosting providers that run on renewable energy (solar, wind, hydro) can reduce server-related emissions by 80 to 90 percent. Look for hosts that are members of the <a href="https://www.thegreenwebfoundation.org">Green Web Foundation's directory</a>. Popular green hosting options include GreenGeeks, A2 Hosting (with green initiatives), and Krystal.</p>
+					<p><strong>Choose a green hosting provider.</strong> Your web host's energy source has a major impact. Hosting providers that run on renewable energy (solar, wind, hydro) can reduce server-related emissions by 80 to 90 percent<sup><a href="#fn-12">[12]</a></sup>. Look for hosts that are members of the <a href="https://www.thegreenwebfoundation.org">Green Web Foundation's directory</a>. Popular green hosting options include GreenGeeks, A2 Hosting (with green initiatives), and Krystal.</p>
 					<p><strong>Use fewer fonts.</strong> Every custom web font requires a file download. Stick to system fonts (like Arial, Georgia, or the device's default) whenever possible, or limit yourself to one or two custom font families. Each font family and weight you add increases page size.</p>
 
 					<h3>For website managers and content editors</h3>
 					<p><strong>Enable caching.</strong> Caching tells browsers to store parts of your website locally on a visitor's device so they do not have to re-download everything on return visits. Most content management systems (like WordPress, Squarespace, or Wix) have caching settings or plugins. Popular WordPress caching plugins include WP Super Cache and W3 Total Cache.</p>
 					<p><strong>Enable lazy loading.</strong> Lazy loading means images and media below the visible area of the page do not load until the user scrolls down to them. This can significantly reduce the amount of data transferred on initial page load. Many modern website builders support this natively.</p>
-					<p><strong>Minify your CSS and JavaScript.</strong> Minification removes unnecessary spaces, comments, and characters from your code files, typically reducing their size by 20 to 30 percent. WordPress plugins like Autoptimize or WP Rocket can handle this automatically.</p>
+					<p><strong>Minify your CSS and JavaScript.</strong> Minification removes unnecessary spaces, comments, and characters from your code files, typically reducing their size by 20 to 30 percent<sup><a href="#fn-11">[11]</a></sup>. WordPress plugins like Autoptimize or WP Rocket can handle this automatically.</p>
 					<p><strong>Use a Content Delivery Network (CDN).</strong> A CDN distributes copies of your website across servers around the world, so visitors load content from a server geographically close to them. This reduces the distance data travels, cutting energy use and improving speed. Popular CDN options include Cloudflare (which has a free tier) and BunnyCDN.</p>
 					<p><strong>Set image dimensions.</strong> Always specify the width and height of images in your code or CMS. This prevents layout shifts (which waste processing power re-rendering the page) and helps the browser allocate space efficiently.</p>
 
@@ -186,22 +194,29 @@
 
 					<div class="footnotes">
 						<h2>Sources</h2>
-						<p>[1] World Bank and ITU, &ldquo;Measuring the Emissions &amp; Energy Footprint of the ICT Sector,&rdquo; 2024. Estimates range from 1.5% to 4% of global greenhouse gas emissions.</p>
-						<p>[2] Website Carbon Calculator methodology, websitecarbon.com. Based on data transfer estimates and global energy grid averages.</p>
-						<p>[3] myclimate, &ldquo;What is a digital carbon footprint?&rdquo; Estimates the ICT sector is responsible for around 1.5 to 4% of global greenhouse gas emissions.</p>
-						<p>[4] World Economic Forum, &ldquo;How much does the internet contribute to global emissions?&rdquo; Studies estimate digital technologies contribute between 1.4% to 5.9% of global GHG emissions.</p>
-						<p>[5] EcoMatcher, &ldquo;The Climate Cost of Internet Data,&rdquo; 2025. In 2025, global data centers are expected to consume approximately 536 terawatt-hours of electricity.</p>
-						<p>[6] Google, &ldquo;The Need for Mobile Speed.&rdquo; 53% of mobile site visits are abandoned if pages take longer than 3 seconds to load.</p>
-						<p>[7] Hostinger, &ldquo;Website load time statistics for 2026.&rdquo; 47% of users expect a website to load in two seconds or less.</p>
-						<p>[8] SiteBuilder Report, &ldquo;Website Speed Statistics.&rdquo; BBC's website loses 10% of its visitors for every additional second of load time (BBC, 2018).</p>
-						<p>[9] Google, &ldquo;Core Web Vitals.&rdquo; Sites that pass Core Web Vitals thresholds see visitors 24% less likely to abandon during loading.</p>
-						<p>[10] Digidop, &ldquo;Website carbon footprint 2025.&rdquo; Unoptimized images typically account for 60 to 70% of total page weight.</p>
-						<p>[11] Digidop, &ldquo;Website carbon footprint 2025.&rdquo; Code minification can reduce file sizes by 20 to 30%.</p>
-						<p>[12] Digidop, &ldquo;Website carbon footprint 2025.&rdquo; Green hosting can reduce server-related emissions by 80 to 90%.</p>
-						<p>[29] Google, &ldquo;Think with Google,&rdquo; 2016. 53% of mobile users abandon sites that take over 3 seconds to load.</p>
-						<p>[30] Hostinger, &ldquo;Website load time statistics for 2026.&rdquo; Average page load time is 2.5 seconds on desktop and 8.6 seconds on mobile.</p>
-						<p>[31] SiteBuilder Report, &ldquo;Website Speed Statistics.&rdquo; For every second of delay between 0 and 5 seconds, the conversion rate drops by 4.42% (HubSpot research).</p>
+						<p id="fn-1">[1] World Bank and ITU, &ldquo;Measuring the Emissions &amp; Energy Footprint of the ICT Sector,&rdquo; 2024. Estimates range from 1.5% to 4% of global greenhouse gas emissions.</p>
+						<p id="fn-2">[2] Website Carbon Calculator methodology, websitecarbon.com. Based on data transfer estimates and global energy grid averages.</p>
+						<p id="fn-3">[3] myclimate, &ldquo;What is a digital carbon footprint?&rdquo; Estimates the ICT sector is responsible for around 1.5 to 4% of global greenhouse gas emissions.</p>
+						<p id="fn-4">[4] World Economic Forum, &ldquo;How much does the internet contribute to global emissions?&rdquo; Studies estimate digital technologies contribute between 1.4% to 5.9% of global GHG emissions.</p>
+						<p id="fn-5">[5] EcoMatcher, &ldquo;The Climate Cost of Internet Data,&rdquo; 2025. In 2025, global data centers are expected to consume approximately 536 terawatt-hours of electricity.</p>
+						<p id="fn-6">[6] Google, &ldquo;The Need for Mobile Speed.&rdquo; 53% of mobile site visits are abandoned if pages take longer than 3 seconds to load.</p>
+						<p id="fn-7">[7] Hostinger, &ldquo;Website load time statistics for 2026.&rdquo; 47% of users expect a website to load in two seconds or less.</p>
+						<p id="fn-8">[8] SiteBuilder Report, &ldquo;Website Speed Statistics.&rdquo; BBC's website loses 10% of its visitors for every additional second of load time (BBC, 2018).</p>
+						<p id="fn-9">[9] Google, &ldquo;Core Web Vitals.&rdquo; Sites that pass Core Web Vitals thresholds see visitors 24% less likely to abandon during loading.</p>
+						<p id="fn-10">[10] Digidop, &ldquo;Website carbon footprint 2025.&rdquo; Unoptimized images typically account for 60 to 70% of total page weight.</p>
+						<p id="fn-11">[11] Digidop, &ldquo;Website carbon footprint 2025.&rdquo; Code minification can reduce file sizes by 20 to 30%.</p>
+						<p id="fn-12">[12] Digidop, &ldquo;Website carbon footprint 2025.&rdquo; Green hosting can reduce server-related emissions by 80 to 90%.</p>
+						<p id="fn-29">[29] Google, &ldquo;Think with Google,&rdquo; 2016. 53% of mobile users abandon sites that take over 3 seconds to load.</p>
+						<p id="fn-30">[30] Hostinger, &ldquo;Website load time statistics for 2026.&rdquo; Average page load time is 2.5 seconds on desktop and 8.6 seconds on mobile.</p>
+						<p id="fn-31">[31] SiteBuilder Report, &ldquo;Website Speed Statistics.&rdquo; For every second of delay between 0 and 5 seconds, the conversion rate drops by 4.42% (HubSpot research).</p>
 					</div>
+
+				<nav class="section-nav">
+					<a href="accessibility.html" class="next">
+						<span class="nav-direction">Next track</span>
+						<span class="nav-title">Web Accessibility &rarr;</span>
+					</a>
+				</nav>
 				</div>
 			</main>
 		</div>

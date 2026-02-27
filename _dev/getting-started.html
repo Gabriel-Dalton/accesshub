@@ -9,12 +9,20 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="hub-theme.css" />
+		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));</script>
 	</head>
 	<body class="docs" data-page="getting-started">
 
 		<aside class="sidebar" id="sidebar">
 			<div class="sidebar-top">
 				<a href="hub.html" class="logo">Web-Ready Access Hub</a>
+			</div>
+			<div class="sidebar-search">
+				<div class="search-wrapper">
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+					<input type="text" class="search-input" id="sidebar-search" placeholder="Search... (Ctrl+K)" autocomplete="off" />
+					<div class="search-results" id="search-results"></div>
+				</div>
 			</div>
 			<div class="sidebar-nav">
 				<div class="nav-group">

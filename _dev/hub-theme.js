@@ -170,7 +170,7 @@
 		{ title: "Overlay tools warning", page: "Accessibility", url: "accessibility.html#section-4" },
 
 		{ title: "What are in-kind technology grants?", page: "Tech Grants", url: "tech-grants.html#section-0" },
-		{ title: "Percent and Goodstack verification", page: "Tech Grants", url: "tech-grants.html#section-1" },
+		{ title: "Goodstack verification", page: "Tech Grants", url: "tech-grants.html#section-1" },
 		{ title: "Google for Nonprofits", page: "Tech Grants", url: "tech-grants.html#section-2" },
 		{ title: "Google Ad Grants", page: "Tech Grants", url: "tech-grants.html#section-2" },
 		{ title: "Google Workspace", page: "Tech Grants", url: "tech-grants.html#section-2" },

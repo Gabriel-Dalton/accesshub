@@ -85,7 +85,6 @@ button:focus-visible {
 	width: var(--sidebar-w);
 	z-index: 40;
 	background: var(--surface);
-	border-right: 1px solid var(--border);
 	display: flex;
 	flex-direction: column;
 	transform: translateX(0);
@@ -103,7 +102,6 @@ body.sidebar-collapsed .sidebar {
 	align-items: center;
 	justify-content: space-between;
 	padding: 16px 16px 12px;
-	border-bottom: 1px solid var(--border);
 	flex-shrink: 0;
 }
 
@@ -134,26 +132,24 @@ body.sidebar-collapsed .sidebar {
 	gap: 8px;
 	width: 100%;
 	padding: 8px 10px;
-	border: 1px solid var(--border);
 	border-radius: var(--radius-sm);
 	background: var(--surface-inset);
 	color: var(--text-muted);
 	font-family: inherit;
 	font-size: 0.82rem;
 	cursor: pointer;
-	transition: border-color 0.15s, background 0.15s;
+	transition: background 0.15s;
 }
 
 .search-trigger:hover {
-	border-color: var(--surface-hover);
 	background: var(--surface-hover);
 	color: var(--text);
 	opacity: 1;
 }
 
 .search-trigger:focus-visible {
-	border-color: var(--link);
-	outline: none;
+	outline: 2px solid var(--link);
+	outline-offset: 2px;
 }
 
 body.search-open {
@@ -175,7 +171,6 @@ body.search-open {
 	font-size: 0.68rem;
 	font-weight: 500;
 	padding: 2px 5px;
-	border: 1px solid var(--border);
 	border-radius: 4px;
 	background: var(--surface);
 	color: var(--text-muted);
@@ -211,7 +206,6 @@ body.search-open {
 	width: 100%;
 	max-width: 540px;
 	background: var(--surface);
-	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
 	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
 	overflow: hidden;
@@ -232,7 +226,6 @@ body.search-open {
 	align-items: center;
 	gap: 10px;
 	padding: 14px 16px;
-	border-bottom: 1px solid var(--border);
 }
 
 .search-dialog-header svg {
@@ -260,7 +253,6 @@ body.search-open {
 	font-size: 0.68rem;
 	font-weight: 500;
 	padding: 3px 6px;
-	border: 1px solid var(--border);
 	border-radius: 4px;
 	background: var(--surface-inset);
 	color: var(--text-muted);
@@ -347,7 +339,6 @@ body.search-open {
 }
 
 .search-dialog-body .search-group-label:not(:first-child) {
-	border-top: 1px solid var(--border);
 	margin-top: 2px;
 	padding-top: 12px;
 }
@@ -376,7 +367,6 @@ body.search-open {
 	align-items: center;
 	gap: 14px;
 	padding: 8px 16px;
-	border-top: 1px solid var(--border);
 	background: var(--surface-inset);
 }
 
@@ -393,7 +383,6 @@ body.search-open {
 	font-size: 0.62rem;
 	font-weight: 600;
 	padding: 2px 4px;
-	border: 1px solid var(--border);
 	border-radius: 3px;
 	background: var(--surface);
 	color: var(--text-muted);
@@ -460,7 +449,6 @@ body.search-open {
 	gap: 0;
 	padding-left: 14px;
 	margin-top: 2px;
-	border-left: 1px solid var(--border);
 	margin-left: 18px;
 }
 
@@ -492,7 +480,6 @@ body.search-open {
 
 .sidebar-bottom {
 	padding: 12px 14px;
-	border-top: 1px solid var(--border);
 	flex-shrink: 0;
 }
 
@@ -561,7 +548,6 @@ body.sidebar-collapsed .main {
 	padding: 0 24px;
 	height: 52px;
 	background: var(--surface);
-	border-bottom: 1px solid var(--border);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
 	flex-shrink: 0;
@@ -593,19 +579,17 @@ body.sidebar-collapsed .main {
 	justify-content: center;
 	width: 34px;
 	height: 34px;
-	border: 1px solid var(--border);
 	border-radius: var(--radius-sm);
 	background: transparent;
 	color: var(--text-muted);
 	cursor: pointer;
-	transition: background 0.12s, color 0.12s, border-color 0.12s;
+	transition: background 0.12s, color 0.12s;
 	flex-shrink: 0;
 }
 
 .icon-btn:hover {
 	background: var(--surface-inset);
 	color: var(--text);
-	border-color: var(--surface-hover);
 	opacity: 1;
 }
 
@@ -676,14 +660,13 @@ body[data-page="hub"] .main {
 
 .card {
 	background: var(--surface);
-	border: 1px solid var(--border);
 	border-radius: var(--radius);
 	padding: 16px;
-	transition: border-color 0.15s;
+	transition: background 0.15s;
 }
 
 .card:hover {
-	border-color: var(--surface-hover);
+	background: var(--surface-hover);
 }
 
 .card h2,
@@ -804,10 +787,9 @@ body[data-page="hub"] .main {
 	text-decoration: none;
 	padding: 7px 14px;
 	border-radius: var(--radius-sm);
-	border: 1px solid var(--border);
 	background: var(--surface);
 	color: var(--text);
-	transition: background 0.12s, border-color 0.12s;
+	transition: background 0.12s;
 	cursor: pointer;
 }
 
@@ -819,7 +801,6 @@ body[data-page="hub"] .main {
 
 .btn-primary {
 	background: var(--accent);
-	border-color: var(--accent);
 	color: var(--accent-fg);
 }
 
@@ -853,7 +834,6 @@ body[data-page="hub"] .main {
 	font-weight: 500;
 	padding: 7px 14px;
 	border-radius: var(--radius-sm);
-	border: 1px solid var(--border);
 	background: var(--surface);
 	color: var(--text-muted);
 	cursor: pointer;
@@ -867,14 +847,12 @@ body[data-page="hub"] .main {
 
 .switcher button[aria-selected="true"] {
 	background: var(--accent);
-	border-color: var(--accent);
 	color: var(--accent-fg);
 }
 
 /* ---- Panel ---- */
 
 .panel {
-	border: 1px solid var(--border);
 	background: var(--surface);
 	border-radius: var(--radius);
 	padding: 20px;
@@ -908,7 +886,6 @@ body[data-page="hub"] .main {
 	color: var(--text-secondary);
 	padding: 10px 12px;
 	background: var(--surface-inset);
-	border: 1px solid var(--border);
 	border-radius: var(--radius-sm);
 }
 
@@ -920,7 +897,6 @@ body[data-page="hub"] .main {
 	font-size: 0.88rem;
 	color: var(--text-muted);
 	background: var(--surface-inset);
-	border: 1px solid var(--border);
 	border-radius: var(--radius);
 	line-height: 1.6;
 }
@@ -940,13 +916,11 @@ body[data-page="hub"] .main {
 	margin-top: 48px;
 	margin-bottom: 12px;
 	padding-top: 24px;
-	border-top: 1px solid var(--section-border);
 }
 
 .prose h2:first-child {
 	margin-top: 0;
 	padding-top: 0;
-	border-top: none;
 }
 
 .prose h3 {
@@ -1013,9 +987,8 @@ body[data-page="hub"] .main {
 .prose blockquote {
 	margin: 16px 0;
 	padding: 14px 18px;
-	border-left: 3px solid var(--link);
 	background: var(--surface-inset);
-	border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+	border-radius: var(--radius-sm);
 }
 
 .prose blockquote p {
@@ -1030,7 +1003,6 @@ body[data-page="hub"] .main {
 
 .prose hr {
 	border: none;
-	border-top: 1px solid var(--border);
 	margin: 32px 0;
 }
 
@@ -1039,7 +1011,6 @@ body[data-page="hub"] .main {
 	font-size: 0.84em;
 	padding: 2px 6px;
 	background: var(--surface-inset);
-	border: 1px solid var(--border);
 	border-radius: 4px;
 	color: var(--text);
 }
@@ -1049,7 +1020,6 @@ body[data-page="hub"] .main {
 	border-collapse: collapse;
 	margin: 16px 0;
 	font-size: 0.88rem;
-	border: 1px solid var(--border);
 	border-radius: var(--radius);
 	overflow: hidden;
 }
@@ -1059,13 +1029,11 @@ body[data-page="hub"] .main {
 	font-weight: 600;
 	color: var(--text);
 	padding: 10px 12px;
-	border-bottom: 2px solid var(--border);
 	background: var(--surface-inset);
 }
 
 .prose tbody td {
 	padding: 10px 12px;
-	border-bottom: 1px solid var(--border);
 	color: var(--text-secondary);
 	vertical-align: top;
 }
@@ -1075,8 +1043,6 @@ body[data-page="hub"] .main {
 }
 
 .prose tbody tr:last-child td {
-	border-bottom: none;
-	border-top: 2px solid var(--border);
 	font-weight: 600;
 	color: var(--text);
 	background: var(--surface-inset);
@@ -1086,7 +1052,6 @@ body[data-page="hub"] .main {
 	margin-bottom: 20px;
 	padding: 16px;
 	background: var(--surface);
-	border: 1px solid var(--border);
 	border-radius: var(--radius);
 }
 
@@ -1104,7 +1069,6 @@ body[data-page="hub"] .main {
 	margin-bottom: 16px;
 	padding: 14px 16px;
 	background: var(--surface-inset);
-	border: 1px solid var(--border);
 	border-radius: var(--radius);
 }
 
@@ -1145,15 +1109,13 @@ body[data-page="hub"] .main {
 	color: var(--link);
 	text-decoration: none;
 	padding: 4px 10px;
-	border: 1px solid var(--border);
 	border-radius: var(--radius-sm);
 	background: var(--surface);
-	transition: border-color 0.15s, background 0.15s;
+	transition: background 0.15s;
 	white-space: nowrap;
 }
 
 .program-link:hover {
-	border-color: var(--link);
 	background: var(--surface-inset);
 	text-decoration: none;
 	opacity: 1;
@@ -1166,7 +1128,6 @@ body[data-page="hub"] .main {
 .prose .highlight-box {
 	padding: 18px 20px;
 	background: var(--surface-inset);
-	border: 1px solid var(--border);
 	border-radius: var(--radius);
 	margin: 16px 0;
 }
@@ -1186,7 +1147,6 @@ body[data-page="hub"] .main {
 	position: relative;
 	padding: 10px 12px 10px 36px;
 	background: var(--surface);
-	border: 1px solid var(--border);
 	border-radius: var(--radius-sm);
 	margin-bottom: 6px;
 }
@@ -1199,21 +1159,19 @@ body[data-page="hub"] .main {
 	transform: translateY(-50%);
 	width: 16px;
 	height: 16px;
-	border: 2px solid var(--border);
+	background: var(--surface-inset);
 	border-radius: 3px;
 }
 
 .footnotes {
 	margin-top: 40px;
 	padding-top: 20px;
-	border-top: 1px solid var(--border);
 }
 
 .footnotes h2 {
 	font-size: 1.1rem;
 	margin-top: 0;
 	padding-top: 0;
-	border-top: none;
 }
 
 .footnotes p {
@@ -1227,7 +1185,6 @@ body[data-page="hub"] .main {
 	margin-top: 32px;
 	padding: 18px 20px;
 	background: var(--surface-inset);
-	border: 1px solid var(--border);
 	border-radius: var(--radius);
 }
 
@@ -1268,7 +1225,6 @@ body[data-page="hub"] .main {
 	gap: 16px;
 	margin-top: 48px;
 	padding-top: 24px;
-	border-top: 1px solid var(--section-border);
 }
 
 .section-nav a {
@@ -1277,16 +1233,14 @@ body[data-page="hub"] .main {
 	flex-direction: column;
 	gap: 4px;
 	padding: 16px 20px;
-	border: 1px solid var(--border);
 	border-radius: var(--radius);
 	text-decoration: none;
 	color: var(--text);
 	background: var(--surface);
-	transition: border-color 0.15s, background 0.15s;
+	transition: background 0.15s;
 }
 
 .section-nav a:hover {
-	border-color: var(--link);
 	background: var(--surface-inset);
 	opacity: 1;
 }
@@ -1316,7 +1270,6 @@ body[data-page="hub"] .main {
 	margin-top: 48px;
 	padding: 32px;
 	background: var(--surface-inset);
-	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
 	text-align: center;
 }
@@ -1326,7 +1279,6 @@ body[data-page="hub"] .main {
 	font-size: 1.5rem;
 	font-weight: 600;
 	margin-bottom: 8px;
-	border-top: none;
 	margin-top: 0;
 	padding-top: 0;
 }

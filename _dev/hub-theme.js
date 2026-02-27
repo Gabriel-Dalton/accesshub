@@ -133,7 +133,7 @@
 		}
 	}
 
-	/* ---- Search ---- */
+	/* ---- Quick Search Modal ---- */
 
 	var searchIndex = [
 		{ title: "Overview", page: "Hub", url: "hub.html" },
@@ -187,50 +187,181 @@
 		{ title: "Tips from experience", page: "Tech Grants", url: "tech-grants.html#section-10" }
 	];
 
-	var searchInput = document.getElementById("sidebar-search");
+	var defaultMenu = [
+		{ label: "Documentation", items: [
+			{ title: "Overview", url: "hub.html" },
+			{ title: "Getting Started", url: "getting-started.html" }
+		]},
+		{ label: "Tracks", items: [
+			{ title: "Sustainability", url: "sustainability.html" },
+			{ title: "Accessibility", url: "accessibility.html" },
+			{ title: "Tech Grants", url: "tech-grants.html" }
+		]},
+		{ label: "Popular topics", items: [
+			{ title: "Google Ad Grants", url: "tech-grants.html#section-2" },
+			{ title: "Goodstack verification", url: "tech-grants.html#section-1" },
+			{ title: "WCAG guidelines", url: "accessibility.html#section-2" },
+			{ title: "Tools to measure carbon footprint", url: "sustainability.html#section-4" },
+			{ title: "Free accessibility testing tools", url: "accessibility.html#section-7" },
+			{ title: "Quick-start checklist", url: "tech-grants.html#section-9" }
+		]}
+	];
+
+	var arrowSvg = '<svg class="search-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>';
+
+	var overlay = document.getElementById("search-overlay");
+	var searchInput = document.getElementById("search-input");
 	var searchResults = document.getElementById("search-results");
+	var searchTrigger = document.getElementById("search-trigger");
+	var activeIdx = -1;
 
-	if (searchInput && searchResults) {
-		searchInput.addEventListener("input", function () {
-			var q = this.value.trim().toLowerCase();
-			if (q.length < 2) {
-				searchResults.classList.remove("visible");
-				searchResults.innerHTML = "";
-				return;
-			}
-
-			var matches = searchIndex.filter(function (item) {
-				return item.title.toLowerCase().indexOf(q) !== -1 || item.page.toLowerCase().indexOf(q) !== -1;
-			}).slice(0, 8);
-
-			if (matches.length === 0) {
-				searchResults.innerHTML = '<div class="search-empty">No results found</div>';
-			} else {
-				searchResults.innerHTML = matches.map(function (m) {
-					return '<a href="' + m.url + '"><span>' + m.title + '</span><span class="search-page">' + m.page + '</span></a>';
-				}).join("");
-			}
-			searchResults.classList.add("visible");
+	function renderDefaultMenu() {
+		if (!searchResults) return;
+		var html = "";
+		var idx = 0;
+		defaultMenu.forEach(function (group) {
+			html += '<div class="search-group-label">' + group.label + '</div>';
+			group.items.forEach(function (item) {
+				html += '<a href="' + item.url + '" data-idx="' + idx + '"><span class="search-title">' + item.title + '</span>' + arrowSvg + '</a>';
+				idx++;
+			});
 		});
+		searchResults.innerHTML = html;
+	}
 
-		searchInput.addEventListener("blur", function () {
-			setTimeout(function () { searchResults.classList.remove("visible"); }, 200);
-		});
-
-		searchInput.addEventListener("keydown", function (e) {
-			if (e.key === "Escape") {
-				searchResults.classList.remove("visible");
-				searchInput.blur();
+	function openSearch() {
+		if (!overlay) return;
+		if (searchTrigger) searchTrigger.blur();
+		overlay.classList.add("open");
+		body.classList.add("search-open");
+		activeIdx = -1;
+		renderDefaultMenu();
+		requestAnimationFrame(function () {
+			if (searchInput) {
+				searchInput.value = "";
+				searchInput.focus();
 			}
 		});
 	}
 
-	/* ---- Keyboard shortcut for search ---- */
+	function closeSearch() {
+		if (!overlay) return;
+		overlay.classList.remove("open");
+		body.classList.remove("search-open");
+		activeIdx = -1;
+		if (searchInput) searchInput.blur();
+	}
+
+	function renderGrouped(matches) {
+		var groups = {};
+		var order = [];
+		matches.forEach(function (m) {
+			if (!groups[m.page]) {
+				groups[m.page] = [];
+				order.push(m.page);
+			}
+			groups[m.page].push(m);
+		});
+		var html = "";
+		var idx = 0;
+		order.forEach(function (page) {
+			html += '<div class="search-group-label">' + page + '</div>';
+			groups[page].forEach(function (m) {
+				html += '<a href="' + m.url + '" data-idx="' + idx + '"><span class="search-title">' + m.title + '</span>' + arrowSvg + '</a>';
+				idx++;
+			});
+		});
+		return html;
+	}
+
+	function renderResults(q) {
+		if (!searchResults) return;
+		if (q.length < 2) {
+			renderDefaultMenu();
+			activeIdx = -1;
+			return;
+		}
+
+		var matches = searchIndex.filter(function (item) {
+			return item.title.toLowerCase().indexOf(q) !== -1 || item.page.toLowerCase().indexOf(q) !== -1;
+		}).slice(0, 12);
+
+		activeIdx = -1;
+
+		if (matches.length === 0) {
+			searchResults.innerHTML = '<div class="search-empty">No results found</div>';
+		} else {
+			searchResults.innerHTML = renderGrouped(matches);
+		}
+	}
+
+	function setActiveResult(idx) {
+		if (!searchResults) return;
+		var links = searchResults.querySelectorAll("a");
+		if (links.length === 0) return;
+
+		links.forEach(function (a) { a.classList.remove("active"); });
+
+		if (idx < 0) idx = links.length - 1;
+		if (idx >= links.length) idx = 0;
+		activeIdx = idx;
+
+		links[activeIdx].classList.add("active");
+		links[activeIdx].scrollIntoView({ block: "nearest" });
+	}
+
+	if (searchTrigger) {
+		searchTrigger.addEventListener("click", openSearch);
+	}
+
+	if (overlay) {
+		overlay.addEventListener("mousedown", function (e) {
+			if (e.target === overlay) closeSearch();
+		});
+	}
+
+	if (searchInput) {
+		searchInput.addEventListener("input", function () {
+			renderResults(this.value.trim().toLowerCase());
+		});
+	}
+
+	function isSearchOpen() {
+		return overlay && overlay.classList.contains("open");
+	}
+
+	function navigateToActive() {
+		var links = searchResults ? searchResults.querySelectorAll("a") : [];
+		if (activeIdx >= 0 && links[activeIdx]) {
+			window.location.href = links[activeIdx].href;
+		} else if (links.length > 0) {
+			window.location.href = links[0].href;
+		}
+	}
 
 	document.addEventListener("keydown", function (e) {
 		if ((e.metaKey || e.ctrlKey) && e.key === "k") {
 			e.preventDefault();
-			if (searchInput) searchInput.focus();
+			isSearchOpen() ? closeSearch() : openSearch();
+			return;
+		}
+
+		if (!isSearchOpen()) return;
+
+		var links = searchResults ? searchResults.querySelectorAll("a") : [];
+
+		if (e.key === "Escape") {
+			e.preventDefault();
+			closeSearch();
+		} else if (e.key === "ArrowDown") {
+			e.preventDefault();
+			if (links.length > 0) setActiveResult(activeIdx + 1);
+		} else if (e.key === "ArrowUp") {
+			e.preventDefault();
+			if (links.length > 0) setActiveResult(activeIdx - 1);
+		} else if (e.key === "Enter") {
+			e.preventDefault();
+			navigateToActive();
 		}
 	});
 })();

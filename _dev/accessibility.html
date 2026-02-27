@@ -18,11 +18,11 @@
 				<a href="hub.html" class="logo">Web-Ready Access Hub</a>
 			</div>
 			<div class="sidebar-search">
-				<div class="search-wrapper">
+				<button class="search-trigger" id="search-trigger" type="button">
 					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-					<input type="text" class="search-input" id="sidebar-search" placeholder="Search... (Ctrl+K)" autocomplete="off" />
-					<div class="search-results" id="search-results"></div>
-				</div>
+					<span>Quick search...</span>
+					<kbd>Ctrl K</kbd>
+				</button>
 			</div>
 			<div class="sidebar-nav">
 				<div class="nav-group">
@@ -358,6 +358,22 @@
 			</main>
 		</div>
 
-		<script src="hub-theme.js"></script>
+		<div class="search-overlay" id="search-overlay">
+		<div class="search-dialog" role="dialog" aria-label="Quick search">
+			<div class="search-dialog-header">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+				<input type="text" class="search-dialog-input" id="search-input" placeholder="Quick search..." autocomplete="off" />
+				<kbd class="search-esc">Esc</kbd>
+			</div>
+			<div class="search-dialog-body" id="search-results"></div>
+			<div class="search-dialog-footer">
+				<span><kbd>&uarr;</kbd><kbd>&darr;</kbd> to navigate</span>
+				<span><kbd>enter</kbd> to select</span>
+				<span><kbd>esc</kbd> to close</span>
+			</div>
+		</div>
+	</div>
+
+	<script src="hub-theme.js"></script>
 	</body>
 </html>

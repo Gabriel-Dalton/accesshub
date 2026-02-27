@@ -56,96 +56,41 @@
 			</header>
 
 			<main class="main">
-				<span class="kicker">Hub Overview</span>
 				<h1>Pick a track and start learning.</h1>
 				<p class="lead">
-					Choose Accessibility, Sustainability, or Nonprofit Tech Grants.
-					Use the switcher below for a quick preview, then open the full page.
+					Choose a track below to dive into the documentation. Each includes practical guidance, checklists, and steps you can follow.
 				</p>
 
-				<div class="switcher" role="tablist" aria-label="Learning tracks">
-					<button type="button" role="tab" aria-selected="true" data-track="accessibility">Accessibility</button>
-					<button type="button" role="tab" aria-selected="false" data-track="sustainability">Sustainability</button>
-					<button type="button" role="tab" aria-selected="false" data-track="grants">Tech Grants</button>
-				</div>
-
-				<section class="panel" id="panel" aria-live="polite">
-					<div>
-						<h2 id="panel-title">Accessibility essentials</h2>
-						<p id="panel-text">
-							Build pages that everyone can use by default: better contrast,
-							keyboard-friendly navigation, clear heading structure, alt text,
-							and inclusive form patterns.
-						</p>
-						<div class="toolbar">
-							<a class="btn btn-primary" id="panel-link" href="accessibility.html">Open this track</a>
-							<a class="btn" href="getting-started.html">Implementation order</a>
+				<section class="track-cards" aria-label="Learning tracks">
+					<a href="accessibility.html" class="track-card track-card--accessibility">
+						<div class="track-card-bg"></div>
+						<div class="track-card-content">
+							<h2>Accessibility</h2>
+							<p>Build pages that everyone can use by default: better contrast, keyboard-friendly navigation, clear headings, alt text, and inclusive form patterns.</p>
 						</div>
-					</div>
-					<ul class="checklist" id="panel-list">
-						<li>Contrast and typography rules for readability</li>
-						<li>Keyboard and focus states for every interactive element</li>
-						<li>Alt text, labels, and semantic structure checklist</li>
-					</ul>
+					</a>
+					<a href="sustainability.html" class="track-card track-card--sustainability">
+						<div class="track-card-bg"></div>
+						<div class="track-card-content">
+							<h2>Sustainability</h2>
+							<p>Reduce your digital footprint with lighter pages, smarter media, cleaner hosting, and team rituals that prevent waste over time.</p>
+						</div>
+					</a>
+					<a href="tech-grants.html" class="track-card track-card--grants">
+						<div class="track-card-bg"></div>
+						<div class="track-card-content">
+							<h2>Tech Grants</h2>
+							<p>Find and apply for in-kind and cash support with less guesswork. Build your grant library and create reusable application assets.</p>
+						</div>
+					</a>
 				</section>
+
+				<p class="callout">
+					New to the hub? Start with the <a href="getting-started.html">implementation order</a> for a recommended path across tracks.
+				</p>
 			</main>
 		</div>
 
 		<script src="hub-theme.js"></script>
-		<script>
-			var trackData = {
-				accessibility: {
-					title: "Accessibility essentials",
-					text: "Build pages that everyone can use by default: better contrast, keyboard-friendly navigation, clear heading structure, alt text, and inclusive form patterns.",
-					link: "accessibility.html",
-					items: [
-						"Contrast and typography rules for readability",
-						"Keyboard and focus states for every interactive element",
-						"Alt text, labels, and semantic structure checklist"
-					]
-				},
-				sustainability: {
-					title: "Sustainable web operations",
-					text: "Reduce your digital footprint with practical changes: lighter pages, smarter media, cleaner hosting choices, and team rituals that prevent waste over time.",
-					link: "sustainability.html",
-					items: [
-						"Carbon-aware performance wins that lower hosting costs",
-						"Media and asset budgeting for low-bandwidth users",
-						"Sustainable governance practices for content teams"
-					]
-				},
-				grants: {
-					title: "Nonprofit tech grants playbook",
-					text: "Find and apply for in-kind and cash support with less guesswork. Build your grant library, improve eligibility readiness, and create reusable application assets.",
-					link: "tech-grants.html",
-					items: [
-						"Grant landscape map by category and effort level",
-						"Readiness checklist for policy and financial materials",
-						"Reusable narrative templates for stronger submissions"
-					]
-				}
-			};
-
-			var tabButtons = document.querySelectorAll("[data-track]");
-			var titleEl = document.getElementById("panel-title");
-			var textEl = document.getElementById("panel-text");
-			var linkEl = document.getElementById("panel-link");
-			var listEl = document.getElementById("panel-list");
-
-			function renderTrack(id) {
-				var d = trackData[id];
-				titleEl.textContent = d.title;
-				textEl.textContent = d.text;
-				linkEl.href = d.link;
-				listEl.innerHTML = d.items.map(function (t) { return "<li>" + t + "</li>"; }).join("");
-				tabButtons.forEach(function (b) {
-					b.setAttribute("aria-selected", b.dataset.track === id ? "true" : "false");
-				});
-			}
-
-			tabButtons.forEach(function (b) {
-				b.addEventListener("click", function () { renderTrack(b.dataset.track); });
-			});
-		</script>
 	</body>
 </html>

@@ -16,6 +16,9 @@
 	--radius-lg: 12px;
 	--radius: 8px;
 	--radius-sm: 6px;
+	--scrollbar-track: #e4e4e7;
+	--scrollbar-thumb: #a1a1aa;
+	--scrollbar-thumb-hover: #71717a;
 }
 
 [data-theme="dark"] {
@@ -32,6 +35,9 @@
 	--accent-fg: #09090b;
 	--link: #60a5fa;
 	--ring: rgba(250, 250, 250, 0.08);
+	--scrollbar-track: #1a1a1e;
+	--scrollbar-thumb: #3f3f46;
+	--scrollbar-thumb-hover: #52525b;
 }
 
 *,
@@ -49,6 +55,64 @@ body.docs {
 	line-height: 1.6;
 	min-height: 100vh;
 	-webkit-font-smoothing: antialiased;
+}
+
+/* ---- Custom scrollbars (main, sidebar, tracks, search) ---- */
+
+html {
+	scrollbar-width: thin;
+	scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+html::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb);
+	border-radius: 5px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+	background: var(--scrollbar-thumb-hover);
+}
+
+.sidebar,
+.sidebar-nav,
+.search-overlay {
+	scrollbar-width: thin;
+	scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.sidebar::-webkit-scrollbar,
+.sidebar-nav::-webkit-scrollbar,
+.search-overlay::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.sidebar-nav::-webkit-scrollbar-track,
+.search-overlay::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.sidebar-nav::-webkit-scrollbar-thumb,
+.search-overlay::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb);
+	border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.sidebar-nav::-webkit-scrollbar-thumb:hover,
+.search-overlay::-webkit-scrollbar-thumb:hover {
+	background: var(--scrollbar-thumb-hover);
 }
 
 /* Track-specific accents */
@@ -312,24 +376,24 @@ body.search-open {
 	max-height: min(400px, 50vh);
 	overflow-y: auto;
 	scrollbar-width: thin;
-	scrollbar-color: var(--surface-hover) transparent;
+	scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 .search-dialog-body::-webkit-scrollbar {
-	width: 6px;
+	width: 8px;
 }
 
 .search-dialog-body::-webkit-scrollbar-track {
-	background: transparent;
+	background: var(--scrollbar-track);
 }
 
 .search-dialog-body::-webkit-scrollbar-thumb {
-	background: var(--surface-hover);
-	border-radius: 3px;
+	background: var(--scrollbar-thumb);
+	border-radius: 4px;
 }
 
 .search-dialog-body::-webkit-scrollbar-thumb:hover {
-	background: var(--text-muted);
+	background: var(--scrollbar-thumb-hover);
 }
 
 .search-dialog-body:empty {
@@ -1312,22 +1376,28 @@ body[data-page="hub"] .main {
 
 .section-nav {
 	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
 	gap: 16px;
 	margin-top: 48px;
 	padding-top: 24px;
+	border-top: 1px solid var(--border);
 }
 
 .section-nav a {
-	flex: 1;
+	flex: 0 0 auto;
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
-	padding: 16px 20px;
+	padding: 12px 20px;
+	min-width: 180px;
 	border-radius: var(--radius);
 	text-decoration: none;
 	color: var(--text);
 	background: var(--surface);
 	transition: background 0.15s;
+	text-align: left;
 }
 
 .section-nav a:hover {
@@ -1337,7 +1407,6 @@ body[data-page="hub"] .main {
 
 .section-nav a.next {
 	text-align: right;
-	margin-left: auto;
 }
 
 .section-nav .nav-direction {

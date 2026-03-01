@@ -88,13 +88,17 @@ button:focus-visible {
 	display: flex;
 	flex-direction: column;
 	transform: translateX(0);
-	transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+	transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+		box-shadow 0.32s ease;
 	overflow-y: auto;
 	overscroll-behavior: contain;
+	will-change: transform;
+	box-shadow: 1px 0 0 var(--border);
 }
 
 body.sidebar-collapsed .sidebar {
 	transform: translateX(-100%);
+	box-shadow: none;
 }
 
 .sidebar-top {
@@ -141,13 +145,13 @@ body.sidebar-collapsed .sidebar {
 		opacity: 0;
 		pointer-events: none;
 		transition: background 0.12s, color 0.12s, border-color 0.12s,
-			opacity 0.1s ease;
+			opacity 0.12s ease;
 	}
 	body.sidebar-collapsed #sidebar-open {
 		opacity: 1;
 		pointer-events: auto;
 		transition: background 0.12s, color 0.12s, border-color 0.12s,
-			opacity 0.1s ease 0.2s;
+			opacity 0.15s ease 0.22s;
 	}
 }
 
@@ -552,7 +556,7 @@ body.search-open {
 	background: rgba(0, 0, 0, 0.4);
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 0.24s ease;
+	transition: opacity 0.32s ease;
 }
 
 .backdrop.visible {
@@ -567,7 +571,7 @@ body.search-open {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	transition: margin-left 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+	transition: margin-left 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body.sidebar-collapsed .content-wrapper {
@@ -662,6 +666,7 @@ body.sidebar-collapsed .main {
 	flex: 1;
 	max-width: 860px;
 	padding: 32px 32px 48px;
+	transition: padding 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body[data-page="hub"] .main {

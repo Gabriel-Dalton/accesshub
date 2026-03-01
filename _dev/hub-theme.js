@@ -64,8 +64,10 @@
 	}
 
 	var openBtn = document.getElementById("sidebar-open");
+	var closeBtn = document.getElementById("sidebar-close");
 
 	if (openBtn) openBtn.addEventListener("click", toggleSidebar);
+	if (closeBtn) closeBtn.addEventListener("click", closeSidebar);
 	if (backdrop) backdrop.addEventListener("click", closeSidebar);
 
 	/* ---- Active nav link ---- */

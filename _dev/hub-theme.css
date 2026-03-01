@@ -119,6 +119,29 @@ body.sidebar-collapsed .sidebar {
 	opacity: 1;
 }
 
+.sidebar-close .close-x {
+	display: none;
+}
+
+.sidebar-close .close-panel {
+	display: block;
+}
+
+@media (max-width: 860px) {
+	.sidebar-close .close-x {
+		display: block;
+	}
+	.sidebar-close .close-panel {
+		display: none;
+	}
+}
+
+@media (min-width: 861px) {
+	body:not(.sidebar-collapsed) #sidebar-open {
+		display: none;
+	}
+}
+
 /* ---- Sidebar search trigger ---- */
 
 .sidebar-search {

@@ -668,6 +668,27 @@ body[data-page="tech-grants"] .nav-sub a.active {
 	flex-shrink: 0;
 }
 
+.nav-link--small {
+	display: block;
+	font-size: 0.72rem;
+	font-weight: 500;
+	color: var(--text-muted);
+	text-decoration: none;
+	padding: 4px 0;
+	margin-bottom: 10px;
+	transition: color 0.12s;
+}
+
+.nav-link--small:hover {
+	color: var(--text);
+	opacity: 1;
+}
+
+.nav-link--small.active {
+	color: var(--link);
+	font-weight: 600;
+}
+
 .back-link {
 	display: inline-flex;
 	align-items: center;

@@ -648,8 +648,22 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 [data-theme="dark"] body[data-page="tech-grants"] .nav-sub a.active { color: #fbbf24; }
 
 .sidebar-bottom {
-	padding: 12px 14px;
+	padding: 6px 14px 12px;
 	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.sidebar-bottom .nav-link--small {
+	font-size: 0.75rem;
+	color: var(--text-muted);
+	text-decoration: none;
+}
+
+.sidebar-bottom .nav-link--small:hover {
+	color: var(--text);
+	opacity: 1;
 }
 
 .back-link {

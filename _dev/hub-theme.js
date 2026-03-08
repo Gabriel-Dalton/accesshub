@@ -140,6 +140,7 @@
 	var searchIndex = [
 		{ title: "Overview", page: "Hub", url: "hub.html" },
 		{ title: "Getting Started", page: "Hub", url: "getting-started.html" },
+		{ title: "Disclaimers & thanks", page: "Hub", url: "disclaimers.html" },
 		{ title: "About the WRA Hub", page: "Getting Started", url: "getting-started.html" },
 		{ title: "Recommended order", page: "Getting Started", url: "getting-started.html" },
 
@@ -192,7 +193,8 @@
 	var defaultMenu = [
 		{ label: "Documentation", items: [
 			{ title: "Overview", url: "hub.html" },
-			{ title: "Getting Started", url: "getting-started.html" }
+			{ title: "Getting Started", url: "getting-started.html" },
+			{ title: "Disclaimers & thanks", url: "disclaimers.html" }
 		]},
 		{ label: "Tracks", items: [
 			{ title: "Sustainability", url: "sustainability.html" },

@@ -103,6 +103,15 @@
 
 			activeLink.parentNode.insertBefore(subNav, activeLink.nextSibling);
 
+			/* Clicking the track link again toggles the sub-menu open/closed */
+			activeLink.addEventListener("click", function (e) {
+				var next = activeLink.nextElementSibling;
+				if (next && next.classList.contains("nav-sub")) {
+					e.preventDefault();
+					next.classList.toggle("nav-sub-collapsed");
+				}
+			});
+
 			var subLinks = subNav.querySelectorAll("a");
 			var sectionIds = [];
 			subLinks.forEach(function (a) { sectionIds.push(a.dataset.section); });
@@ -187,7 +196,9 @@
 		{ title: "Slack Zoom HubSpot", page: "Tech Grants", url: "tech-grants.html#section-7" },
 		{ title: "Grant value summary table", page: "Tech Grants", url: "tech-grants.html#section-8" },
 		{ title: "Quick-start checklist", page: "Tech Grants", url: "tech-grants.html#section-9" },
-		{ title: "Tips from experience", page: "Tech Grants", url: "tech-grants.html#section-10" }
+		{ title: "Tips from experience", page: "Tech Grants", url: "tech-grants.html#section-10" },
+		{ title: "Do you qualify?", page: "Eligibility", url: "eligibility.html" },
+		{ title: "Eligibility checker", page: "Eligibility", url: "eligibility.html" }
 	];
 
 	var defaultMenu = [
@@ -199,7 +210,8 @@
 		{ label: "Tracks", items: [
 			{ title: "Sustainability", url: "sustainability.html" },
 			{ title: "Accessibility", url: "accessibility.html" },
-			{ title: "Tech Grants", url: "tech-grants.html" }
+			{ title: "Tech Grants", url: "tech-grants.html" },
+			{ title: "Do you qualify?", url: "eligibility.html" }
 		]},
 		{ label: "Popular topics", items: [
 			{ title: "Google Ad Grants", url: "tech-grants.html#section-2" },

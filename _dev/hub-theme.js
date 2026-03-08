@@ -149,7 +149,7 @@
 	var searchIndex = [
 		{ title: "Overview", page: "Hub", url: "hub.html" },
 		{ title: "Getting Started", page: "Hub", url: "getting-started.html" },
-		{ title: "Disclaimers & thanks", page: "Hub", url: "disclaimers.html" },
+		{ title: "Disclaimers & acknowledgments", page: "Hub", url: "disclaimers.html" },
 		{ title: "About the WRA Hub", page: "Getting Started", url: "getting-started.html" },
 		{ title: "Recommended order", page: "Getting Started", url: "getting-started.html" },
 
@@ -202,16 +202,16 @@
 	];
 
 	var defaultMenu = [
-		{ label: "Documentation", items: [
+		{ label: "Start here", items: [
 			{ title: "Overview", url: "hub.html" },
 			{ title: "Getting Started", url: "getting-started.html" },
-			{ title: "Disclaimers & thanks", url: "disclaimers.html" }
+			{ title: "Do you qualify?", url: "eligibility.html" },
+			{ title: "Disclaimers & acknowledgments", url: "disclaimers.html" }
 		]},
 		{ label: "Tracks", items: [
 			{ title: "Sustainability", url: "sustainability.html" },
 			{ title: "Accessibility", url: "accessibility.html" },
-			{ title: "Tech Grants", url: "tech-grants.html" },
-			{ title: "Do you qualify?", url: "eligibility.html" }
+			{ title: "Tech Grants", url: "tech-grants.html" }
 		]},
 		{ label: "Popular topics", items: [
 			{ title: "Google Ad Grants", url: "tech-grants.html#section-2" },

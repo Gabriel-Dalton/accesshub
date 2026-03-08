@@ -1726,25 +1726,26 @@ body[data-page="eligibility"] .kicker { color: #16a34a; }
 .eligibility-card {
 	padding: 20px;
 	border-radius: var(--radius);
-	border-left: 4px solid;
+	border: 1px solid var(--border);
+	background: var(--surface);
 }
 
 .eligibility-card--yes {
-	background: rgba(22, 163, 74, 0.06);
-	border-left-color: #16a34a;
+	background: var(--surface);
+	border-top: 4px solid #16a34a;
 }
 
 .eligibility-card--no {
-	background: rgba(185, 28, 28, 0.06);
-	border-left-color: #b91c1c;
+	background: var(--surface);
+	border-top: 4px solid #b91c1c;
 }
 
 [data-theme="dark"] .eligibility-card--yes {
-	background: rgba(22, 163, 74, 0.12);
+	border-top-color: #22c55e;
 }
 
 [data-theme="dark"] .eligibility-card--no {
-	background: rgba(185, 28, 28, 0.1);
+	border-top-color: #ef4444;
 }
 
 .eligibility-card h3 {

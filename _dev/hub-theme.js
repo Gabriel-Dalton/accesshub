@@ -103,6 +103,15 @@
 
 			activeLink.parentNode.insertBefore(subNav, activeLink.nextSibling);
 
+			/* Clicking the track link again toggles the sub-menu open/closed */
+			activeLink.addEventListener("click", function (e) {
+				var next = activeLink.nextElementSibling;
+				if (next && next.classList.contains("nav-sub")) {
+					e.preventDefault();
+					next.classList.toggle("nav-sub-collapsed");
+				}
+			});
+
 			var subLinks = subNav.querySelectorAll("a");
 			var sectionIds = [];
 			subLinks.forEach(function (a) { sectionIds.push(a.dataset.section); });
@@ -140,7 +149,7 @@
 	var searchIndex = [
 		{ title: "Overview", page: "Hub", url: "hub.html" },
 		{ title: "Getting Started", page: "Hub", url: "getting-started.html" },
-		{ title: "Disclaimers & thanks", page: "Hub", url: "disclaimers.html" },
+		{ title: "Disclaimers & acknowledgments", page: "Hub", url: "disclaimers.html" },
 		{ title: "About the WRA Hub", page: "Getting Started", url: "getting-started.html" },
 		{ title: "Recommended order", page: "Getting Started", url: "getting-started.html" },
 
@@ -187,14 +196,17 @@
 		{ title: "Slack Zoom HubSpot", page: "Tech Grants", url: "tech-grants.html#section-7" },
 		{ title: "Grant value summary table", page: "Tech Grants", url: "tech-grants.html#section-8" },
 		{ title: "Quick-start checklist", page: "Tech Grants", url: "tech-grants.html#section-9" },
-		{ title: "Tips from experience", page: "Tech Grants", url: "tech-grants.html#section-10" }
+		{ title: "Tips from experience", page: "Tech Grants", url: "tech-grants.html#section-10" },
+		{ title: "Do you qualify?", page: "Eligibility", url: "eligibility.html" },
+		{ title: "Eligibility checker", page: "Eligibility", url: "eligibility.html" }
 	];
 
 	var defaultMenu = [
-		{ label: "Documentation", items: [
+		{ label: "Start here", items: [
 			{ title: "Overview", url: "hub.html" },
 			{ title: "Getting Started", url: "getting-started.html" },
-			{ title: "Disclaimers & thanks", url: "disclaimers.html" }
+			{ title: "Do you qualify?", url: "eligibility.html" },
+			{ title: "Disclaimers & acknowledgments", url: "disclaimers.html" }
 		]},
 		{ label: "Tracks", items: [
 			{ title: "Sustainability", url: "sustainability.html" },

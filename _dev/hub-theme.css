@@ -1706,6 +1706,13 @@ body[data-page="eligibility"] .kicker { color: #16a34a; }
 	color: var(--link);
 }
 
+.quiz-result-note {
+	margin: 0 0 16px;
+	font-size: 0.9375rem;
+	color: var(--text-secondary);
+	line-height: 1.6;
+}
+
 .eligibility-detail {
 	margin-top: 48px;
 }

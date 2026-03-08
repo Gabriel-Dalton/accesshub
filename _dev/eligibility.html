@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Web-Ready Access Hub | Does Your Organization Qualify?</title>
+		<title>Web-Ready Access Hub | Do you qualify? — Tech grants</title>
 		<meta name="description" content="Interactive eligibility checker for in-kind technology grants. See if your nonprofit qualifies for Google, Canva, Microsoft, and more." />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -59,7 +59,7 @@
 					<button class="icon-btn" id="sidebar-open" type="button" aria-label="Toggle sidebar">
 						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
 					</button>
-					<span class="topbar-crumb">Do you qualify?</span>
+					<span class="topbar-crumb">Do you qualify? — Tech grants</span>
 				</div>
 				<div class="topbar-right">
 					<button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme">
@@ -70,8 +70,8 @@
 			</header>
 
 			<main class="main eligibility-main">
-				<span class="kicker">Eligibility</span>
-				<h1>Does your organization qualify?</h1>
+				<span class="kicker">Tech grants</span>
+				<h1>Do you qualify? — Tech grants</h1>
 				<p class="lead">In-kind tech grants from Google, Canva, Microsoft, Atlassian, and others are for charitable nonprofits. Answer a few questions to see if you’re likely eligible — then explore the full criteria below.</p>
 
 				<!-- Quiz -->
@@ -223,7 +223,7 @@
 				if (eligible) {
 					resultInner.innerHTML = '<div class="quiz-result-card quiz-result-card--yes"><span class="quiz-result-icon" aria-hidden="true">✓</span><h3>Likely eligible</h3><p>Based on your answers, your organization may qualify for in-kind tech grants. Next: <a href="tech-grants.html#how-verification-works-goodstack">get verified</a> with Goodstack or TechSoup, then apply to each program.</p></div>';
 				} else {
-					resultInner.innerHTML = '<div class="quiz-result-card quiz-result-card--no"><span class="quiz-result-icon" aria-hidden="true">✕</span><h3>Likely not eligible</h3><p>Many in-kind programs are limited to charitable nonprofits that are independent from government and not for-profit. Check the <a href="#full-criteria">full criteria</a> below — or the official program pages — to confirm.</p></div>';
+					resultInner.innerHTML = '<p class="quiz-result-note">Check the <a href="#full-criteria">full criteria</a> below to see if your situation fits, or visit the official program pages.</p>';
 				}
 			}
 		}

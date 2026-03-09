@@ -167,6 +167,9 @@
 		if (!localStorage.getItem(tipsKey)) {
 			setTimeout(openTips, 600);
 		}
+
+		var tipsTriggerGs = document.getElementById("tips-trigger-getting-started");
+		if (tipsTriggerGs) tipsTriggerGs.addEventListener("click", openTips);
 	}
 
 	initTips();

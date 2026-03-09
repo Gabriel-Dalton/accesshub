@@ -178,7 +178,8 @@
 	var searchIndex = [
 		{ title: "Overview", page: "Hub", url: "hub.html" },
 		{ title: "Getting Started", page: "Hub", url: "getting-started.html" },
-		{ title: "Disclaimers & acknowledgments", page: "Hub", url: "disclaimers.html" },
+		{ title: "Disclaimers", page: "Hub", url: "disclaimers.html" },
+		{ title: "Acknowledgments", page: "Hub", url: "acknowledgments.html" },
 		{ title: "About the WRA Hub", page: "Getting Started", url: "getting-started.html" },
 		{ title: "Recommended order", page: "Getting Started", url: "getting-started.html" },
 
@@ -235,7 +236,8 @@
 			{ title: "Overview", url: "hub.html" },
 			{ title: "Getting Started", url: "getting-started.html" },
 			{ title: "Do you qualify?", url: "eligibility.html" },
-			{ title: "Disclaimers & acknowledgments", url: "disclaimers.html" }
+			{ title: "Disclaimers", url: "disclaimers.html" },
+			{ title: "Acknowledgments", url: "acknowledgments.html" }
 		]},
 		{ label: "Tracks", items: [
 			{ title: "Sustainability", url: "sustainability.html" },

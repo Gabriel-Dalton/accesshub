@@ -40,21 +40,61 @@ accesshub/
 
 ---
 
-## Getting started locally
+## Language checker and accessibility widget
 
-No build step required. Open any HTML file directly in your browser:
+The site ships with two built-in front-end tools that can be added to any page without a build step.
 
-```bash
-# Clone the repository
-git clone https://github.com/web-ready/accesshub.git
-cd accesshub
+### 1) Language checker (language selector)
 
-# Open the landing page
-open index.html
+File: `assets/js/language-selector.js`
 
-# Or open the learning hub
-open _dev/hub.html
+What it does:
+- Adds a fixed language trigger and searchable language panel
+- Uses Google Translate in the background while hiding default Google UI
+- Remembers the selected language between visits (localStorage + cookie)
+- Supports reset back to English
+
+Include on root-level pages:
+
+```html
+<script src="assets/js/language-selector.js" defer></script>
 ```
+
+Include on pages inside `_dev/`:
+
+```html
+<script src="../assets/js/language-selector.js" defer></script>
+```
+
+### 2) Accessibility widget
+
+Files:
+- `assets/css/accessibility-widget.css`
+- `assets/js/accessibility-widget.js`
+
+What it does:
+- Adds a floating accessibility button and control panel
+- Stores user preferences locally
+- Provides text spacing/size controls, readable font modes, contrast and color filters, reduced motion, cursor, reading guide/mask, and media visibility toggles
+
+Include on root-level pages:
+
+```html
+<link rel="stylesheet" href="assets/css/accessibility-widget.css" />
+<script src="assets/js/accessibility-widget.js"></script>
+```
+
+Include on pages inside `_dev/`:
+
+```html
+<link rel="stylesheet" href="../assets/css/accessibility-widget.css" />
+<script src="../assets/js/accessibility-widget.js"></script>
+```
+
+Load order recommendation:
+1. Accessibility widget CSS in `<head>`
+2. Accessibility widget script near end of `<body>`
+3. Language selector script after it (with `defer`)
 
 ---
 

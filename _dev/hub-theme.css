@@ -156,6 +156,7 @@ button:focus-visible {
 	transform: translateX(0);
 	transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
 		box-shadow 0.32s ease;
+	overflow-x: hidden;
 	overflow-y: auto;
 	overscroll-behavior: contain;
 	will-change: transform;
@@ -171,8 +172,10 @@ body.sidebar-collapsed .sidebar {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	gap: 8px;
 	padding: 16px 16px 12px;
 	flex-shrink: 0;
+	min-width: 0;
 }
 
 .logo {
@@ -182,6 +185,11 @@ body.sidebar-collapsed .sidebar {
 	color: var(--text);
 	text-decoration: none;
 	letter-spacing: -0.01em;
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .logo:hover {
@@ -226,6 +234,7 @@ body.sidebar-collapsed .sidebar {
 .sidebar-search {
 	padding: 10px 12px 6px;
 	flex-shrink: 0;
+	overflow: hidden;
 }
 
 .search-trigger {
@@ -233,7 +242,8 @@ body.sidebar-collapsed .sidebar {
 	align-items: center;
 	gap: 8px;
 	width: 100%;
-	padding: 8px 10px;
+	min-width: 0;
+	padding: 8px 14px 8px 10px;
 	border: 1px solid var(--border);
 	border-radius: var(--radius-sm);
 	background: var(--surface-inset);
@@ -242,6 +252,7 @@ body.sidebar-collapsed .sidebar {
 	font-size: 0.82rem;
 	cursor: pointer;
 	transition: border-color 0.15s, background 0.15s;
+	overflow: hidden;
 }
 
 .search-trigger:hover {
@@ -262,7 +273,10 @@ body.search-open {
 
 .search-trigger span {
 	flex: 1;
+	min-width: 0;
 	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .search-trigger svg {
@@ -272,14 +286,17 @@ body.search-open {
 
 .search-trigger kbd {
 	font-family: inherit;
-	font-size: 0.68rem;
+	font-size: 0.62rem;
 	font-weight: 500;
-	padding: 2px 5px;
+	padding: 2px 4px;
 	border: 1px solid var(--border);
-	border-radius: 4px;
+	border-radius: 3px;
 	background: var(--surface);
 	color: var(--text-muted);
 	line-height: 1;
+	flex-shrink: 0;
+	white-space: nowrap;
+	box-sizing: border-box;
 }
 
 /* ---- Search modal ---- */
@@ -845,8 +862,11 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 	min-width: 160px;
 }
 
-#tips-btn.onboarding-highlight {
+#tips-btn {
 	position: relative;
+}
+
+#tips-btn.onboarding-highlight {
 	border-radius: var(--radius);
 	animation: onboarding-highlight-pulse 6s ease-out forwards;
 }
@@ -1389,17 +1409,17 @@ body[data-page="hub"] {
 	font-family: "Work Sans", system-ui, -apple-system, sans-serif;
 	font-size: clamp(1.7rem, 3.6vw, 2.5rem);
 	font-weight: 600;
-	line-height: 1.15;
+	line-height: 1.25;
 	letter-spacing: -0.025em;
-	margin-bottom: 8px;
+	margin-bottom: 16px;
 }
 
 .lead {
 	font-size: 0.95rem;
 	color: var(--text-muted);
 	max-width: 65ch;
-	margin-bottom: 24px;
-	line-height: 1.7;
+	margin-bottom: 28px;
+	line-height: 1.85;
 }
 
 /* ---- Cards ---- */
@@ -1505,7 +1525,7 @@ body[data-page="hub"] {
 	z-index: 1;
 	height: 100%;
 	min-height: 220px;
-	padding: 24px;
+	padding: 28px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -1517,13 +1537,13 @@ body[data-page="hub"] {
 	font-size: 1.4rem;
 	font-weight: 600;
 	color: #fff;
-	margin-bottom: 8px;
+	margin-bottom: 12px;
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .track-card-content p {
 	font-size: 0.9rem;
-	line-height: 1.5;
+	line-height: 1.7;
 	color: rgba(255, 255, 255, 0.95);
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -1647,8 +1667,8 @@ body[data-page="hub"] {
 	display: flex;
 	align-items: center;
 	gap: 20px;
-	padding: 20px 24px;
-	margin-top: 24px;
+	padding: 24px 28px;
+	margin-top: 28px;
 	background: var(--surface);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
@@ -1678,7 +1698,7 @@ body[data-page="hub"] {
 	min-width: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
+	gap: 8px;
 }
 
 .next-step-label {
@@ -1695,11 +1715,10 @@ body[data-page="hub"] {
 	color: var(--text);
 }
 
-
 .next-step-desc {
 	font-size: 0.875rem;
 	color: var(--text-muted);
-	line-height: 1.45;
+	line-height: 1.65;
 }
 
 .next-step-arrow {
@@ -2721,7 +2740,7 @@ body[data-page="eligibility"] .kicker { color: #16a34a; }
 	}
 
 	.track-card-content {
-		padding: 20px;
+		padding: 24px;
 	}
 
 	.panel {
@@ -2799,7 +2818,7 @@ body[data-page="eligibility"] .kicker { color: #16a34a; }
 
 	.lead {
 		font-size: 0.9rem;
-		margin-bottom: 20px;
+		margin-bottom: 24px;
 	}
 
 	.hub-features-callout {

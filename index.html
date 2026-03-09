@@ -75,11 +75,17 @@
 				line-height: 1.1;
 			}
 
+			.landing-header .kicker {
+				margin-top: 6px;
+				margin-bottom: 0;
+			}
+
 			.hero-wrap {
 				display: grid;
 				grid-template-columns: 1fr minmax(280px, 1fr);
-				gap: 48px 64px;
+				gap: 48px clamp(64px, 10vw, 96px);
 				align-items: stretch;
+				margin-top: clamp(32px, 6vw, 56px);
 				padding-bottom: clamp(32px, 6vw, 56px);
 				margin-bottom: var(--section-gap);
 			}
@@ -88,24 +94,20 @@
 				position: relative;
 				min-height: 280px;
 				max-width: 420px;
-				margin-left: auto;
+				margin: 0 auto;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 			}
 
-			.hero-illus svg {
+			.hero-illus img {
 				width: 100%;
 				height: 100%;
 				object-fit: contain;
 				opacity: 0.9;
 			}
 
-			.hero-illus .accent-fill {
-				fill: var(--accent);
-			}
-
-			.hero .kicker {
+			.hero  {
 				display: inline-block;
 				font-size: 0.8125rem;
 				font-weight: 500;
@@ -113,6 +115,10 @@
 				letter-spacing: 0.08em;
 				color: var(--accent);
 				margin-bottom: 12px;
+			}
+
+			.kicker {
+				color: var(--accent);
 			}
 
 			.hero h1 {
@@ -401,7 +407,7 @@
 					margin: 0 auto;
 				}
 
-				.hero-illus svg {
+				.hero-illus img {
 					width: 100%;
 					height: 100%;
 					min-height: 200px;
@@ -437,30 +443,24 @@
 		<div class="landing">
 			<header class="landing-header">
 				<div class="brand">Web-Ready Access Hub</div>
+				<p class="kicker" style="color: var(--accent);">For nonprofits</p>
 			</header>
 
 			<div class="hero-wrap">
 				<section class="hero" aria-labelledby="hero-heading">
-					<p class="kicker">For nonprofits</p>
 					<h1 id="hero-heading">Build a website that’s accessible, sustainable, and grant-ready.</h1>
 					<p class="lead">
 						Free guides and checklists for nonprofits: accessibility, sustainability, and tech grants in one place. No paywall, no sign-up required.
 					</p>
 					<a href="_dev/hub.html" class="cta-primary">
-						Open the hub
+						Get started
 						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
 						</svg>
 					</a>
 				</section>
 				<div class="hero-illus" aria-hidden="true">
-					<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="100" cy="100" r="85" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.15"/>
-						<circle cx="100" cy="100" r="62" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.2"/>
-						<rect x="55" y="62" width="90" height="56" rx="4" stroke="currentColor" stroke-width="2.5" stroke-opacity="0.25"/>
-						<rect x="62" y="69" width="76" height="42" rx="2" class="accent-fill" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.3"/>
-						<path d="M80 118h40M90 118v20M110 118v20" stroke="currentColor" stroke-width="2" stroke-opacity="0.25" stroke-linecap="round"/>
-					</svg>
+					<img src="assets/Hero.svg" alt="" width="420" height="280" />
 				</div>
 			</div>
 
@@ -529,7 +529,7 @@
 			<div class="cta-block">
 				<p>Guides, checklists, and a recommended path. All in one place.</p>
 				<a href="_dev/hub.html" class="cta-primary">
-					Open the hub
+					Get started
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
 					</svg>

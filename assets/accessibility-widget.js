@@ -201,11 +201,10 @@
     /* Hide images */
     if (S.hideImages) {
       rules.push(`html.aw-hide-images img,
-      html.aw-hide-images svg:not(.aw-svg-ui),
       html.aw-hide-images picture,
       html.aw-hide-images video,
       html.aw-hide-images canvas {
-        visibility: hidden !important;
+        display: none !important;
       }`);
     }
 
@@ -325,10 +324,50 @@
   }
 
   /* ── Apply all ── */
+  /* ── Image hiding with compact placeholders ── */
+  function applyImageHiding() {
+    document.querySelectorAll('.aw-img-placeholder').forEach(el => el.remove());
+    if (!S.hideImages) return;
+
+    const targets = document.querySelectorAll(
+      'img:not(picture img), picture, video, canvas'
+    );
+
+    targets.forEach(el => {
+      if (el.closest('#aw-panel') || el.closest('#aw-trigger') || el.closest('#ls-root')) return;
+
+      const ph = document.createElement('div');
+      ph.className = 'aw-img-placeholder';
+      ph.setAttribute('role', 'img');
+      ph.setAttribute('aria-label', 'Image hidden by accessibility settings');
+      ph.innerHTML =
+        `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>` +
+        `<span>Image hidden &mdash; <button type="button" class="aw-img-placeholder-btn">re-enable in accessibility widget</button></span>`;
+
+      ph.querySelector('.aw-img-placeholder-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!panelOpen) openPanel();
+        // After panel finishes opening, scroll to + highlight the Hide Images button
+        setTimeout(() => {
+          const btn = document.getElementById('aw-hide-images');
+          if (!btn) return;
+          const body = document.getElementById('aw-body');
+          if (body) body.scrollTo({ top: btn.offsetTop - 60, behavior: 'smooth' });
+          btn.focus();
+          btn.classList.add('aw-highlight-target');
+          setTimeout(() => btn.classList.remove('aw-highlight-target'), 2400);
+        }, 320);
+      });
+
+      el.parentNode.insertBefore(ph, el.nextSibling);
+    });
+  }
+
   function applyAll() {
     applyClasses();
     updateMask();
     updateGuide();
+    applyImageHiding();
     injectSVGFilters();
     save(S);
   }

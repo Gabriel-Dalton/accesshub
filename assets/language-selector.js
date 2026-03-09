@@ -263,15 +263,15 @@
         'position:fixed;z-index:9992;' +
         'background:var(--lssf);border:1px solid var(--lsbd);' +
         'border-radius:var(--lsr);box-shadow:var(--lssh);' +
-        'width:min(416px,calc(100vw - 32px));' +
-        'max-height:min(640px,calc(100dvh - 96px));' +
+        'width:min(520px,calc(100vw - 32px));' +
+        'max-height:min(640px,calc(100dvh - 48px));' +
         'display:flex;flex-direction:column;overflow:hidden;' +
         'opacity:0;visibility:hidden;pointer-events:none;' +
-        'transform:translateY(-8px) scale(.97);transform-origin:top right;' +
+        'transform:translate(-50%,-50%) translateY(-8px) scale(.97);transform-origin:center center;' +
         'transition:opacity var(--lsd) var(--lse),transform var(--lsd) var(--lse),visibility var(--lsd) var(--lse);' +
-        'top:112px;right:12px;' +
+        'top:50%;left:50%;' +
       '}' +
-      '#ls-panel.ls-open{opacity:1;visibility:visible;transform:translateY(0) scale(1);pointer-events:auto}' +
+      '#ls-panel.ls-open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1);pointer-events:auto}' +
       '#ls-panel[hidden]{display:none}' +
 
       /* ── Header ── */
@@ -421,15 +421,18 @@
       '#ls-nclose:focus-visible{outline:2px solid var(--lsa);outline-offset:2px}' +
       '#ls-nclose svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round}' +
 
-      /* ── Mobile ── */
-      '@media(max-width:540px){' +
-        '#ls-trigger{top:56px;right:8px;padding:10px 14px 10px 12px}' +
-        '#ls-panel{position:fixed;bottom:0;left:0;right:0;' +
+      /* ── Tablet / Mobile ── */
+      '@media(max-width:768px){' +
+        '#ls-panel{position:fixed;bottom:0;left:0;right:0;top:auto;' +
           'width:100%;max-width:100%;' +
           'border-radius:18px 18px 0 0;transform-origin:bottom center;' +
-          'max-height:82dvh;' +
+          'max-height:85dvh;' +
           'transform:translateY(32px) scale(.98)}' +
         '#ls-panel.ls-open{transform:translateY(0) scale(1)}' +
+      '}' +
+      '@media(max-width:540px){' +
+        '#ls-trigger{top:56px;right:8px;padding:10px 14px 10px 12px}' +
+        '#ls-panel{max-height:82dvh}' +
         '.ls-ni{flex-wrap:wrap;gap:7px}' +
         '#ls-ntxt{flex-basis:100%}' +
         '#ls-norig{margin-left:auto}' +

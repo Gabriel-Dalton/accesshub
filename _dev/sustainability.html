@@ -89,7 +89,7 @@
 					<p class="things-intro">Switch between <strong>Plain English</strong> (essentials, no jargon) and <strong>Technical</strong> (specs, code, implementation) using the toggle above.</p>
 					<ul>
 						<li>
-							<span class="tip-simple"><strong>Images:</strong> Compress photos before uploading. Use tools like TinyPNG or your CMS’s built-in optimization. Smaller images load faster and use less energy.</span>
+							<span class="tip-simple"><strong>Images:</strong> Compress photos before uploading. Use tools like TinyPNG, Squoosh (for AVIF/WebP), or your CMS’s built-in optimization. Smaller images load faster and use less energy.</span>
 							<span class="tip-developer"><strong>Image optimization:</strong> Serve WebP/AVIF with fallbacks. Use responsive images (<code>&lt;picture&gt;</code>, <code>srcset</code>). Lazy-load below-the-fold images (<code>loading="lazy"</code>). Target &lt;200KB total per page where possible.</span>
 						</li>
 						<li>
@@ -114,6 +114,12 @@
 					<p>The average web page produces approximately 0.36 grams of CO2 per page view<sup><a href="#fn-2">[2]</a></sup>. That might sound small, but for a website receiving 10,000 monthly visits, that adds up to about 43 kilograms of CO2 per year. For high-traffic sites, those numbers scale quickly.</p>
 					<p>Being sustainable online means designing, building, and maintaining your website so it uses less energy, which means fewer carbon emissions and a smaller digital carbon footprint.</p>
 					<div class="highlight-box"><p>A sustainable website is a lighter, faster, and cleaner website.</p></div>
+
+					<p>We scanned this site with the <a href="https://www.websitecarbon.com" target="_blank" rel="noreferrer">Website Carbon Calculator</a> and achieved an <strong>A+</strong> carbon rating—<strong>0.02g of CO2</strong> per page visit, and cleaner than <strong>97%</strong> of web pages globally. You can <a href="https://www.websitecarbon.com" target="_blank" rel="noreferrer">try it for your site</a> too.</p>
+
+					<figure class="prose-fig">
+						<img src="../assets/Website_Carbon.avif" alt="Website Carbon results for our site: A+ rating, 0.02g CO2 per visit, cleaner than 97% of web pages globally" width="640" height="auto" loading="lazy" />
+					</figure>
 
 					<h2>Why is being sustainable online important?</h2>
 					<p><strong>Environmental responsibility.</strong> Data centers consume enormous amounts of electricity, much of it generated from fossil fuels. Every unnecessary image, bloated script, and unoptimized page contributes to energy waste. As organizations committed to making the world better, nonprofits have both the opportunity and the responsibility to minimize this impact.</p>
@@ -146,7 +152,7 @@
 					<p>You do not need to be a developer to start reducing your website's carbon footprint. Here are practical, actionable techniques organized from easiest to more advanced.</p>
 
 					<h3>For anyone (no technical skills needed)</h3>
-					<p><strong>Optimize your images.</strong> Images typically account for 60 to 70 percent of a web page's total file size<sup><a href="#fn-10">[10]</a></sup>. Before uploading any image to your website, compress it. Free tools like <a href="https://tinypng.com">TinyPNG</a>, <a href="https://squoosh.dev">Squoosh</a>, and <a href="https://shortpixel.com">ShortPixel</a> can reduce image file sizes by 70 percent or more without visible quality loss. Use JPEG for photographs and PNG for graphics with transparency. Better yet, use modern formats like WebP when your platform supports it.</p>
+					<p><strong>Optimize your images.</strong> Images typically account for 60 to 70 percent of a web page's total file size<sup><a href="#fn-10">[10]</a></sup>. Before uploading any image to your website, compress it. Free tools like <a href="https://tinypng.com">TinyPNG</a>, <a href="https://squoosh.app">Squoosh</a> (excellent for optimizing and converting to AVIF and WebP), and <a href="https://shortpixel.com">ShortPixel</a> can reduce image file sizes by 70 percent or more without visible quality loss. Use JPEG for photographs and PNG for graphics with transparency. Better yet, use modern formats like WebP when your platform supports it.</p>
 					<p><strong>Audit your content.</strong> Remove pages, blog posts, and media files that are outdated or no longer relevant. Every page on your website is stored on a server and uses energy when crawled by search engines, even if nobody visits it.</p>
 					<p><strong>Limit embedded videos.</strong> Embedded video players, especially auto-playing ones, are among the most energy-intensive elements on any web page. Instead of embedding a full video, use a thumbnail image with a play button that loads the video only when clicked. This is sometimes called &ldquo;lazy loading&rdquo; for videos.</p>
 					<p><strong>Reduce third-party scripts.</strong> Every social media widget, analytics tracker, chat plugin, and embedded tool adds external requests and increases your page's carbon footprint. Audit your plugins and remove any that are not essential. If you do not actively use a live chat tool, remove it. If you have multiple analytics scripts, consolidate to one.</p>
@@ -205,6 +211,13 @@
 						<p><strong>Website:</strong> <a href="https://gtmetrix.com">gtmetrix.com</a><br>
 						<strong>Best for:</strong> Web performance analysis (which indirectly reduces carbon)</p>
 						<p>GTmetrix analyzes your page speed and performance using Google's Lighthouse and Web Vitals metrics. While it does not measure carbon directly, every performance improvement it suggests will also reduce your carbon footprint.</p>
+					</div>
+
+					<div class="tool-item">
+						<h3>Squoosh</h3>
+						<p><strong>Website:</strong> <a href="https://squoosh.app">squoosh.app</a><br>
+						<strong>Best for:</strong> Image optimization and conversion to AVIF/WebP</p>
+						<p>Squoosh is a free, browser-based image converter and optimizer from Google Chrome Labs. Drag and drop images to compress them or convert to modern formats like WebP and AVIF, which typically reduce file sizes by 25 to 50 percent. All processing happens locally in your browser, so your images never leave your device.</p>
 					</div>
 
 					<div class="tool-item">

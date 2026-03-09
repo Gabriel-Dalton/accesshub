@@ -845,8 +845,11 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 	min-width: 160px;
 }
 
-#tips-btn.onboarding-highlight {
+#tips-btn {
 	position: relative;
+}
+
+#tips-btn.onboarding-highlight {
 	border-radius: var(--radius);
 	animation: onboarding-highlight-pulse 6s ease-out forwards;
 }

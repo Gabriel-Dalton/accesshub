@@ -226,6 +226,7 @@ body.sidebar-collapsed .sidebar {
 .sidebar-search {
 	padding: 10px 12px 6px;
 	flex-shrink: 0;
+	overflow: hidden;
 }
 
 .search-trigger {
@@ -233,7 +234,8 @@ body.sidebar-collapsed .sidebar {
 	align-items: center;
 	gap: 8px;
 	width: 100%;
-	padding: 8px 10px;
+	min-width: 0;
+	padding: 8px 12px 8px 10px;
 	border: 1px solid var(--border);
 	border-radius: var(--radius-sm);
 	background: var(--surface-inset);
@@ -262,7 +264,10 @@ body.search-open {
 
 .search-trigger span {
 	flex: 1;
+	min-width: 0;
 	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .search-trigger svg {
@@ -272,14 +277,16 @@ body.search-open {
 
 .search-trigger kbd {
 	font-family: inherit;
-	font-size: 0.68rem;
+	font-size: 0.65rem;
 	font-weight: 500;
-	padding: 2px 5px;
+	padding: 2px 4px;
 	border: 1px solid var(--border);
 	border-radius: 4px;
 	background: var(--surface);
 	color: var(--text-muted);
 	line-height: 1;
+	flex-shrink: 0;
+	white-space: nowrap;
 }
 
 /* ---- Search modal ---- */

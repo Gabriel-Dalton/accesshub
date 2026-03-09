@@ -32,6 +32,7 @@
 				--accent-subtle: rgba(196, 77, 42, 0.08);
 				--border: #e5e2de;
 				--radius: 8px;
+				--section-gap: clamp(40px, 8vw, 56px);
 			}
 
 			* {
@@ -79,7 +80,7 @@
 				grid-template-columns: 1fr minmax(280px, 1fr);
 				gap: 48px 64px;
 				align-items: stretch;
-				margin-bottom: clamp(56px, 12vw, 96px);
+				margin-bottom: var(--section-gap);
 			}
 
 			.hero-illus {
@@ -116,11 +117,11 @@
 			.hero h1 {
 				font-family: "Fredoka", sans-serif;
 				font-weight: 700;
-				font-size: clamp(2.25rem, 5.5vw, 3.5rem);
-				line-height: 1.12;
+				font-size: clamp(1.75rem, 4vw, 2.5rem);
+				line-height: 1.2;
 				letter-spacing: -0.02em;
 				color: var(--text);
-				max-width: 16ch;
+				max-width: 18ch;
 				margin-bottom: 20px;
 			}
 
@@ -167,7 +168,8 @@
 				border: 1px solid rgba(196, 77, 42, 0.2);
 				border-radius: var(--radius);
 				padding: 28px 32px;
-				margin-bottom: clamp(48px, 10vw, 72px);
+				margin-top: 0;
+				margin-bottom: var(--section-gap);
 			}
 
 			.pain-section h2 {
@@ -206,7 +208,7 @@
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 				gap: 20px;
-				margin-bottom: clamp(48px, 10vw, 72px);
+				margin-bottom: var(--section-gap);
 			}
 
 			.pillar {
@@ -270,7 +272,7 @@
 				background: var(--surface);
 				border: 1px solid var(--border);
 				border-radius: var(--radius);
-				margin-bottom: clamp(48px, 10vw, 64px);
+				margin-bottom: var(--section-gap);
 			}
 
 			.cta-block p {
@@ -280,7 +282,7 @@
 			}
 
 			.supported-section {
-				padding: 24px 0 32px;
+				padding: var(--section-gap) 0;
 				margin-bottom: 0;
 			}
 
@@ -290,7 +292,7 @@
 				align-items: center;
 				justify-content: center;
 				flex-wrap: wrap;
-				gap: 16px 24px;
+				gap: 12px 20px;
 			}
 
 			.supported span {
@@ -305,20 +307,20 @@
 			.logo-pill {
 				display: inline-flex;
 				align-items: center;
-				padding: 10px 22px;
+				padding: 16px 28px;
 				background: var(--surface);
 				border: 1px solid var(--border);
 				border-radius: var(--radius);
 			}
 
 			.logo-pill img {
-				height: 40px;
+				height: 56px;
 				width: auto;
 				object-fit: contain;
 			}
 
 			.subsidiary {
-				margin: 0 0 clamp(48px, 10vw, 72px);
+				margin: 0 0 var(--section-gap);
 				padding: 28px 28px 28px 28px;
 				background: var(--surface);
 				border: 1px solid var(--border);
@@ -437,7 +439,7 @@
 
 			<div class="hero-wrap">
 				<section class="hero" aria-labelledby="hero-heading">
-					<p class="kicker">For nonprofits and mission-driven teams</p>
+					<p class="kicker">For nonprofits</p>
 					<h1 id="hero-heading">Build a website that’s accessible, sustainable, and grant-ready.</h1>
 					<p class="lead">
 						Free guides and checklists for nonprofits: accessibility, sustainability, and tech grants in one place. No paywall, no sign-up required.

@@ -65,22 +65,13 @@
 				padding: clamp(24px, 5vw, 48px) clamp(20px, 6vw, 56px);
 			}
 
-			.landing-header {
-				margin-bottom: clamp(48px, 10vw, 80px);
-			}
-
 			.brand {
 				font-family: "Fredoka", sans-serif;
 				font-weight: 700;
 				font-size: clamp(1.75rem, 4vw, 2.25rem);
 				color: var(--text);
-				text-decoration: none;
 				letter-spacing: -0.02em;
 				line-height: 1.1;
-			}
-
-			.brand:hover {
-				color: var(--accent);
 			}
 
 			.hero-wrap {
@@ -321,6 +312,42 @@
 				object-fit: contain;
 			}
 
+			.subsidiary {
+				margin: 0 0 clamp(48px, 10vw, 72px);
+				padding: 28px 28px 28px 28px;
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 24px;
+			}
+
+			.subsidiary-text {
+				max-width: 560px;
+			}
+
+			.subsidiary-text h2 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 600;
+				font-size: 1.1rem;
+				color: var(--text);
+				margin-bottom: 6px;
+			}
+
+			.subsidiary-text p {
+				font-size: 0.95rem;
+				color: var(--text-secondary);
+				line-height: 1.7;
+			}
+
+			.subsidiary-logo img {
+				height: 40px;
+				width: auto;
+				display: block;
+			}
+
 			@media (max-width: 768px) {
 				.hero-wrap {
 					grid-template-columns: 1fr;
@@ -365,12 +392,12 @@
 	<body>
 		<div class="landing">
 			<header class="landing-header">
-				<a href="_dev/hub.html" class="brand">Web-Ready Access Hub</a>
+				<div class="brand">Web-Ready Access Hub</div>
 			</header>
 
 			<div class="hero-wrap">
 				<section class="hero" aria-labelledby="hero-heading">
-					<p class="kicker">From Oasis of Change</p>
+					<p class="kicker">For nonprofits and mission-driven teams</p>
 					<h1 id="hero-heading">Build a website that’s accessible, sustainable, and grant-ready.</h1>
 					<p class="lead">
 						Free guides and checklists for nonprofits: accessibility, sustainability, and tech grants in one place. No paywall, no sign-up required.
@@ -428,6 +455,18 @@
 				</div>
 			</div>
 
+			<section class="subsidiary" aria-label="About Oasis of Change">
+				<div class="subsidiary-text">
+					<h2>Part of Oasis of Change</h2>
+					<p>
+						The Web-Ready Access Hub is an operating subsidiary project of Oasis of Change Inc., a nonprofit based in Vancouver, Canada.
+					</p>
+				</div>
+				<div class="subsidiary-logo">
+					<img src="assets/Oasis_of_Change.svg" alt="Oasis of Change" />
+				</div>
+			</section>
+
 			<div class="cta-block">
 				<p>Guides, checklists, and a recommended path. All in one place.</p>
 				<a href="_dev/hub.html" class="cta-primary">
@@ -441,7 +480,7 @@
 			<div class="supported">
 				<span>Supported by</span>
 				<div class="logo-pill">
-					<img src="assets/GLOCAL-Foundation.avif" alt="GLOCAL Foundation" />
+					<img src="assets/GLOCAL_Foundation.avif" alt="GLOCAL Foundation" />
 				</div>
 				<div class="logo-pill">
 					<img src="assets/Government_Canada.avif" alt="Government of Canada" />

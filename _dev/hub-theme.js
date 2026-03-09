@@ -95,61 +95,128 @@
 	var modeToggle = document.querySelector(".mode-toggle");
 	if (modeToggle) modeToggle.setAttribute("title", "Plain English: simple explanations. Technical: specs and implementation details.");
 
-	var tipsKey = "accesshub-seen-tips";
+	var onboardingKey = "accesshub-onboarding-done";
 
-	function openTips() {
-		var overlay = document.getElementById("tips-overlay");
+	function openOnboarding() {
+		var overlay = document.getElementById("onboarding-overlay");
 		if (overlay) {
 			overlay.classList.add("visible");
-			body.classList.add("tips-open");
-			var closeBtn = document.getElementById("tips-close");
-			if (closeBtn) closeBtn.focus();
+			body.classList.add("onboarding-open");
+			updateOnboardingSelection();
+			var btn = document.getElementById("onboarding-done");
+			if (btn) btn.focus();
 		}
 	}
 
-	function closeTips() {
-		var overlay = document.getElementById("tips-overlay");
+	function closeOnboarding() {
+		var overlay = document.getElementById("onboarding-overlay");
 		if (overlay) {
 			overlay.classList.remove("visible");
-			body.classList.remove("tips-open");
+			body.classList.remove("onboarding-open");
 		}
-		localStorage.setItem(tipsKey, "1");
+		localStorage.setItem(onboardingKey, "1");
+
+		if (!isMobile.matches) {
+			var tipsBtn = document.getElementById("tips-btn");
+			if (tipsBtn) {
+				tipsBtn.classList.add("onboarding-highlight");
+				var tooltip = document.createElement("div");
+				tooltip.className = "onboarding-tooltip";
+				tooltip.setAttribute("role", "status");
+				tooltip.setAttribute("aria-live", "polite");
+				tooltip.textContent = "Reopen settings here";
+				tipsBtn.appendChild(tooltip);
+				function dismissTooltip() {
+					tooltip.classList.add("onboarding-tooltip-fade");
+					setTimeout(function () {
+						tipsBtn.classList.remove("onboarding-highlight");
+						if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
+					}, 300);
+				}
+				setTimeout(dismissTooltip, 6000);
+			}
+		}
 	}
 
-	function initTips() {
-		var existing = document.getElementById("tips-overlay");
+	function updateOnboardingSelection() {
+		var kbd = root.getAttribute("data-keyboard") || "windows";
+		var mode = root.getAttribute("data-mode") || "simple";
+		var macBtn = document.getElementById("onboarding-mac");
+		var winBtn = document.getElementById("onboarding-windows");
+		var simpleBtn = document.getElementById("onboarding-simple");
+		var technicalBtn = document.getElementById("onboarding-technical");
+		if (macBtn) macBtn.setAttribute("aria-pressed", kbd === "mac" ? "true" : "false");
+		if (winBtn) winBtn.setAttribute("aria-pressed", kbd === "windows" ? "true" : "false");
+		if (simpleBtn) simpleBtn.setAttribute("aria-pressed", mode === "simple" ? "true" : "false");
+		if (technicalBtn) technicalBtn.setAttribute("aria-pressed", mode === "developer" ? "true" : "false");
+	}
+
+	function initOnboarding() {
+		var existing = document.getElementById("onboarding-overlay");
 		if (existing) return;
 
 		var overlay = document.createElement("div");
-		overlay.id = "tips-overlay";
-		overlay.className = "tips-overlay";
+		overlay.id = "onboarding-overlay";
+		overlay.className = "tips-overlay onboarding-overlay";
 		overlay.setAttribute("role", "dialog");
-		overlay.setAttribute("aria-labelledby", "tips-title");
+		overlay.setAttribute("aria-labelledby", "onboarding-title");
 		overlay.setAttribute("aria-modal", "true");
-		var hasMode = document.getElementById("mode-simple");
-		var hasKeyboard = document.getElementById("keyboard-mac");
 		overlay.innerHTML =
-			'<div class="tips-dialog">' +
-			'<h2 id="tips-title">Hub features</h2>' +
-			'<p>Here\'s what you can do in the Web-Ready Access Hub:</p>' +
-			'<ul class="tips-list">' +
-			'<li><strong>Quick search</strong> — Press <kbd class="keyboard-windows-only">Ctrl+K</kbd><kbd class="keyboard-mac-only">⌘K</kbd> to search across all tracks and pages.</li>' +
-			(hasKeyboard ? '<li><strong>Mac / Win</strong> — Switch to see keyboard shortcuts for your platform (Mac or Windows).</li>' : "") +
-			(hasMode ? '<li><strong>Plain English / Technical</strong> — Toggle between simple explanations and detailed specs (on track pages).</li>' : "") +
-			'<li><strong>Theme</strong> — Toggle light or dark mode with the sun/moon icon.</li>' +
-			'<li><strong>Sidebar</strong> — Use the menu icon to open or collapse the navigation.</li>' +
-			'</ul>' +
-			'<button class="tips-close" id="tips-close" type="button">Got it</button>' +
+			'<div class="tips-dialog onboarding-dialog">' +
+			'<button class="onboarding-close-x" type="button" aria-label="Close">' +
+			'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>' +
+			'</button>' +
+			'<h2 id="onboarding-title">Welcome</h2>' +
+			'<p class="onboarding-intro">Choose your setup so we can show the right keyboard shortcuts and content style for you. Your choices are saved and will apply across all pages.</p>' +
+			'<div class="onboarding-option">' +
+			'<span class="onboarding-label">Device</span>' +
+			'<div class="onboarding-toggle" role="group">' +
+			'<button class="onboarding-option-btn" id="onboarding-mac" type="button" aria-pressed="false">Mac</button>' +
+			'<button class="onboarding-option-btn" id="onboarding-windows" type="button" aria-pressed="true">Windows</button>' +
+			'</div>' +
+			'</div>' +
+			'<div class="onboarding-option">' +
+			'<span class="onboarding-label">Content style</span>' +
+			'<div class="onboarding-toggle" role="group">' +
+			'<button class="onboarding-option-btn" id="onboarding-simple" type="button" aria-pressed="true">Plain English</button>' +
+			'<button class="onboarding-option-btn" id="onboarding-technical" type="button" aria-pressed="false">Technical</button>' +
+			'</div>' +
+			'</div>' +
+			'<p class="onboarding-edit-note">Change these anytime using the toggles in the top right.</p>' +
+			'<div class="onboarding-actions">' +
+			'<button class="tips-close" id="onboarding-done" type="button">Get started</button>' +
+			'</div>' +
 			'</div>';
 
 		overlay.addEventListener("click", function (e) {
-			if (e.target === overlay) closeTips();
+			if (e.target === overlay) closeOnboarding();
 		});
 
 		body.appendChild(overlay);
 
-		var closeBtn = document.getElementById("tips-close");
-		if (closeBtn) closeBtn.addEventListener("click", closeTips);
+		document.getElementById("onboarding-mac").addEventListener("click", function () {
+			localStorage.setItem(keyboardKey, "mac");
+			applyKeyboard("mac");
+			updateOnboardingSelection();
+		});
+		document.getElementById("onboarding-windows").addEventListener("click", function () {
+			localStorage.setItem(keyboardKey, "windows");
+			applyKeyboard("windows");
+			updateOnboardingSelection();
+		});
+		document.getElementById("onboarding-simple").addEventListener("click", function () {
+			localStorage.setItem(modeKey, "simple");
+			applyMode("simple");
+			updateOnboardingSelection();
+		});
+		document.getElementById("onboarding-technical").addEventListener("click", function () {
+			localStorage.setItem(modeKey, "developer");
+			applyMode("developer");
+			updateOnboardingSelection();
+		});
+		document.getElementById("onboarding-done").addEventListener("click", closeOnboarding);
+		var closeX = overlay.querySelector(".onboarding-close-x");
+		if (closeX) closeX.addEventListener("click", closeOnboarding);
 
 		var topbarRight = document.querySelector(".topbar-right");
 		if (topbarRight) {
@@ -157,22 +224,23 @@
 			tipsBtn.className = "icon-btn tips-btn";
 			tipsBtn.id = "tips-btn";
 			tipsBtn.type = "button";
-			tipsBtn.setAttribute("aria-label", "Show hub tips and features");
-			tipsBtn.setAttribute("title", "Hub tips and features");
+			tipsBtn.setAttribute("aria-label", "Customize device and content style");
+			tipsBtn.setAttribute("title", "Customize device and content style");
 			tipsBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>';
 			topbarRight.insertBefore(tipsBtn, topbarRight.firstChild);
-			tipsBtn.addEventListener("click", openTips);
+			tipsBtn.addEventListener("click", openOnboarding);
 		}
 
-		if (!localStorage.getItem(tipsKey)) {
-			setTimeout(openTips, 600);
+		var isGettingStarted = body.getAttribute("data-page") === "getting-started";
+		if (isGettingStarted && !localStorage.getItem(onboardingKey)) {
+			setTimeout(openOnboarding, 400);
 		}
 
 		var tipsTriggerGs = document.getElementById("tips-trigger-getting-started");
-		if (tipsTriggerGs) tipsTriggerGs.addEventListener("click", openTips);
+		if (tipsTriggerGs) tipsTriggerGs.addEventListener("click", openOnboarding);
 	}
 
-	initTips();
+	initOnboarding();
 
 	/* ---- Sidebar ---- */
 
@@ -536,10 +604,10 @@
 
 	document.addEventListener("keydown", function (e) {
 		if (e.key === "Escape") {
-			var tipsOverlay = document.getElementById("tips-overlay");
-			if (tipsOverlay && tipsOverlay.classList.contains("visible")) {
+			var onboardingOverlay = document.getElementById("onboarding-overlay");
+			if (onboardingOverlay && onboardingOverlay.classList.contains("visible")) {
 				e.preventDefault();
-				closeTips();
+				closeOnboarding();
 				return;
 			}
 		}

@@ -746,6 +746,194 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 	animation: tips-enter 0.3s ease;
 }
 
+.onboarding-dialog {
+	position: relative;
+	max-width: 620px;
+	padding: 36px 56px 36px 40px;
+}
+
+.onboarding-close-x {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	left: auto;
+	width: 36px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border: none;
+	background: var(--surface-inset);
+	color: var(--text-muted);
+	cursor: pointer;
+	border-radius: 50%;
+	transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.onboarding-close-x:hover {
+	background: var(--surface-hover);
+	color: var(--text);
+	transform: scale(1.05);
+}
+
+.onboarding-intro {
+	margin-bottom: 28px;
+}
+
+.onboarding-option {
+	margin-bottom: 24px;
+}
+
+.onboarding-label {
+	display: block;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--text-muted);
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.onboarding-toggle {
+	display: inline-flex;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	background: var(--surface-inset);
+	padding: 3px;
+	gap: 2px;
+}
+
+.onboarding-option-btn {
+	font-family: inherit;
+	font-size: 0.875rem;
+	font-weight: 500;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 6px;
+	background: transparent;
+	color: var(--text-muted);
+	cursor: pointer;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+
+.onboarding-option-btn:hover {
+	color: var(--text);
+	background: var(--surface-hover);
+}
+
+.onboarding-option-btn[aria-pressed="true"] {
+	background: var(--surface);
+	color: var(--text);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.onboarding-edit-note {
+	font-size: 0.875rem;
+	color: var(--text-muted);
+	margin: 0 0 28px;
+	line-height: 1.5;
+}
+
+.onboarding-actions {
+	display: flex;
+	justify-content: center;
+}
+
+.onboarding-actions .tips-close {
+	width: auto;
+	min-width: 160px;
+}
+
+#tips-btn.onboarding-highlight {
+	position: relative;
+	border-radius: var(--radius);
+	animation: onboarding-highlight-pulse 6s ease-out forwards;
+}
+
+.onboarding-tooltip {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 8px;
+	padding: 6px 12px;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	color: var(--text);
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	white-space: nowrap;
+	z-index: 100;
+	pointer-events: none;
+	animation: onboarding-tooltip-in 0.2s ease;
+}
+
+.onboarding-tooltip::before {
+	content: "";
+	position: absolute;
+	top: -5px;
+	left: 50%;
+	margin-left: -5px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid var(--border);
+}
+
+.onboarding-tooltip::after {
+	content: "";
+	position: absolute;
+	top: -4px;
+	left: 50%;
+	margin-left: -4px;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-bottom: 4px solid var(--surface);
+}
+
+[data-theme="dark"] .onboarding-tooltip {
+	background: #26262c;
+	border-color: #3f3f46;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .onboarding-tooltip::after {
+	border-bottom-color: #26262c;
+}
+
+.onboarding-tooltip-fade {
+	opacity: 0;
+	transition: opacity 0.25s ease-out;
+}
+
+@keyframes onboarding-tooltip-in {
+	from {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+	}
+}
+
+@keyframes onboarding-highlight-pulse {
+	0% {
+		box-shadow: 0 0 0 0 var(--accent);
+	}
+	15% {
+		box-shadow: 0 0 0 4px var(--accent);
+	}
+	50% {
+		box-shadow: 0 0 0 4px var(--accent);
+	}
+	100% {
+		box-shadow: 0 0 0 0 transparent;
+	}
+}
+
 @keyframes tips-enter {
 	from {
 		opacity: 0;
@@ -818,11 +1006,12 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 }
 
 .tips-btn {
-	opacity: 0.85;
+	opacity: 1;
+	color: var(--text-secondary);
 }
 
 .tips-btn:hover {
-	opacity: 1;
+	color: var(--text);
 }
 
 .hub-features-callout {
@@ -1055,6 +1244,15 @@ body.sidebar-collapsed .main {
 
 [data-keyboard="mac"] .keyboard-windows-only {
 	display: none;
+}
+
+/* Explicit Windows rules: override .hub-features-callout kbd etc. */
+[data-keyboard="windows"] .keyboard-mac-only {
+	display: none;
+}
+
+[data-keyboard="windows"] .keyboard-windows-only {
+	display: inline;
 }
 
 /* ---- Key takeaways (mode-aware tips) ---- */
@@ -1441,6 +1639,92 @@ body[data-page="hub"] {
 	padding: 10px 12px;
 	background: var(--surface-inset);
 	border-radius: var(--radius-sm);
+}
+
+/* ---- Next step CTA (Overview → Getting Started) ---- */
+
+.next-step-cta {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 20px 24px;
+	margin-top: 24px;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	color: inherit;
+	text-decoration: none;
+	transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.next-step-cta:hover {
+	background: var(--surface-inset);
+	border-color: var(--border);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+	opacity: 1;
+}
+
+[data-theme="dark"] .next-step-cta:hover {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.next-step-cta:focus-visible {
+	outline: 2px solid var(--link);
+	outline-offset: 2px;
+}
+
+.next-step-body {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.next-step-label {
+	font-size: 0.72rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--link);
+}
+
+.next-step-title {
+	font-size: 1.125rem;
+	font-weight: 600;
+	color: var(--text);
+}
+
+
+.next-step-desc {
+	font-size: 0.875rem;
+	color: var(--text-muted);
+	line-height: 1.45;
+}
+
+.next-step-arrow {
+	flex-shrink: 0;
+	color: var(--link);
+	transition: transform 0.2s ease;
+}
+
+.next-step-cta:hover .next-step-arrow {
+	transform: translateX(4px);
+}
+
+@media (max-width: 480px) {
+	.next-step-cta {
+		padding: 16px 20px;
+		gap: 16px;
+	}
+
+	.next-step-title {
+		font-size: 1rem;
+	}
+
+	.next-step-desc {
+		font-size: 0.8125rem;
+	}
 }
 
 /* ---- Callout ---- */

@@ -98,6 +98,7 @@
 	var onboardingKey = "accesshub-onboarding-done";
 
 	function openOnboarding() {
+		clearExistingTooltip();
 		var overlay = document.getElementById("onboarding-overlay");
 		if (overlay) {
 			overlay.classList.add("visible");
@@ -105,6 +106,21 @@
 			updateOnboardingSelection();
 			var btn = document.getElementById("onboarding-done");
 			if (btn) btn.focus();
+		}
+	}
+
+	var tooltipDismissTimer = null;
+
+	function clearExistingTooltip() {
+		if (tooltipDismissTimer) {
+			clearTimeout(tooltipDismissTimer);
+			tooltipDismissTimer = null;
+		}
+		var tipsBtn = document.getElementById("tips-btn");
+		if (tipsBtn) {
+			var existing = tipsBtn.querySelector(".onboarding-tooltip");
+			if (existing) existing.parentNode.removeChild(existing);
+			tipsBtn.classList.remove("onboarding-highlight");
 		}
 	}
 
@@ -119,6 +135,7 @@
 		if (!isMobile.matches) {
 			var tipsBtn = document.getElementById("tips-btn");
 			if (tipsBtn) {
+				clearExistingTooltip();
 				tipsBtn.classList.add("onboarding-highlight");
 				var tooltip = document.createElement("div");
 				tooltip.className = "onboarding-tooltip";
@@ -127,13 +144,14 @@
 				tooltip.textContent = "Reopen settings here";
 				tipsBtn.appendChild(tooltip);
 				function dismissTooltip() {
+					tooltipDismissTimer = null;
 					tooltip.classList.add("onboarding-tooltip-fade");
 					setTimeout(function () {
 						tipsBtn.classList.remove("onboarding-highlight");
 						if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
 					}, 300);
 				}
-				setTimeout(dismissTooltip, 6000);
+				tooltipDismissTimer = setTimeout(dismissTooltip, 6000);
 			}
 		}
 	}

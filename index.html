@@ -32,6 +32,7 @@
 				--accent-subtle: rgba(196, 77, 42, 0.08);
 				--border: #e5e2de;
 				--radius: 8px;
+				--section-gap: clamp(40px, 8vw, 56px);
 			}
 
 			* {
@@ -65,22 +66,13 @@
 				padding: clamp(24px, 5vw, 48px) clamp(20px, 6vw, 56px);
 			}
 
-			.landing-header {
-				margin-bottom: clamp(48px, 10vw, 80px);
-			}
-
 			.brand {
 				font-family: "Fredoka", sans-serif;
 				font-weight: 700;
 				font-size: clamp(1.75rem, 4vw, 2.25rem);
 				color: var(--text);
-				text-decoration: none;
 				letter-spacing: -0.02em;
 				line-height: 1.1;
-			}
-
-			.brand:hover {
-				color: var(--accent);
 			}
 
 			.hero-wrap {
@@ -88,7 +80,8 @@
 				grid-template-columns: 1fr minmax(280px, 1fr);
 				gap: 48px 64px;
 				align-items: stretch;
-				margin-bottom: clamp(56px, 12vw, 96px);
+				padding-bottom: clamp(32px, 6vw, 56px);
+				margin-bottom: var(--section-gap);
 			}
 
 			.hero-illus {
@@ -125,11 +118,12 @@
 			.hero h1 {
 				font-family: "Fredoka", sans-serif;
 				font-weight: 700;
-				font-size: clamp(2.25rem, 5.5vw, 3.5rem);
-				line-height: 1.12;
+				font-size: clamp(1.75rem, 4vw, 2.5rem);
+				line-height: 1.2;
 				letter-spacing: -0.02em;
 				color: var(--text);
-				max-width: 16ch;
+				max-width: 18ch;
+				margin-top: 24px;
 				margin-bottom: 20px;
 			}
 
@@ -176,7 +170,8 @@
 				border: 1px solid rgba(196, 77, 42, 0.2);
 				border-radius: var(--radius);
 				padding: 28px 32px;
-				margin-bottom: clamp(48px, 10vw, 72px);
+				margin-top: 0;
+				margin-bottom: var(--section-gap);
 			}
 
 			.pain-section h2 {
@@ -215,7 +210,7 @@
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 				gap: 20px;
-				margin-bottom: clamp(48px, 10vw, 72px);
+				margin-bottom: var(--section-gap);
 			}
 
 			.pillar {
@@ -279,7 +274,7 @@
 				background: var(--surface);
 				border: 1px solid var(--border);
 				border-radius: var(--radius);
-				margin-bottom: clamp(48px, 10vw, 64px);
+				margin-bottom: var(--section-gap);
 			}
 
 			.cta-block p {
@@ -288,17 +283,22 @@
 				margin-bottom: 20px;
 			}
 
+			.supported-section {
+				padding: var(--section-gap) 0;
+				margin-bottom: 0;
+			}
+
 			.supported {
-				padding-top: 32px;
-				border-top: 1px solid var(--border);
+				padding-top: 0;
 				display: flex;
 				align-items: center;
+				justify-content: center;
 				flex-wrap: wrap;
-				gap: 16px 24px;
+				gap: 12px 20px;
 			}
 
 			.supported span {
-				font-size: 0.8125rem;
+				font-size: 0.95rem;
 				font-weight: 500;
 				text-transform: uppercase;
 				letter-spacing: 0.06em;
@@ -309,16 +309,82 @@
 			.logo-pill {
 				display: inline-flex;
 				align-items: center;
-				padding: 8px 18px;
+				padding: 16px 28px;
 				background: var(--surface);
 				border: 1px solid var(--border);
 				border-radius: var(--radius);
 			}
 
 			.logo-pill img {
-				height: 32px;
+				height: 56px;
 				width: auto;
 				object-fit: contain;
+			}
+
+			.subsidiary {
+				margin: 0 0 var(--section-gap);
+				padding: 28px 28px 28px 28px;
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 24px;
+			}
+
+			.subsidiary-text {
+				max-width: 560px;
+			}
+
+			.subsidiary-text h2 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 600;
+				font-size: 1.1rem;
+				color: var(--text);
+				margin-bottom: 6px;
+			}
+
+			.subsidiary-text p {
+				font-size: 0.95rem;
+				color: var(--text-secondary);
+				line-height: 1.7;
+			}
+
+			.subsidiary-logo img {
+				height: 40px;
+				width: auto;
+				display: block;
+			}
+
+			.site-footer {
+				margin-top: 40px;
+				padding-top: 24px;
+				border-top: 1px solid var(--border);
+				text-align: center;
+				color: var(--text-muted);
+				font-size: 0.875rem;
+			}
+
+			.site-footer .footer-meta {
+				margin-top: 16px;
+				color: var(--text-secondary);
+				font-size: 0.875rem;
+			}
+
+			.site-footer .oasis-link {
+				margin-bottom: 20px;
+				font-size: 0.9375rem;
+			}
+
+			.site-footer .oasis-link a {
+				color: var(--accent);
+				font-weight: 600;
+				text-decoration: none;
+			}
+
+			.site-footer .oasis-link a:hover {
+				text-decoration: underline;
 			}
 
 			@media (max-width: 768px) {
@@ -340,6 +406,11 @@
 					height: 100%;
 					min-height: 200px;
 				}
+
+				.subsidiary {
+					flex-direction: column;
+					align-items: flex-start;
+				}
 			}
 
 			@media (max-width: 640px) {
@@ -353,7 +424,7 @@
 
 				.supported {
 					flex-direction: column;
-					align-items: flex-start;
+					align-items: center;
 				}
 
 				.pain-section {
@@ -365,12 +436,12 @@
 	<body>
 		<div class="landing">
 			<header class="landing-header">
-				<a href="_dev/hub.html" class="brand">Web-Ready Access Hub</a>
+				<div class="brand">Web-Ready Access Hub</div>
 			</header>
 
 			<div class="hero-wrap">
 				<section class="hero" aria-labelledby="hero-heading">
-					<p class="kicker">From Oasis of Change</p>
+					<p class="kicker">For nonprofits</p>
 					<h1 id="hero-heading">Build a website that’s accessible, sustainable, and grant-ready.</h1>
 					<p class="lead">
 						Free guides and checklists for nonprofits: accessibility, sustainability, and tech grants in one place. No paywall, no sign-up required.
@@ -393,6 +464,18 @@
 				</div>
 			</div>
 
+			<section class="supported-section" aria-label="Supported by">
+				<div class="supported">
+					<span>Supported by</span>
+					<div class="logo-pill">
+						<img src="assets/GLOCAL_Foundation.avif" alt="GLOCAL Foundation" />
+					</div>
+					<div class="logo-pill">
+						<img src="assets/Government_Canada.avif" alt="Government of Canada" />
+					</div>
+				</div>
+			</section>
+
 			<section class="pain-section" aria-labelledby="pain-heading">
 				<h2 id="pain-heading">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -414,7 +497,10 @@
 				</div>
 				<div class="pillar" role="listitem">
 					<svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+						<rect x="3" y="4" width="14" height="11" rx="2"/>
+						<path d="M6 19h8"/>
+						<path d="M10 16v3"/>
+						<path d="M8 8h4"/>
 					</svg>
 					<h3>Digital sustainability</h3>
 					<p>Heavy, slow sites waste server energy and frustrate users on slow connections. You pay more in hosting and lose people before the page loads. Learn to trim the fat and speed things up.</p>
@@ -428,6 +514,18 @@
 				</div>
 			</div>
 
+			<section class="subsidiary" aria-label="About Oasis of Change">
+				<div class="subsidiary-text">
+					<h2>Part of Oasis of Change</h2>
+					<p>
+						The Web-Ready Access Hub is an operating subsidiary project of Oasis of Change Inc., a not-for-profit corporation based in Vancouver, Canada.
+					</p>
+				</div>
+				<div class="subsidiary-logo">
+					<img src="assets/Oasis_of_Change.svg" alt="Oasis of Change" />
+				</div>
+			</section>
+
 			<div class="cta-block">
 				<p>Guides, checklists, and a recommended path. All in one place.</p>
 				<a href="_dev/hub.html" class="cta-primary">
@@ -438,15 +536,12 @@
 				</a>
 			</div>
 
-			<div class="supported">
-				<span>Supported by</span>
-				<div class="logo-pill">
-					<img src="assets/GLOCAL-Foundation.avif" alt="GLOCAL Foundation" />
+			<footer class="site-footer" aria-label="Site footer">
+				<div class="oasis-link">
+					<a href="https://oasisofchange.org/" target="_blank" rel="noreferrer">Return to the Oasis of Change website</a>
 				</div>
-				<div class="logo-pill">
-					<img src="assets/Government_Canada.avif" alt="Government of Canada" />
-				</div>
-			</div>
+				<p class="footer-meta">© 2026 Oasis of Change · Web-Ready Access Hub</p>
+			</footer>
 		</div>
 	</body>
 </html>

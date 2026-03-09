@@ -207,7 +207,8 @@
 		{ title: "ARIA attributes", page: "Accessibility", url: "accessibility.html#section-6" },
 		{ title: "Free accessibility testing tools", page: "Accessibility", url: "accessibility.html#section-7" },
 		{ title: "WAVE tool", page: "Accessibility", url: "accessibility.html#section-7" },
-		{ title: "axe DevTools", page: "Accessibility", url: "accessibility.html#section-7" },
+		{ title: "Google Lighthouse", page: "Accessibility", url: "accessibility.html#section-7" },
+		{ title: "PageSpeed Insights", page: "Accessibility", url: "accessibility.html#section-7" },
 		{ title: "Accessibility statement", page: "Accessibility", url: "accessibility.html#section-8" },
 		{ title: "Overlay tools warning", page: "Accessibility", url: "accessibility.html#section-4" },
 

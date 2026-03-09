@@ -117,26 +117,22 @@
 		localStorage.setItem(onboardingKey, "1");
 
 		if (!isMobile.matches) {
-			var topbarRight = document.querySelector(".topbar-right");
-			if (topbarRight) {
-				topbarRight.classList.add("onboarding-highlight");
+			var tipsBtn = document.getElementById("tips-btn");
+			if (tipsBtn) {
+				tipsBtn.classList.add("onboarding-highlight");
 				var tooltip = document.createElement("div");
 				tooltip.className = "onboarding-tooltip";
 				tooltip.setAttribute("role", "status");
 				tooltip.setAttribute("aria-live", "polite");
-				tooltip.innerHTML = '<button class="onboarding-tooltip-close" type="button" aria-label="Dismiss">' +
-					'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
-					'</button><span>Change device & content style here</span>';
-				topbarRight.appendChild(tooltip);
+				tooltip.textContent = "Reopen settings here";
+				tipsBtn.appendChild(tooltip);
 				function dismissTooltip() {
 					tooltip.classList.add("onboarding-tooltip-fade");
 					setTimeout(function () {
-						topbarRight.classList.remove("onboarding-highlight");
+						tipsBtn.classList.remove("onboarding-highlight");
 						if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
-					}, 400);
+					}, 300);
 				}
-				var closeBtn = tooltip.querySelector(".onboarding-tooltip-close");
-				if (closeBtn) closeBtn.addEventListener("click", dismissTooltip);
 				setTimeout(dismissTooltip, 6000);
 			}
 		}

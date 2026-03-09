@@ -845,7 +845,7 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 	min-width: 160px;
 }
 
-.topbar-right.onboarding-highlight {
+#tips-btn.onboarding-highlight {
 	position: relative;
 	border-radius: var(--radius);
 	animation: onboarding-highlight-pulse 6s ease-out forwards;
@@ -854,83 +854,68 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 .onboarding-tooltip {
 	position: absolute;
 	top: 100%;
-	right: 0;
+	left: 50%;
+	transform: translateX(-50%);
 	margin-top: 8px;
-	padding: 10px 14px 10px 36px;
+	padding: 6px 12px;
 	font-size: 0.8125rem;
 	font-weight: 500;
 	color: var(--text);
 	background: var(--surface);
 	border: 1px solid var(--border);
-	border-radius: 10px;
-	white-space: nowrap;
-	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
-	z-index: 100;
-	animation: onboarding-tooltip-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.onboarding-tooltip-close {
-	position: absolute;
-	top: 6px;
-	left: 6px;
-	width: 24px;
-	height: 24px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 0;
-	border: none;
-	background: transparent;
-	color: var(--text-muted);
-	cursor: pointer;
 	border-radius: 6px;
-	transition: color 0.15s ease, background 0.15s ease;
-}
-
-.onboarding-tooltip-close:hover {
-	color: var(--text);
-	background: var(--surface-hover);
-}
-
-.onboarding-tooltip-close svg {
-	width: 14px;
-	height: 14px;
-	stroke-width: 2.5;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	white-space: nowrap;
+	z-index: 100;
+	pointer-events: none;
+	animation: onboarding-tooltip-in 0.2s ease;
 }
 
 .onboarding-tooltip::before {
 	content: "";
 	position: absolute;
-	top: -6px;
-	right: 20px;
-	border-left: 6px solid transparent;
-	border-right: 6px solid transparent;
-	border-bottom: 6px solid var(--border);
+	top: -5px;
+	left: 50%;
+	margin-left: -5px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid var(--border);
 }
 
 .onboarding-tooltip::after {
 	content: "";
 	position: absolute;
-	top: -5px;
-	right: 21px;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-bottom: 5px solid var(--surface);
+	top: -4px;
+	left: 50%;
+	margin-left: -4px;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-bottom: 4px solid var(--surface);
+}
+
+[data-theme="dark"] .onboarding-tooltip {
+	background: #26262c;
+	border-color: #3f3f46;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .onboarding-tooltip::after {
+	border-bottom-color: #26262c;
 }
 
 .onboarding-tooltip-fade {
 	opacity: 0;
-	transition: opacity 0.35s ease-out;
+	transition: opacity 0.25s ease-out;
 }
 
 @keyframes onboarding-tooltip-in {
 	from {
 		opacity: 0;
-		transform: translateY(-4px);
+		transform: translateX(-50%) translateY(-4px);
 	}
 	to {
 		opacity: 1;
-		transform: translateY(0);
+		transform: translateX(-50%) translateY(0);
 	}
 }
 
@@ -1021,11 +1006,12 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 }
 
 .tips-btn {
-	opacity: 0.85;
+	opacity: 1;
+	color: var(--text-secondary);
 }
 
 .tips-btn:hover {
-	opacity: 1;
+	color: var(--text);
 }
 
 .hub-features-callout {

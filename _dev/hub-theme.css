@@ -1431,7 +1431,7 @@ body[data-page="hub"] {
 }
 
 .prose .prose-fig {
-	margin: 24px 0;
+	margin: 28px 0;
 }
 
 .prose .prose-fig img {
@@ -1440,6 +1440,18 @@ body[data-page="hub"] {
 	height: auto;
 	border-radius: var(--radius-sm);
 	display: block;
+}
+
+.prose .carbon-fig {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 680px;
+}
+
+.prose .carbon-fig img {
+	margin: 0 auto;
+	border-radius: 12px;
 }
 
 .prose .checklist-todo {

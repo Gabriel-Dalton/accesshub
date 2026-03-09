@@ -1,0 +1,653 @@
+/* ============================================================
+   ACCESSIBILITY WIDGET — accessibility-widget.css
+   Self-contained; all selectors scoped to .aw- prefix
+   ============================================================ */
+
+/* --- Reset inside widget --- */
+.aw-panel *, .aw-trigger * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- CSS custom properties (widget-local) --- */
+.aw-panel {
+  --aw-bg: #ffffff;
+  --aw-surface: #f9fafb;
+  --aw-surface-hover: #f3f4f6;
+  --aw-border: #e5e7eb;
+  --aw-border-strong: #d1d5db;
+  --aw-text: #111827;
+  --aw-text-secondary: #6b7280;
+  --aw-text-muted: #9ca3af;
+  --aw-accent: #2563eb;
+  --aw-accent-light: rgba(37, 99, 235, 0.08);
+  --aw-accent-hover: #1d4ed8;
+  --aw-radius-sm: 8px;
+  --aw-radius: 12px;
+  --aw-radius-lg: 16px;
+  --aw-shadow-lg: 0 4px 6px -1px rgba(0,0,0,.06), 0 16px 40px -8px rgba(0,0,0,.12);
+  --aw-font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --aw-transition: 150ms cubic-bezier(.4,0,.2,1);
+}
+
+/* --- Trigger Button --- */
+.aw-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2147483646;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18), 0 1px 3px rgba(0,0,0,.12);
+  transition: transform 180ms cubic-bezier(.34,1.4,.64,1),
+              box-shadow 180ms ease,
+              background 150ms ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.aw-trigger:hover {
+  transform: scale(1.06);
+  background: #1d4ed8;
+  box-shadow: 0 4px 14px rgba(0,0,0,.2), 0 2px 6px rgba(0,0,0,.12);
+}
+
+.aw-trigger:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.aw-trigger:active {
+  transform: scale(0.96);
+}
+
+.aw-trigger svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+  flex-shrink: 0;
+}
+
+/* --- Panel Container --- */
+.aw-panel {
+  position: fixed;
+  bottom: 86px;
+  right: 24px;
+  z-index: 2147483645;
+  width: 344px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100svh - 112px);
+  background: var(--aw-bg);
+  border-radius: var(--aw-radius-lg);
+  box-shadow: var(--aw-shadow-lg);
+  border: 1px solid var(--aw-border);
+  font-family: var(--aw-font);
+  color: var(--aw-text);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transform: scale(.95) translateY(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 220ms cubic-bezier(.34,1.2,.64,1),
+              opacity 180ms ease;
+  will-change: transform, opacity;
+}
+
+.aw-panel.aw-open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* --- Panel Header --- */
+.aw-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--aw-bg);
+  border-bottom: 1px solid var(--aw-border);
+  flex-shrink: 0;
+}
+
+.aw-header-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--aw-accent-light);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.aw-header-icon svg {
+  width: 17px;
+  height: 17px;
+  fill: var(--aw-accent);
+}
+
+.aw-header-text {
+  flex: 1;
+}
+
+.aw-header-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--aw-text);
+  letter-spacing: -.01em;
+  line-height: 1.2;
+}
+
+.aw-header-subtitle {
+  font-size: 11px;
+  color: var(--aw-text-muted);
+  margin-top: 1px;
+}
+
+.aw-close-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aw-text-secondary);
+  transition: background var(--aw-transition), color var(--aw-transition);
+  flex-shrink: 0;
+}
+
+.aw-close-btn:hover {
+  background: var(--aw-surface-hover);
+  color: var(--aw-text);
+}
+
+.aw-close-btn:focus-visible {
+  outline: 2px solid var(--aw-accent);
+  outline-offset: 2px;
+}
+
+.aw-close-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+/* --- Scrollable Body --- */
+.aw-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 12px 16px;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+.aw-body::-webkit-scrollbar { width: 4px; }
+.aw-body::-webkit-scrollbar-track { background: transparent; }
+.aw-body::-webkit-scrollbar-thumb { background: var(--aw-border-strong); border-radius: 4px; }
+
+/* --- Section Groups --- */
+.aw-section {
+  margin-bottom: 12px;
+}
+
+.aw-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--aw-text-muted);
+  margin-bottom: 6px;
+  padding: 0 2px;
+}
+
+.aw-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+/* --- Toggle Button Cards --- */
+.aw-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 10px 10px;
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border);
+  border-radius: var(--aw-radius-sm);
+  cursor: pointer;
+  transition: background var(--aw-transition),
+              border-color var(--aw-transition),
+              transform 100ms ease;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.aw-btn:hover {
+  background: var(--aw-surface);
+  border-color: var(--aw-border-strong);
+}
+
+.aw-btn:active { transform: scale(.97); }
+
+.aw-btn:focus-visible {
+  outline: 2px solid var(--aw-accent);
+  outline-offset: 2px;
+}
+
+.aw-btn.aw-active {
+  background: var(--aw-accent-light);
+  border-color: var(--aw-accent);
+}
+
+.aw-btn-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: var(--aw-surface-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--aw-transition);
+}
+
+.aw-btn.aw-active .aw-btn-icon {
+  background: var(--aw-accent);
+}
+
+.aw-btn-icon svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--aw-text-secondary);
+  flex-shrink: 0;
+  transition: fill var(--aw-transition);
+}
+
+.aw-btn.aw-active .aw-btn-icon svg {
+  fill: #fff;
+}
+
+.aw-btn-label {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--aw-text-secondary);
+  line-height: 1.3;
+  transition: color var(--aw-transition);
+}
+
+.aw-btn.aw-active .aw-btn-label {
+  color: var(--aw-accent);
+  font-weight: 600;
+}
+
+/* --- Slider Row --- */
+.aw-slider-row {
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border);
+  border-radius: var(--aw-radius-sm);
+  padding: 10px 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aw-slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aw-slider-info {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.aw-slider-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: var(--aw-surface-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aw-slider-icon svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--aw-text-secondary);
+}
+
+.aw-slider-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--aw-text);
+}
+
+.aw-slider-val {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--aw-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.aw-slider-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.aw-slider-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--aw-surface-hover);
+  border: 1px solid var(--aw-border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aw-text);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background var(--aw-transition), border-color var(--aw-transition), transform 100ms;
+}
+
+.aw-slider-btn:hover {
+  background: var(--aw-border);
+  border-color: var(--aw-border-strong);
+}
+
+.aw-slider-btn:active { transform: scale(.93); }
+.aw-slider-btn:focus-visible { outline: 2px solid var(--aw-accent); outline-offset: 2px; }
+
+.aw-range {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--aw-border);
+  outline: none;
+  cursor: pointer;
+}
+
+.aw-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--aw-accent);
+  cursor: pointer;
+  transition: transform 120ms;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--aw-border-strong);
+}
+
+.aw-range::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+.aw-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--aw-accent);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--aw-border-strong);
+  cursor: pointer;
+}
+
+.aw-range:focus-visible {
+  outline: 2px solid var(--aw-accent);
+  outline-offset: 3px;
+}
+
+/* --- Color Mode Chips --- */
+.aw-color-chips {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.aw-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--aw-text-secondary);
+  transition: all var(--aw-transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.aw-chip:hover {
+  border-color: var(--aw-border-strong);
+  color: var(--aw-text);
+}
+
+.aw-chip:focus-visible {
+  outline: 2px solid var(--aw-accent);
+  outline-offset: 2px;
+}
+
+.aw-chip.aw-active {
+  background: var(--aw-accent-light);
+  border-color: var(--aw-accent);
+  color: var(--aw-accent);
+  font-weight: 600;
+}
+
+.aw-chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* --- Color blind section wrapper --- */
+.aw-cb-section {
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border);
+  border-radius: var(--aw-radius-sm);
+  padding: 10px 11px;
+}
+
+.aw-cb-section-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--aw-text-secondary);
+  margin-bottom: 8px;
+}
+
+/* --- TTS Controls --- */
+.aw-tts-row {
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border);
+  border-radius: var(--aw-radius-sm);
+  padding: 10px 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aw-tts-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aw-tts-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--aw-text);
+  flex: 1;
+}
+
+.aw-tts-status {
+  font-size: 10.5px;
+  color: var(--aw-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.aw-tts-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.aw-tts-btn {
+  flex: 1;
+  padding: 6px 7px;
+  border-radius: 6px;
+  border: 1px solid var(--aw-border);
+  background: var(--aw-surface);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--aw-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all var(--aw-transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.aw-tts-btn:hover {
+  border-color: var(--aw-border-strong);
+  color: var(--aw-text);
+  background: var(--aw-surface-hover);
+}
+
+.aw-tts-btn:focus-visible { outline: 2px solid var(--aw-accent); outline-offset: 2px; }
+
+.aw-tts-btn svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* --- Reset Footer --- */
+.aw-footer {
+  padding: 8px 12px 10px;
+  border-top: 1px solid var(--aw-border);
+  flex-shrink: 0;
+}
+
+.aw-reset-btn {
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: var(--aw-radius-sm);
+  background: transparent;
+  border: 1px solid var(--aw-border);
+  color: var(--aw-text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all var(--aw-transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.aw-reset-btn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: #fff5f5;
+}
+
+.aw-reset-btn:focus-visible {
+  outline: 2px solid #ef4444;
+  outline-offset: 2px;
+}
+
+.aw-reset-btn svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   ACTIVE STATE EFFECTS — injected on <html> via JS
+   ============================================================ */
+
+/* Reading mask overlay */
+.aw-reading-mask-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483640;
+  pointer-events: none;
+}
+
+.aw-reading-mask-overlay .aw-mask-top,
+.aw-reading-mask-overlay .aw-mask-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,.65);
+  transition: height 60ms;
+}
+
+.aw-reading-mask-overlay .aw-mask-top { top: 0; }
+.aw-reading-mask-overlay .aw-mask-bottom { bottom: 0; }
+
+/* Reading guide line */
+.aw-guide-line {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(37,99,235,.45);
+  pointer-events: none;
+  z-index: 2147483641;
+  transition: top 60ms;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .aw-trigger {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .aw-panel {
+    bottom: 76px;
+    right: 8px;
+    left: 8px;
+    width: auto;
+    max-width: none;
+    max-height: calc(100svh - 100px);
+    border-radius: 14px;
+  }
+}

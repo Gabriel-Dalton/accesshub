@@ -438,4 +438,38 @@
 			navigateToActive();
 		}
 	});
+
+	/* ---- Lightbox (sustainability page) ---- */
+
+	var carbonTrigger = document.getElementById("carbon-lightbox-trigger");
+	var lightbox = document.getElementById("lightbox-carbon");
+	if (carbonTrigger && lightbox) {
+		var lightboxClose = lightbox.querySelector(".lightbox-close");
+		var lightboxBackdrop = lightbox.querySelector(".lightbox-backdrop");
+
+		function openLightbox() {
+			lightbox.classList.add("open");
+			lightbox.setAttribute("aria-hidden", "false");
+			document.body.style.overflow = "hidden";
+			if (lightboxClose) lightboxClose.focus();
+		}
+
+		function closeLightbox() {
+			lightbox.classList.remove("open");
+			lightbox.setAttribute("aria-hidden", "true");
+			document.body.style.overflow = "";
+			carbonTrigger.focus();
+		}
+
+		carbonTrigger.addEventListener("click", openLightbox);
+		if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+		if (lightboxBackdrop) lightboxBackdrop.addEventListener("click", closeLightbox);
+
+		document.addEventListener("keydown", function (e) {
+			if (e.key === "Escape" && lightbox.classList.contains("open")) {
+				e.preventDefault();
+				closeLightbox();
+			}
+		});
+	}
 })();

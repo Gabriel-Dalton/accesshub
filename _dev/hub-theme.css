@@ -1454,6 +1454,121 @@ body[data-page="hub"] {
 	border-radius: 12px;
 }
 
+.prose .carbon-fig-trigger {
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.prose .carbon-fig-trigger img {
+	transition: opacity 0.2s ease;
+}
+
+.prose .carbon-fig-trigger:hover img {
+	opacity: 0.92;
+}
+
+/* ---- Lightbox ---- */
+
+.lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 110;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: clamp(40px, 8vh, 80px) 24px 24px;
+	background: rgba(0, 0, 0, 0.92);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.lightbox:not(.open) {
+	pointer-events: none;
+}
+
+.lightbox.open {
+	opacity: 1;
+	visibility: visible;
+}
+
+.lightbox-backdrop {
+	position: absolute;
+	inset: 0;
+	cursor: pointer;
+}
+
+.lightbox-panel {
+	position: relative;
+	max-width: 90vw;
+	max-height: 90vh;
+	padding: 32px 24px 0;
+	background: var(--surface);
+	border-radius: var(--radius-lg);
+	box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.lightbox-close {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	z-index: 2;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: none;
+	background: var(--surface-inset);
+	color: var(--text-muted);
+	cursor: pointer;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.lightbox-close:hover {
+	background: var(--surface-hover);
+	color: var(--text);
+	transform: scale(1.05);
+}
+
+.lightbox-img {
+	width: 100%;
+	max-width: 640px;
+	height: auto;
+	display: block;
+	border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.lightbox-caption {
+	padding: 20px 24px 24px;
+	text-align: center;
+}
+
+.lightbox-caption h2 {
+	font-size: 1.15rem;
+	font-weight: 600;
+	color: var(--text);
+	margin: 0 0 8px;
+}
+
+.lightbox-caption p {
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+	line-height: 1.5;
+	margin: 0;
+}
+
 .prose .checklist-todo {
 	list-style: none;
 	padding-left: 0;

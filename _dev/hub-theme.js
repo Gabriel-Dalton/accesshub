@@ -120,9 +120,24 @@
 			var topbarRight = document.querySelector(".topbar-right");
 			if (topbarRight) {
 				topbarRight.classList.add("onboarding-highlight");
-				setTimeout(function () {
-					topbarRight.classList.remove("onboarding-highlight");
-				}, 2500);
+				var tooltip = document.createElement("div");
+				tooltip.className = "onboarding-tooltip";
+				tooltip.setAttribute("role", "status");
+				tooltip.setAttribute("aria-live", "polite");
+				tooltip.innerHTML = '<button class="onboarding-tooltip-close" type="button" aria-label="Dismiss">' +
+					'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+					'</button><span>Change device & content style here</span>';
+				topbarRight.appendChild(tooltip);
+				function dismissTooltip() {
+					tooltip.classList.add("onboarding-tooltip-fade");
+					setTimeout(function () {
+						topbarRight.classList.remove("onboarding-highlight");
+						if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
+					}, 400);
+				}
+				var closeBtn = tooltip.querySelector(".onboarding-tooltip-close");
+				if (closeBtn) closeBtn.addEventListener("click", dismissTooltip);
+				setTimeout(dismissTooltip, 6000);
 			}
 		}
 	}
@@ -152,6 +167,9 @@
 		overlay.setAttribute("aria-modal", "true");
 		overlay.innerHTML =
 			'<div class="tips-dialog onboarding-dialog">' +
+			'<button class="onboarding-close-x" type="button" aria-label="Close">' +
+			'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+			'</button>' +
 			'<h2 id="onboarding-title">Welcome</h2>' +
 			'<p class="onboarding-intro">Choose your setup so we can show the right keyboard shortcuts and content style for you. Your choices are saved and will apply across all pages.</p>' +
 			'<div class="onboarding-option">' +
@@ -168,7 +186,7 @@
 			'<button class="onboarding-option-btn" id="onboarding-technical" type="button" aria-pressed="false">Technical</button>' +
 			'</div>' +
 			'</div>' +
-			'<p class="onboarding-edit-note">The Mac/Win and Plain English/Technical toggles in the top right are where you can change these anytime. We&rsquo;ll point them out when you close this.</p>' +
+			'<p class="onboarding-edit-note">Change these anytime using the toggles in the top right.</p>' +
 			'<div class="onboarding-actions">' +
 			'<button class="tips-close" id="onboarding-done" type="button">Get started</button>' +
 			'</div>' +
@@ -201,6 +219,8 @@
 			updateOnboardingSelection();
 		});
 		document.getElementById("onboarding-done").addEventListener("click", closeOnboarding);
+		var closeX = overlay.querySelector(".onboarding-close-x");
+		if (closeX) closeX.addEventListener("click", closeOnboarding);
 
 		var topbarRight = document.querySelector(".topbar-right");
 		if (topbarRight) {

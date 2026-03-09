@@ -554,9 +554,7 @@
         '<div class="ls-pf">' +
           '<div class="ls-disc">' +
             S.info +
-            '<p>This page may be shown in a translated version for convenience. ' +
-            'Translations may not always capture the exact meaning of the original content. ' +
-            'Where accuracy matters, please refer to the original language version.</p>' +
+            '<p>Translations are provided for convenience and may not fully capture the original meaning. <a id="ls-disc-link" href="#" style="color:inherit;text-decoration:underline">Language disclaimer</a></p>' +
           '</div>' +
           '<button id="ls-reset" type="button" hidden>' +
             S.reset + 'Return to original language' +
@@ -565,6 +563,13 @@
       '</div>';
 
     document.body.appendChild(root);
+
+    /* Set disclaimer link href based on page depth */
+    var discLink = document.getElementById('ls-disc-link');
+    if (discLink) {
+      var inDev = /\/_dev\//.test(location.pathname) || /\/_dev\//.test(location.href);
+      discLink.href = inDev ? 'disclaimers.html#language-translations' : '_dev/disclaimers.html#language-translations';
+    }
   }
 
   // ─── Render lists ──────────────────────────────────────────────────────────

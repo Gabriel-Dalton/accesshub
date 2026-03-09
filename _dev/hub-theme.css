@@ -1809,6 +1809,12 @@ body[data-page="hub"] {
 	margin-bottom: 0;
 }
 
+.prose .prose-footer-note {
+	margin-top: 48px;
+	padding-top: 24px;
+	border-top: 1px solid var(--border);
+}
+
 .prose strong {
 	color: var(--text);
 	font-weight: 600;

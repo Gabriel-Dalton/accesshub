@@ -9,7 +9,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="hub-theme.css" />
-		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));document.documentElement.setAttribute("data-mode",localStorage.getItem("accesshub-mode")||"simple");</script>
+		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));document.documentElement.setAttribute("data-mode",localStorage.getItem("accesshub-mode")||"simple");document.documentElement.setAttribute("data-keyboard",localStorage.getItem("accesshub-keyboard")||(/Mac|iPhone|iPad|iPod/.test(navigator.userAgent||navigator.platform||"")?"mac":"windows"));</script>
 	</head>
 	<body class="docs" data-page="accessibility">
 
@@ -25,7 +25,8 @@
 				<button class="search-trigger" id="search-trigger" type="button">
 					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
 					<span>Quick search...</span>
-					<kbd>Ctrl K</kbd>
+					<kbd class="keyboard-windows-only">Ctrl K</kbd>
+					<kbd class="keyboard-mac-only">⌘ K</kbd>
 				</button>
 			</div>
 			<div class="sidebar-nav">
@@ -81,7 +82,11 @@
 							Technical
 						</button>
 					</div>
-					<button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme">
+					<div class="keyboard-toggle" role="group" aria-label="Keyboard shortcuts">
+						<button class="keyboard-btn" id="keyboard-mac" type="button" aria-pressed="false" aria-label="Mac keyboard shortcuts">Mac</button>
+						<button class="keyboard-btn" id="keyboard-windows" type="button" aria-pressed="true" aria-label="Windows keyboard shortcuts">Win</button>
+					</div>
+					<button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle light or dark mode">
 						<svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
 						<svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
 					</button>
@@ -318,14 +323,9 @@
 					</div>
 
 					<div class="tool-item">
-						<h3>axe DevTools</h3>
-						<p><strong>Website:</strong> <a href="https://www.deque.com/axe">deque.com/axe</a></p>
-						<p>Browser extension that tests pages against WCAG criteria. Highly respected in the development community. Available for Chrome, Firefox, and Edge.</p>
-					</div>
-
-					<div class="tool-item">
 						<h3>Google Lighthouse</h3>
-						<p>Built into Chrome DevTools (press F12, then go to the Lighthouse tab). Provides an accessibility score and detailed recommendations.</p>
+						<p><strong>Website:</strong> <a href="https://pagespeed.web.dev">pagespeed.web.dev</a></p>
+						<p>PageSpeed Insights runs Lighthouse to provide an accessibility score and detailed recommendations. Also available in Chrome DevTools (<span class="keyboard-windows-only">F12 or Ctrl+Shift+I</span><span class="keyboard-mac-only">⌘⌥I or F12</span> → Lighthouse tab).</p>
 					</div>
 
 					<div class="tool-item">
@@ -360,12 +360,6 @@
 					<div class="tool-item">
 						<h3>HeadingsMap</h3>
 						<p>Browser extension that shows the heading structure of any page, making it easy to spot heading hierarchy issues.</p>
-					</div>
-
-					<div class="tool-item">
-						<h3>Google PageSpeed Insights</h3>
-						<p><strong>Website:</strong> <a href="https://pagespeed.web.dev">pagespeed.web.dev</a></p>
-						<p>While primarily a performance tool, it includes accessibility scoring based on Lighthouse.</p>
 					</div>
 
 					<h2>Creating an accessibility statement</h2>

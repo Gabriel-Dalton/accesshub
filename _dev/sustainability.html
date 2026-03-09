@@ -9,7 +9,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="hub-theme.css" />
-		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));document.documentElement.setAttribute("data-mode",localStorage.getItem("accesshub-mode")||"simple");</script>
+		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));document.documentElement.setAttribute("data-mode",localStorage.getItem("accesshub-mode")||"simple");document.documentElement.setAttribute("data-keyboard",localStorage.getItem("accesshub-keyboard")||(/Mac|iPhone|iPad|iPod/.test(navigator.userAgent||navigator.platform||"")?"mac":"windows"));</script>
 	</head>
 	<body class="docs" data-page="sustainability">
 
@@ -80,6 +80,10 @@
 							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
 							Technical
 						</button>
+					</div>
+					<div class="keyboard-toggle" role="group" aria-label="Keyboard shortcuts">
+						<button class="keyboard-btn" id="keyboard-mac" type="button" aria-pressed="false" aria-label="Mac keyboard shortcuts">Mac</button>
+						<button class="keyboard-btn" id="keyboard-windows" type="button" aria-pressed="true" aria-label="Windows keyboard shortcuts">Win</button>
 					</div>
 					<button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme">
 						<svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>

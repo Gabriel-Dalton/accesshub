@@ -1,6 +1,7 @@
 (function () {
 	var themeKey = "accesshub-theme";
 	var modeKey = "accesshub-mode";
+	var keyboardKey = "accesshub-keyboard";
 	var sidebarKey = "accesshub-sidebar";
 	var root = document.documentElement;
 	var body = document.body;
@@ -20,6 +21,7 @@
 	applyTheme(initialTheme);
 
 	var themeBtn = document.getElementById("theme-toggle");
+	if (themeBtn) themeBtn.setAttribute("title", "Toggle light or dark mode");
 	if (themeBtn) {
 		themeBtn.addEventListener("click", function () {
 			var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
@@ -55,6 +57,119 @@
 			applyMode("developer");
 		});
 	}
+
+	function detectKeyboard() {
+		var ua = navigator.userAgent || navigator.platform || "";
+		return /Mac|iPhone|iPad|iPod/.test(ua) ? "mac" : "windows";
+	}
+
+	function applyKeyboard(kbd) {
+		root.setAttribute("data-keyboard", kbd);
+		var macBtn = document.getElementById("keyboard-mac");
+		var winBtn = document.getElementById("keyboard-windows");
+		if (macBtn) macBtn.setAttribute("aria-pressed", kbd === "mac" ? "true" : "false");
+		if (winBtn) winBtn.setAttribute("aria-pressed", kbd === "windows" ? "true" : "false");
+	}
+
+	var initialKeyboard = localStorage.getItem(keyboardKey) || detectKeyboard();
+	applyKeyboard(initialKeyboard);
+
+	var keyboardMacBtn = document.getElementById("keyboard-mac");
+	var keyboardWinBtn = document.getElementById("keyboard-windows");
+	if (keyboardMacBtn) {
+		keyboardMacBtn.addEventListener("click", function () {
+			localStorage.setItem(keyboardKey, "mac");
+			applyKeyboard("mac");
+		});
+	}
+	if (keyboardWinBtn) {
+		keyboardWinBtn.addEventListener("click", function () {
+			localStorage.setItem(keyboardKey, "windows");
+			applyKeyboard("windows");
+		});
+	}
+
+	var keyboardToggle = document.querySelector(".keyboard-toggle");
+	if (keyboardToggle) keyboardToggle.setAttribute("title", "Show keyboard shortcuts for Mac or Windows");
+
+	var modeToggle = document.querySelector(".mode-toggle");
+	if (modeToggle) modeToggle.setAttribute("title", "Plain English: simple explanations. Technical: specs and implementation details.");
+
+	var tipsKey = "accesshub-seen-tips";
+
+	function openTips() {
+		var overlay = document.getElementById("tips-overlay");
+		if (overlay) {
+			overlay.classList.add("visible");
+			body.classList.add("tips-open");
+			var closeBtn = document.getElementById("tips-close");
+			if (closeBtn) closeBtn.focus();
+		}
+	}
+
+	function closeTips() {
+		var overlay = document.getElementById("tips-overlay");
+		if (overlay) {
+			overlay.classList.remove("visible");
+			body.classList.remove("tips-open");
+		}
+		localStorage.setItem(tipsKey, "1");
+	}
+
+	function initTips() {
+		var existing = document.getElementById("tips-overlay");
+		if (existing) return;
+
+		var overlay = document.createElement("div");
+		overlay.id = "tips-overlay";
+		overlay.className = "tips-overlay";
+		overlay.setAttribute("role", "dialog");
+		overlay.setAttribute("aria-labelledby", "tips-title");
+		overlay.setAttribute("aria-modal", "true");
+		var hasMode = document.getElementById("mode-simple");
+		var hasKeyboard = document.getElementById("keyboard-mac");
+		overlay.innerHTML =
+			'<div class="tips-dialog">' +
+			'<h2 id="tips-title">Hub features</h2>' +
+			'<p>Here\'s what you can do in the Web-Ready Access Hub:</p>' +
+			'<ul class="tips-list">' +
+			'<li><strong>Quick search</strong> — Press <kbd class="keyboard-windows-only">Ctrl+K</kbd><kbd class="keyboard-mac-only">⌘K</kbd> to search across all tracks and pages.</li>' +
+			(hasKeyboard ? '<li><strong>Mac / Win</strong> — Switch to see keyboard shortcuts for your platform (Mac or Windows).</li>' : "") +
+			(hasMode ? '<li><strong>Plain English / Technical</strong> — Toggle between simple explanations and detailed specs (on track pages).</li>' : "") +
+			'<li><strong>Theme</strong> — Toggle light or dark mode with the sun/moon icon.</li>' +
+			'<li><strong>Sidebar</strong> — Use the menu icon to open or collapse the navigation.</li>' +
+			'</ul>' +
+			'<button class="tips-close" id="tips-close" type="button">Got it</button>' +
+			'</div>';
+
+		overlay.addEventListener("click", function (e) {
+			if (e.target === overlay) closeTips();
+		});
+
+		body.appendChild(overlay);
+
+		var closeBtn = document.getElementById("tips-close");
+		if (closeBtn) closeBtn.addEventListener("click", closeTips);
+
+		var topbarRight = document.querySelector(".topbar-right");
+		if (topbarRight) {
+			var tipsBtn = document.createElement("button");
+			tipsBtn.className = "icon-btn tips-btn";
+			tipsBtn.id = "tips-btn";
+			tipsBtn.type = "button";
+			tipsBtn.setAttribute("aria-label", "Show hub tips and features");
+			tipsBtn.setAttribute("title", "Hub tips and features");
+			tipsBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>';
+			topbarRight.insertBefore(tipsBtn, topbarRight.firstChild);
+			tipsBtn.addEventListener("click", openTips);
+		}
+
+		if (!localStorage.getItem(tipsKey)) {
+			setTimeout(openTips, 600);
+		}
+	}
+
+	initTips();
 
 	/* ---- Sidebar ---- */
 
@@ -207,7 +322,8 @@
 		{ title: "ARIA attributes", page: "Accessibility", url: "accessibility.html#section-6" },
 		{ title: "Free accessibility testing tools", page: "Accessibility", url: "accessibility.html#section-7" },
 		{ title: "WAVE tool", page: "Accessibility", url: "accessibility.html#section-7" },
-		{ title: "axe DevTools", page: "Accessibility", url: "accessibility.html#section-7" },
+		{ title: "Google Lighthouse", page: "Accessibility", url: "accessibility.html#section-7" },
+		{ title: "PageSpeed Insights", page: "Accessibility", url: "accessibility.html#section-7" },
 		{ title: "Accessibility statement", page: "Accessibility", url: "accessibility.html#section-8" },
 		{ title: "Overlay tools warning", page: "Accessibility", url: "accessibility.html#section-4" },
 
@@ -416,6 +532,15 @@
 	});
 
 	document.addEventListener("keydown", function (e) {
+		if (e.key === "Escape") {
+			var tipsOverlay = document.getElementById("tips-overlay");
+			if (tipsOverlay && tipsOverlay.classList.contains("visible")) {
+				e.preventDefault();
+				closeTips();
+				return;
+			}
+		}
+
 		if ((e.metaKey || e.ctrlKey) && e.key === "k") {
 			e.preventDefault();
 			isSearchOpen() ? closeSearch() : openSearch();

@@ -9,7 +9,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="hub-theme.css" />
-		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));</script>
+		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));document.documentElement.setAttribute("data-mode",localStorage.getItem("accesshub-mode")||"simple");</script>
 	</head>
 	<body class="docs" data-page="accessibility">
 
@@ -62,6 +62,10 @@
 					<span class="topbar-crumb">Accessibility</span>
 				</div>
 				<div class="topbar-right">
+					<div class="mode-toggle" role="group" aria-label="Content depth">
+						<button class="mode-btn mode-simple" id="mode-simple" type="button" aria-pressed="true" aria-label="Simple mode: concise tips">Simple</button>
+						<button class="mode-btn mode-developer" id="mode-developer" type="button" aria-pressed="false" aria-label="Developer mode: technical details">Developer</button>
+					</div>
 					<button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle theme">
 						<svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
 						<svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
@@ -73,6 +77,32 @@
 				<span class="kicker">Track 02</span>
 				<h1>Web Accessibility</h1>
 				<p class="lead">Make your website usable for everyone, including people with disabilities, and understand the legal requirements.</p>
+
+				<section class="things-to-know" aria-label="Things to know">
+					<h2>
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+						Things to know
+					</h2>
+					<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">Key takeaways that change based on your tech level. Toggle <strong>Simple</strong> or <strong>Developer</strong> in the toolbar above.</p>
+					<ul>
+						<li>
+							<span class="tip-simple"><strong>Alt text:</strong> Add a short description to every image so screen readers can convey it. For purely decorative images, leave the alt field empty.</span>
+							<span class="tip-developer"><strong>WCAG 1.1.1 (Non-text Content):</strong> Every <code>&lt;img&gt;</code> needs an <code>alt</code> attribute. Meaningful images: descriptive text (&lt;125 chars). Decorative: <code>alt=""</code> to expose as presentational. Use semantic HTML first; ARIA only when necessary.</span>
+						</li>
+						<li>
+							<span class="tip-simple"><strong>Color contrast:</strong> Text needs to stand out clearly against its background. Use a free contrast checker online to verify yours meets the minimum.</span>
+							<span class="tip-developer"><strong>WCAG 1.4.3 (Contrast Minimum):</strong> Normal text: 4.5:1 ratio (AA). Large text (18pt+ or 14pt+ bold): 3:1. Use tools like WebAIM Contrast Checker or Colour Contrast Analyser. Low contrast is the #1 detected failure.</span>
+						</li>
+						<li>
+							<span class="tip-simple"><strong>Keyboard navigation:</strong> Try using only Tab, Shift+Tab, and Enter to move through your site. If you can’t reach everything, some users can’t either.</span>
+							<span class="tip-developer"><strong>WCAG 2.1.1 (Keyboard):</strong> All functionality must be operable via keyboard. Logical tab order, visible focus indicators (<code>:focus-visible</code>), no focus traps. Use <code>tabindex="0"</code> sparingly; never <code>tabindex&gt;0</code>.</span>
+						</li>
+						<li>
+							<span class="tip-simple"><strong>Headings & links:</strong> Use real headings (H1, H2, H3) to structure content, and make link text describe where it goes (not “click here”).</span>
+							<span class="tip-developer"><strong>Semantic structure:</strong> Heading hierarchy (single H1, logical H2/H3 order), descriptive link text for link-list navigation. ARIA landmarks supplement, not replace, semantic HTML (<code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;header&gt;</code>).</span>
+						</li>
+					</ul>
+				</section>
 
 				<div class="prose">
 					<h2>What is web accessibility?</h2>

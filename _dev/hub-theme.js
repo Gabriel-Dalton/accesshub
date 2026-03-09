@@ -1,5 +1,6 @@
 (function () {
 	var themeKey = "accesshub-theme";
+	var modeKey = "accesshub-mode";
 	var sidebarKey = "accesshub-sidebar";
 	var root = document.documentElement;
 	var body = document.body;
@@ -24,6 +25,34 @@
 			var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
 			localStorage.setItem(themeKey, next);
 			applyTheme(next);
+		});
+	}
+
+	/* ---- Mode (Simple / Developer) ---- */
+
+	function applyMode(mode) {
+		root.setAttribute("data-mode", mode);
+		var simpleBtn = document.getElementById("mode-simple");
+		var developerBtn = document.getElementById("mode-developer");
+		if (simpleBtn) simpleBtn.setAttribute("aria-pressed", mode === "simple" ? "true" : "false");
+		if (developerBtn) developerBtn.setAttribute("aria-pressed", mode === "developer" ? "true" : "false");
+	}
+
+	var initialMode = localStorage.getItem(modeKey) || "simple";
+	applyMode(initialMode);
+
+	var modeSimpleBtn = document.getElementById("mode-simple");
+	var modeDeveloperBtn = document.getElementById("mode-developer");
+	if (modeSimpleBtn) {
+		modeSimpleBtn.addEventListener("click", function () {
+			localStorage.setItem(modeKey, "simple");
+			applyMode("simple");
+		});
+	}
+	if (modeDeveloperBtn) {
+		modeDeveloperBtn.addEventListener("click", function () {
+			localStorage.setItem(modeKey, "developer");
+			applyMode("developer");
 		});
 	}
 

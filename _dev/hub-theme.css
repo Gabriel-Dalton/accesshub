@@ -1430,6 +1430,30 @@ body[data-page="hub"] {
 	margin-bottom: 0;
 }
 
+.prose .prose-fig {
+	margin: 28px 0;
+}
+
+.prose .prose-fig img {
+	width: 100%;
+	max-width: 640px;
+	height: auto;
+	border-radius: var(--radius-sm);
+	display: block;
+}
+
+.prose .carbon-fig {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 680px;
+}
+
+.prose .carbon-fig img {
+	margin: 0 auto;
+	border-radius: 12px;
+}
+
 .prose .checklist-todo {
 	list-style: none;
 	padding-left: 0;

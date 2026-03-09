@@ -748,14 +748,15 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 
 .onboarding-dialog {
 	position: relative;
-	max-width: 540px;
-	padding: 36px 40px;
+	max-width: 620px;
+	padding: 36px 56px 36px 40px;
 }
 
 .onboarding-close-x {
 	position: absolute;
-	top: 12px;
-	left: 12px;
+	top: 16px;
+	right: 16px;
+	left: auto;
 	width: 36px;
 	height: 36px;
 	display: flex;
@@ -763,16 +764,17 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 	justify-content: center;
 	padding: 0;
 	border: none;
-	background: transparent;
+	background: var(--surface-inset);
 	color: var(--text-muted);
 	cursor: pointer;
-	border-radius: var(--radius);
-	transition: color 0.15s ease, background 0.15s ease;
+	border-radius: 50%;
+	transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
 .onboarding-close-x:hover {
-	color: var(--text);
 	background: var(--surface-hover);
+	color: var(--text);
+	transform: scale(1.05);
 }
 
 .onboarding-intro {
@@ -853,31 +855,67 @@ body[data-page="tech-grants"] .nav-sub a.active { color: #b45309; }
 	position: absolute;
 	top: 100%;
 	right: 0;
-	margin-top: 6px;
-	padding: 8px 12px;
+	margin-top: 8px;
+	padding: 10px 14px 10px 36px;
 	font-size: 0.8125rem;
 	font-weight: 500;
-	color: var(--accent-fg);
-	background: var(--accent);
-	border-radius: var(--radius);
+	color: var(--text);
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 10px;
 	white-space: nowrap;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
 	z-index: 100;
-	animation: onboarding-tooltip-in 0.2s ease-out;
+	animation: onboarding-tooltip-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.onboarding-tooltip span {
-	margin-left: 24px;
+.onboarding-tooltip-close {
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border: none;
+	background: transparent;
+	color: var(--text-muted);
+	cursor: pointer;
+	border-radius: 6px;
+	transition: color 0.15s ease, background 0.15s ease;
+}
+
+.onboarding-tooltip-close:hover {
+	color: var(--text);
+	background: var(--surface-hover);
+}
+
+.onboarding-tooltip-close svg {
+	width: 14px;
+	height: 14px;
+	stroke-width: 2.5;
 }
 
 .onboarding-tooltip::before {
 	content: "";
 	position: absolute;
+	top: -6px;
+	right: 20px;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid var(--border);
+}
+
+.onboarding-tooltip::after {
+	content: "";
+	position: absolute;
 	top: -5px;
-	right: 16px;
+	right: 21px;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
-	border-bottom: 5px solid var(--accent);
+	border-bottom: 5px solid var(--surface);
 }
 
 .onboarding-tooltip-fade {
@@ -1220,6 +1258,15 @@ body.sidebar-collapsed .main {
 
 [data-keyboard="mac"] .keyboard-windows-only {
 	display: none;
+}
+
+/* Explicit Windows rules: override .hub-features-callout kbd etc. */
+[data-keyboard="windows"] .keyboard-mac-only {
+	display: none;
+}
+
+[data-keyboard="windows"] .keyboard-windows-only {
+	display: inline;
 }
 
 /* ---- Key takeaways (mode-aware tips) ---- */

@@ -125,7 +125,7 @@
 				tooltip.setAttribute("role", "status");
 				tooltip.setAttribute("aria-live", "polite");
 				tooltip.innerHTML = '<button class="onboarding-tooltip-close" type="button" aria-label="Dismiss">' +
-					'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+					'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
 					'</button><span>Change device & content style here</span>';
 				topbarRight.appendChild(tooltip);
 				function dismissTooltip() {
@@ -168,7 +168,7 @@
 		overlay.innerHTML =
 			'<div class="tips-dialog onboarding-dialog">' +
 			'<button class="onboarding-close-x" type="button" aria-label="Close">' +
-			'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+			'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>' +
 			'</button>' +
 			'<h2 id="onboarding-title">Welcome</h2>' +
 			'<p class="onboarding-intro">Choose your setup so we can show the right keyboard shortcuts and content style for you. Your choices are saved and will apply across all pages.</p>' +

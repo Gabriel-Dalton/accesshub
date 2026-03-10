@@ -1,13 +1,7 @@
-/**
- * Language Selector — Self-contained component.
- * Include via: <script src="assets/language-selector.js" defer></script>
- * Pairs with Google Translate's free widget for live translation.
- * All Google Translate chrome is hidden; this component provides the full UI.
- */
+
 (function (global) {
   'use strict';
 
-  // ─── Language list ─────────────────────────────────────────────────────────
 
   var LANGUAGES = [
     { code: 'af',    name: 'Afrikaans',            native: 'Afrikaans'        },
@@ -116,12 +110,10 @@
   var ORIGINAL  = 'en';
   var STORE_KEY = 'ls_selected_lang';
 
-  // ─── State ─────────────────────────────────────────────────────────────────
 
   var current   = ORIGINAL;
   var panelOpen = false;
 
-  // ─── Helpers ───────────────────────────────────────────────────────────────
 
   function getLang(code) {
     for (var i = 0; i < LANGUAGES.length; i++) {
@@ -158,7 +150,6 @@
     catch(e) { var ev = document.createEvent('HTMLEvents'); ev.initEvent('change', true, true); el.dispatchEvent(ev); }
   }
 
-  // ─── Translation engine ────────────────────────────────────────────────────
 
   function applyTranslation(code) {
     if (code === ORIGINAL) { doReset(); return; }
@@ -191,7 +182,7 @@
     document.head.appendChild(suppress);
 
     global.googleTranslateElementInit = function () {
-      /* global google */
+      
       new google.translate.TranslateElement(
         { pageLanguage: ORIGINAL, autoDisplay: false },
         'ls-gt-el'
@@ -204,14 +195,13 @@
     document.head.appendChild(s);
   }
 
-  // ─── Styles ────────────────────────────────────────────────────────────────
 
   function injectStyles() {
     var el = document.createElement('style');
     el.id = 'ls-styles';
-    /* All selectors are prefixed with #ls-root or #ls- to avoid collisions */
+    
     el.textContent =
-      /* ── Custom properties ── */
+      
       '#ls-root{' +
         '--lsa:#c44d2a;--lsah:#a33f22;--lsas:rgba(196,77,42,.09);--lsah2:rgba(196,77,42,.15);' +
         '--lsbg:#f8f6f3;--lssf:#fff;--lsbd:#e5e2de;' +
@@ -223,7 +213,7 @@
         '--lsfh:"Fredoka",system-ui,sans-serif;' +
       '}' +
 
-      /* ── Trigger ── */
+      
       '#ls-trigger{' +
         'position:fixed;top:60px;right:12px;z-index:9990;' +
         'display:flex;align-items:center;gap:7px;' +
@@ -249,7 +239,7 @@
         'stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}' +
       '#ls-trig-lbl{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}' +
 
-      /* ── Backdrop ── */
+      
       '#ls-bd{' +
         'position:fixed;inset:0;z-index:9991;' +
         'background:rgba(10,8,6,.38);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);' +
@@ -258,7 +248,7 @@
       '}' +
       '#ls-bd.ls-open{opacity:1;visibility:visible;pointer-events:auto}' +
 
-      /* ── Panel ── */
+      
       '#ls-panel{' +
         'position:fixed;z-index:9992;' +
         'background:var(--lssf);border:1px solid var(--lsbd);' +
@@ -274,7 +264,7 @@
       '#ls-panel.ls-open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1);pointer-events:auto}' +
       '#ls-panel[hidden]{display:none}' +
 
-      /* ── Header ── */
+      
       '.ls-ph{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;' +
         'padding:22px 20px 16px;border-bottom:1px solid var(--lsbd);flex-shrink:0}' +
       '.ls-ph h2{font-family:var(--lsfh);font-size:1.28rem;font-weight:700;' +
@@ -289,7 +279,7 @@
       '.ls-x:focus-visible{outline:2px solid var(--lsa);outline-offset:2px}' +
       '.ls-x svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}' +
 
-      /* ── Search ── */
+      
       '.ls-sw{position:relative;padding:13px 16px 9px;flex-shrink:0}' +
       '.ls-si{position:absolute;left:28px;top:50%;transform:translateY(-50%);' +
         'width:15px;height:15px;stroke:var(--lstm);fill:none;' +
@@ -312,7 +302,7 @@
       '#ls-sc svg{width:9px;height:9px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round}' +
       '#ls-sc[hidden]{display:none}' +
 
-      /* ── Scroll area ── */
+      
       '#ls-scroll{flex:1;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;' +
         'padding:0 12px 12px;scroll-behavior:smooth}' +
       '#ls-scroll::-webkit-scrollbar{width:4px}' +
@@ -320,11 +310,11 @@
       '#ls-scroll::-webkit-scrollbar-thumb{background:var(--lsbd);border-radius:2px}' +
       '#ls-scroll::-webkit-scrollbar-thumb:hover{background:#cbc7c2}' +
 
-      /* ── Section labels ── */
+      
       '.ls-sl{font-family:var(--lsf);font-size:.64rem;font-weight:700;' +
         'text-transform:uppercase;letter-spacing:.09em;color:var(--lstm);padding:14px 4px 7px}' +
 
-      /* ── Suggested chip grid ── */
+      
       '.ls-sg{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:2px}' +
       '.ls-chip{display:flex;align-items:center;gap:8px;padding:9px 11px;' +
         'border:1.5px solid var(--lsbd);border-radius:var(--lsrsm);' +
@@ -345,7 +335,7 @@
       '.ls-sel .ls-ck{display:flex;align-items:center}' +
       '.ls-ck svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}' +
 
-      /* ── Full list ── */
+      
       '.ls-ll{display:flex;flex-direction:column;gap:1px}' +
       '.ls-li{display:flex;align-items:center;gap:12px;padding:9px 12px;' +
         'border-radius:var(--lsrsm);border:1.5px solid transparent;' +
@@ -366,15 +356,15 @@
       '.ls-li.ls-sel .ls-lk{display:flex;align-items:center}' +
       '.ls-lk svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}' +
 
-      /* ── No results ── */
+      
       '#ls-nores{padding:28px 8px;text-align:center;font-family:var(--lsf);color:var(--lstm);font-size:.875rem;line-height:1.5}' +
       '#ls-nores strong{color:var(--lst2)}' +
       '#ls-nores[hidden]{display:none}' +
 
-      /* ── Footer ── */
+      
       '.ls-pf{padding:10px 16px 16px;border-top:1px solid var(--lsbd);flex-shrink:0}' +
 
-      /* ── Disclaimer ── */
+      
       '.ls-disc{display:flex;gap:10px;align-items:flex-start;' +
         'padding:11px 14px;margin-bottom:10px;' +
         'background:#faf9f7;border:1px solid var(--lsbd);border-radius:var(--lsrsm)}' +
@@ -382,7 +372,7 @@
         'stroke:var(--lstm);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}' +
       '.ls-disc p{font-family:var(--lsf);font-size:.72rem;color:var(--lstm);line-height:1.55;margin:0}' +
 
-      /* ── Reset button ── */
+      
       '#ls-reset{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;' +
         'padding:10px 16px;background:transparent;' +
         'border:1.5px solid var(--lsbd);border-radius:var(--lsrsm);' +
@@ -395,7 +385,7 @@
       '#ls-reset svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}' +
       '#ls-reset[hidden]{display:none}' +
 
-      /* ── Notice bar ── */
+      
       '#ls-notice{position:fixed;bottom:0;left:0;right:0;z-index:9989;' +
         'background:var(--lssf);border-top:1px solid var(--lsbd);' +
         'padding:9px 20px;box-shadow:0 -4px 24px rgba(0,0,0,.07);' +
@@ -421,7 +411,7 @@
       '#ls-nclose:focus-visible{outline:2px solid var(--lsa);outline-offset:2px}' +
       '#ls-nclose svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round}' +
 
-      /* ── Tablet / Mobile ── */
+      
       '@media(max-width:768px){' +
         '#ls-panel{position:fixed;bottom:0;left:0;right:0;top:auto;' +
           'width:100%;max-width:100%;' +
@@ -438,12 +428,12 @@
         '#ls-norig{margin-left:auto}' +
       '}' +
 
-      /* ── Reduced motion ── */
+      
       '@media(prefers-reduced-motion:reduce){' +
         '#ls-trigger,#ls-bd,#ls-panel,#ls-notice{transition:none!important}' +
       '}' +
 
-      /* ── Kill Google Translate chrome ── */
+      
       '.goog-te-banner-frame,.goog-te-balloon-frame,' +
       '.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,.VIpgJd-ZVi9od-ORHb,' +
       '.goog-te-gadget,.skiptranslate,#ls-gt-el{display:none!important;visibility:hidden!important}' +
@@ -452,7 +442,6 @@
     document.head.appendChild(el);
   }
 
-  // ─── SVG strings ───────────────────────────────────────────────────────────
 
   var S = {
     globe:
@@ -487,7 +476,6 @@
       '</svg>',
   };
 
-  // ─── Build DOM ─────────────────────────────────────────────────────────────
 
   function buildDOM() {
     var root = document.createElement('div');
@@ -495,7 +483,7 @@
     root.innerHTML =
       '<div id="ls-gt-el" aria-hidden="true" style="display:none;position:absolute"></div>' +
 
-      /* Notice bar */
+      
       '<div id="ls-notice" role="status" aria-live="polite" hidden>' +
         '<div class="ls-ni">' +
           S.globeNi +
@@ -505,19 +493,19 @@
         '</div>' +
       '</div>' +
 
-      /* Trigger */
+      
       '<button id="ls-trigger" type="button" ' +
           'aria-label="Select language" aria-expanded="false" aria-controls="ls-panel">' +
         S.globe +
         '<span id="ls-trig-lbl">EN</span>' +
       '</button>' +
 
-      /* Backdrop */
+      
       '<div id="ls-bd" aria-hidden="true"></div>' +
 
-      /* Panel */
+      
       '<div id="ls-panel" role="dialog" aria-modal="true" aria-label="Language selector" hidden>' +
-        /* Header */
+        
         '<div class="ls-ph">' +
           '<div>' +
             '<h2>Choose your language</h2>' +
@@ -525,9 +513,9 @@
           '</div>' +
           '<button class="ls-x" id="ls-close" type="button" aria-label="Close">' + S.x + '</button>' +
         '</div>' +
-        /* Body */
+        
         '<div style="display:flex;flex-direction:column;overflow:hidden;flex:1;min-height:0">' +
-          /* Search */
+          
           '<div class="ls-sw">' +
             S.search +
             '<input id="ls-search" type="search" placeholder="Search languages…" ' +
@@ -535,7 +523,7 @@
               'aria-label="Search languages" role="searchbox">' +
             '<button type="button" id="ls-sc" aria-label="Clear search" hidden>' + S.x + '</button>' +
           '</div>' +
-          /* Lists */
+          
           '<div id="ls-scroll">' +
             '<div id="ls-sugg-sec">' +
               '<div class="ls-sl">Suggested</div>' +
@@ -550,7 +538,7 @@
             '</div>' +
           '</div>' +
         '</div>' +
-        /* Footer */
+        
         '<div class="ls-pf">' +
           '<div class="ls-disc">' +
             S.info +
@@ -564,7 +552,7 @@
 
     document.body.appendChild(root);
 
-    /* Set disclaimer link href based on page depth */
+    
     var discLink = document.getElementById('ls-disc-link');
     if (discLink) {
       var inDev = /\/_dev\//.test(location.pathname) || /\/_dev\//.test(location.href);
@@ -572,7 +560,6 @@
     }
   }
 
-  // ─── Render lists ──────────────────────────────────────────────────────────
 
   function chipHTML(l) {
     var s = current === l.code;
@@ -629,7 +616,6 @@
     else             { nores.setAttribute('hidden', ''); }
   }
 
-  // ─── Sync UI ───────────────────────────────────────────────────────────────
 
   function syncUI() {
     var chips = document.querySelectorAll('#ls-sugg .ls-chip');
@@ -668,7 +654,6 @@
     }
   }
 
-  // ─── Panel open / close ────────────────────────────────────────────────────
 
   function openPanel() {
     if (panelOpen) return;
@@ -709,7 +694,6 @@
     trig.focus();
   }
 
-  // ─── Select ────────────────────────────────────────────────────────────────
 
   function selectLang(code) {
     var prev = current;
@@ -720,7 +704,6 @@
     if (code !== prev) applyTranslation(code);
   }
 
-  // ─── Events ────────────────────────────────────────────────────────────────
 
   function onListClick(e) {
     var t = e.target;
@@ -773,7 +756,7 @@
       if (e.key === 'Escape' && panelOpen) { e.preventDefault(); closePanel(); }
     });
 
-    /* Focus trap */
+    
     panel.addEventListener('keydown', function (e) {
       if (e.key !== 'Tab') return;
       var all = Array.prototype.slice.call(
@@ -791,7 +774,6 @@
     ll.addEventListener('keydown', onArrow);
   }
 
-  // ─── Restore persisted language ────────────────────────────────────────────
 
   function restoreLang() {
     var cookie = getCookie('googtrans');
@@ -803,7 +785,6 @@
     if (saved && saved !== ORIGINAL) { current = saved; syncUI(); }
   }
 
-  // ─── Bootstrap ─────────────────────────────────────────────────────────────
 
   function init() {
     injectStyles();

@@ -7,7 +7,7 @@
 	var body = document.body;
 	var isMobile = window.matchMedia("(max-width: 860px)");
 
-	/* ---- Theme ---- */
+	
 
 	function getSystemTheme() {
 		return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -30,7 +30,7 @@
 		});
 	}
 
-	/* ---- Mode (Simple / Developer) ---- */
+	
 
 	function applyMode(mode) {
 		root.setAttribute("data-mode", mode);
@@ -260,7 +260,7 @@
 
 	initOnboarding();
 
-	/* ---- Sidebar ---- */
+	
 
 	var backdrop = document.getElementById("backdrop");
 
@@ -303,7 +303,7 @@
 	if (closeBtn) closeBtn.addEventListener("click", closeSidebar);
 	if (backdrop) backdrop.addEventListener("click", closeSidebar);
 
-	/* ---- Active nav link ---- */
+	
 
 	var pageKey = body.dataset.page;
 	if (pageKey) {
@@ -311,7 +311,7 @@
 		if (link) link.classList.add("active");
 	}
 
-	/* ---- Sub-menu generation (on-page TOC) ---- */
+	
 
 	var prose = document.querySelector(".prose");
 	if (prose && pageKey) {
@@ -336,7 +336,7 @@
 
 			activeLink.parentNode.insertBefore(subNav, activeLink.nextSibling);
 
-			/* Clicking the track link again toggles the sub-menu open/closed */
+			
 			activeLink.addEventListener("click", function (e) {
 				var next = activeLink.nextElementSibling;
 				if (next && next.classList.contains("nav-sub")) {
@@ -377,7 +377,7 @@
 		}
 	}
 
-	/* ---- Quick Search Modal ---- */
+	
 
 	var searchIndex = [
 		{ title: "Overview", page: "Hub", url: "hub.html" },
@@ -591,13 +591,13 @@
 		}
 	}
 
-	/* ---- External links open in new tab (keep hub open) ---- */
+	
 
 	document.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach(function (a) {
 		a.setAttribute("target", "_blank");
 	});
 
-	/* ---- Footnote highlight ---- */
+	
 
 	document.querySelectorAll('.prose sup a[href^="#fn-"]').forEach(function (link) {
 		link.addEventListener("click", function (e) {
@@ -655,7 +655,7 @@
 		}
 	});
 
-	/* ---- Lightbox (sustainability page) ---- */
+	
 
 	var carbonTrigger = document.getElementById("carbon-lightbox-trigger");
 	var lightbox = document.getElementById("lightbox-carbon");

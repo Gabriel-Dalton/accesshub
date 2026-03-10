@@ -1,17 +1,14 @@
-/* ============================================================
-   ACCESSIBILITY WIDGET — accessibility-widget.js
-   Self-contained, no external dependencies
-   ============================================================ */
+
 (function () {
   'use strict';
 
-  /* ── Storage key ── */
+  
   const SK = 'aw_prefs_v1';
 
-  /* ── Default state ── */
+  
   const DEFAULTS = {
-    textSize: 0,         // offset steps
-    letterSpacing: 0,    // 0=normal
+    textSize: 0,
+    letterSpacing: 0,
     wordSpacing: 0,
     lineHeight: 0,
     readableFont: false,
@@ -22,14 +19,14 @@
     highContrast: false,
     bwMode: false,
     invertColors: false,
-    colorBlind: 'none',  // 'none'|'protanopia'|'deuteranopia'|'tritanopia'|'achromatopsia'
+    colorBlind: 'none',
     readingMask: false,
     readingGuide: false,
     largeCursor: false,
     hideImages: false,
   };
 
-  /* ── Load / Save ── */
+  
   function load() {
     try {
       const raw = localStorage.getItem(SK);
@@ -41,7 +38,7 @@
     try { localStorage.setItem(SK, JSON.stringify(state)); } catch {}
   }
 
-  /* ── State ── */
+  
   let S = load();
   let panelOpen = false;
   let ttsUtterance = null;
@@ -49,7 +46,7 @@
   let maskOverlay = null;
   let guideLine = null;
 
-  /* ── SVG icons (inline, no external deps) ── */
+  
   const ICONS = {
     person: `<svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>`,
     close: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
@@ -77,7 +74,7 @@
     reset: `<svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"/></svg>`,
   };
 
-  /* ── Inject style tag for dynamic effects (on <html>) ── */
+  
   const effectStyle = document.createElement('style');
   effectStyle.id = 'aw-effect-styles';
   document.head.appendChild(effectStyle);
@@ -85,38 +82,38 @@
   function updateEffectStyles() {
     const rules = [];
 
-    /* Text size */
+    
     if (S.textSize !== 0) {
       const pct = 100 + S.textSize * 10;
       rules.push(`html.aw-text-size { font-size: ${pct}% !important; }`);
     }
 
-    /* Letter spacing */
+    
     if (S.letterSpacing !== 0) {
       const val = (S.letterSpacing * 0.05).toFixed(2);
       rules.push(`html.aw-letter-spacing * { letter-spacing: ${val}em !important; }`);
     }
 
-    /* Word spacing */
+    
     if (S.wordSpacing !== 0) {
       const val = (S.wordSpacing * 0.15).toFixed(2);
       rules.push(`html.aw-word-spacing * { word-spacing: ${val}em !important; }`);
     }
 
-    /* Line height */
+    
     if (S.lineHeight !== 0) {
       const val = (1.6 + S.lineHeight * 0.2).toFixed(2);
       rules.push(`html.aw-line-height * { line-height: ${val} !important; }`);
     }
 
-    /* Readable font */
+    
     if (S.readableFont) {
       rules.push(`html.aw-readable-font, html.aw-readable-font * {
         font-family: Georgia, 'Times New Roman', serif !important;
       }`);
     }
 
-    /* Dyslexia font */
+    
     if (S.dyslexiaFont) {
       rules.push(`@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');`);
       rules.push(`html.aw-dyslexia-font, html.aw-dyslexia-font * {
@@ -126,7 +123,7 @@
       }`);
     }
 
-    /* Highlight links */
+    
     if (S.highlightLinks) {
       rules.push(`html.aw-highlight-links a {
         background: #fef08a !important;
@@ -138,7 +135,7 @@
       }`);
     }
 
-    /* Highlight headings */
+    
     if (S.highlightHeadings) {
       rules.push(`html.aw-highlight-headings h1,
       html.aw-highlight-headings h2,
@@ -153,7 +150,7 @@
       }`);
     }
 
-    /* Pause animations */
+    
     if (S.pauseAnimations) {
       rules.push(`html.aw-pause-animations *,
       html.aw-pause-animations *::before,
@@ -163,24 +160,24 @@
       }`);
     }
 
-    /* High contrast */
+    
     if (S.highContrast) {
       rules.push(`html.aw-high-contrast {
         filter: contrast(1.8) !important;
       }`);
     }
 
-    /* B&W */
+    
     if (S.bwMode) {
       rules.push(`html.aw-bw { filter: grayscale(1) !important; }`);
     }
 
-    /* Invert */
+    
     if (S.invertColors) {
       rules.push(`html.aw-invert { filter: invert(1) hue-rotate(180deg) !important; }`);
     }
 
-    /* Color blind filters */
+    
     const cbFilters = {
       protanopia:   'url(#aw-protanopia)',
       deuteranopia: 'url(#aw-deuteranopia)',
@@ -191,14 +188,14 @@
       rules.push(`html.aw-colorblind { filter: ${cbFilters[S.colorBlind]} !important; }`);
     }
 
-    /* Large cursor */
+    
     if (S.largeCursor) {
       rules.push(`html.aw-cursor-large, html.aw-cursor-large * {
         cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 32 32'%3E%3Cpath d='M4 2l20 12-8 2-5 9z' fill='%23111' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E") 4 2, auto !important;
       }`);
     }
 
-    /* Hide images */
+    
     if (S.hideImages) {
       rules.push(`html.aw-hide-images img,
       html.aw-hide-images picture,
@@ -211,7 +208,7 @@
     effectStyle.textContent = rules.join('\n');
   }
 
-  /* ── Apply classes to <html> ── */
+  
   function applyClasses() {
     const h = document.documentElement;
     const map = {
@@ -235,7 +232,7 @@
     updateEffectStyles();
   }
 
-  /* ── SVG color blind filter defs ── */
+  
   function injectSVGFilters() {
     if (document.getElementById('aw-cb-filters')) return;
     const ns = 'http://www.w3.org/2000/svg';
@@ -269,7 +266,7 @@
     document.body.appendChild(svg);
   }
 
-  /* ── Reading Mask ── */
+  
   function updateMask() {
     if (!S.readingMask) {
       if (maskOverlay) { maskOverlay.remove(); maskOverlay = null; }
@@ -303,7 +300,7 @@
     bot.style.bottom = '0px';
   }
 
-  /* ── Reading Guide ── */
+  
   function updateGuide() {
     if (!S.readingGuide) {
       if (guideLine) { guideLine.remove(); guideLine = null; }
@@ -323,8 +320,8 @@
     if (guideLine) guideLine.style.top = e.clientY + 'px';
   }
 
-  /* ── Apply all ── */
-  /* ── Image hiding with compact placeholders ── */
+  
+  
   function applyImageHiding() {
     document.querySelectorAll('.aw-img-placeholder').forEach(el => el.remove());
     if (!S.hideImages) return;
@@ -347,7 +344,6 @@
       ph.querySelector('.aw-img-placeholder-btn').addEventListener('click', (e) => {
         e.stopPropagation();
         if (!panelOpen) openPanel();
-        // After panel finishes opening, scroll to + highlight the Hide Images button
         setTimeout(() => {
           const btn = document.getElementById('aw-hide-images');
           if (!btn) return;
@@ -372,7 +368,7 @@
     save(S);
   }
 
-  /* ── Build HTML ── */
+  
   function buildPanel() {
     const panel = document.createElement('div');
     panel.id = 'aw-panel';
@@ -596,33 +592,33 @@
     return panel;
   }
 
-  /* ── Sync UI to state ── */
+  
   function syncUI() {
-    /* Text size */
+    
     const tr = document.getElementById('aw-text-range');
     const tv = document.getElementById('aw-textsize-val');
     if (tr) tr.value = S.textSize;
     if (tv) tv.textContent = (100 + S.textSize * 10) + '%';
 
-    /* Letter spacing */
+    
     const lr = document.getElementById('aw-ls-range');
     const lv = document.getElementById('aw-ls-val');
     if (lr) lr.value = S.letterSpacing;
     if (lv) lv.textContent = S.letterSpacing === 0 ? 'Normal' : (S.letterSpacing > 0 ? '+' : '') + (S.letterSpacing * 0.05).toFixed(2) + 'em';
 
-    /* Word spacing */
+    
     const wr = document.getElementById('aw-ws-range');
     const wv = document.getElementById('aw-ws-val');
     if (wr) wr.value = S.wordSpacing;
     if (wv) wv.textContent = S.wordSpacing === 0 ? 'Normal' : '+' + (S.wordSpacing * 0.15).toFixed(2) + 'em';
 
-    /* Line height */
+    
     const lhr = document.getElementById('aw-lh-range');
     const lhv = document.getElementById('aw-lh-val');
     if (lhr) lhr.value = S.lineHeight;
     if (lhv) lhv.textContent = S.lineHeight === 0 ? 'Normal' : (1.6 + S.lineHeight * 0.2).toFixed(2) + 'x';
 
-    /* Toggle buttons */
+    
     const toggleMap = {
       'aw-readable-font':      S.readableFont,
       'aw-dyslexia-font':      S.dyslexiaFont,
@@ -645,7 +641,7 @@
       }
     });
 
-    /* Color blind chips */
+    
     document.querySelectorAll('.aw-chip[data-cb]').forEach(c => {
       const active = c.dataset.cb === S.colorBlind;
       c.classList.toggle('aw-active', active);
@@ -653,7 +649,7 @@
     });
   }
 
-  /* ── Panel open/close ── */
+  
   function openPanel() {
     const panel = document.getElementById('aw-panel');
     const trigger = document.getElementById('aw-trigger');
@@ -661,7 +657,6 @@
     panelOpen = true;
     panel.classList.add('aw-open');
     trigger.setAttribute('aria-expanded', 'true');
-    // Focus first focusable element in panel
     const firstFocusable = panel.querySelector('button, [tabindex="0"]');
     if (firstFocusable) firstFocusable.focus();
     syncUI();
@@ -677,7 +672,7 @@
     trigger.focus();
   }
 
-  /* ── Focus trap ── */
+  
   function trapFocus(e) {
     if (!panelOpen) return;
     const panel = document.getElementById('aw-panel');
@@ -697,7 +692,7 @@
     if (e.key === 'Escape') closePanel();
   }
 
-  /* ── TTS ── */
+  
   function ttsSpeak(text) {
     if (!('speechSynthesis' in window)) {
       alert('Text-to-speech is not supported in this browser.');
@@ -729,17 +724,17 @@
     if (status) status.textContent = 'Idle';
   }
 
-  /* ── Wire events ── */
+  
   function wireEvents() {
-    /* Trigger */
+    
     document.getElementById('aw-trigger').addEventListener('click', () => {
       panelOpen ? closePanel() : openPanel();
     });
 
-    /* Close button */
+    
     document.getElementById('aw-close').addEventListener('click', closePanel);
 
-    /* Click outside */
+    
     document.addEventListener('click', e => {
       if (!panelOpen) return;
       const panel = document.getElementById('aw-panel');
@@ -749,10 +744,10 @@
       }
     });
 
-    /* Keyboard */
+    
     document.addEventListener('keydown', trapFocus);
 
-    /* Text size range */
+    
     document.getElementById('aw-text-range').addEventListener('input', e => {
       S.textSize = +e.target.value;
       syncUI();
@@ -769,7 +764,7 @@
       applyAll();
     });
 
-    /* Letter spacing */
+    
     document.getElementById('aw-ls-range').addEventListener('input', e => {
       S.letterSpacing = +e.target.value;
       syncUI();
@@ -786,7 +781,7 @@
       applyAll();
     });
 
-    /* Word spacing */
+    
     document.getElementById('aw-ws-range').addEventListener('input', e => {
       S.wordSpacing = +e.target.value;
       syncUI();
@@ -803,7 +798,7 @@
       applyAll();
     });
 
-    /* Line height */
+    
     document.getElementById('aw-lh-range').addEventListener('input', e => {
       S.lineHeight = +e.target.value;
       syncUI();
@@ -820,7 +815,7 @@
       applyAll();
     });
 
-    /* Toggle buttons */
+    
     const toggles = {
       'aw-readable-font':      () => { S.readableFont = !S.readableFont; if (S.readableFont) S.dyslexiaFont = false; },
       'aw-dyslexia-font':      () => { S.dyslexiaFont = !S.dyslexiaFont; if (S.dyslexiaFont) S.readableFont = false; },
@@ -840,7 +835,7 @@
       if (el) el.addEventListener('click', () => { fn(); syncUI(); applyAll(); });
     });
 
-    /* Color blind chips */
+    
     document.querySelectorAll('.aw-chip[data-cb]').forEach(chip => {
       chip.addEventListener('click', () => {
         S.colorBlind = chip.dataset.cb;
@@ -849,7 +844,7 @@
       });
     });
 
-    /* TTS */
+    
     document.getElementById('aw-tts-page').addEventListener('click', () => {
       const body = document.body.innerText || document.body.textContent || '';
       ttsSpeak(body.trim().slice(0, 8000));
@@ -865,7 +860,7 @@
     });
     document.getElementById('aw-tts-stop').addEventListener('click', ttsStop);
 
-    /* Reset */
+    
     document.getElementById('aw-reset').addEventListener('click', () => {
       ttsStop();
       S = Object.assign({}, DEFAULTS);
@@ -875,9 +870,9 @@
     });
   }
 
-  /* ── Init ── */
+  
   function init() {
-    /* Trigger button */
+    
     const trigger = document.createElement('button');
     trigger.id = 'aw-trigger';
     trigger.className = 'aw-trigger';
@@ -886,7 +881,7 @@
     trigger.setAttribute('aria-controls', 'aw-panel');
     trigger.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true" fill="white"><circle cx="12" cy="4.5" r="2.25"/><path d="M3.5 9.5h17v1.75l-5.75.9V16l2.25 6H14.5l-2.5-6-2.5 6H7l2.25-6v-3.85L3.5 11.25V9.5z"/></svg>`;
 
-    /* Panel */
+    
     const panel = buildPanel();
 
     document.body.appendChild(trigger);

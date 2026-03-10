@@ -1,16 +1,13 @@
-/* ============================================================
-   ACCESSIBILITY WIDGET — accessibility-widget.css
-   Self-contained; all selectors scoped to .aw- prefix
-   ============================================================ */
 
-/* --- Reset inside widget --- */
+
+
 .aw-panel *, .aw-trigger * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* --- CSS custom properties (widget-local) --- */
+
 .aw-panel {
   --aw-bg: #ffffff;
   --aw-surface: #f9fafb;
@@ -31,7 +28,7 @@
   --aw-transition: 150ms cubic-bezier(.4,0,.2,1);
 }
 
-/* --- Trigger Button --- */
+
 .aw-trigger {
   position: fixed;
   bottom: 24px;
@@ -76,7 +73,7 @@
   flex-shrink: 0;
 }
 
-/* --- Panel Container --- */
+
 .aw-panel {
   position: fixed;
   bottom: 86px;
@@ -109,7 +106,7 @@
   pointer-events: all;
 }
 
-/* --- Panel Header --- */
+
 .aw-header {
   display: flex;
   align-items: center;
@@ -189,7 +186,7 @@
   stroke-linecap: round;
 }
 
-/* --- Scrollable Body --- */
+
 .aw-body {
   flex: 1;
   overflow-y: auto;
@@ -202,7 +199,7 @@
 .aw-body::-webkit-scrollbar-track { background: transparent; }
 .aw-body::-webkit-scrollbar-thumb { background: var(--aw-border-strong); border-radius: 4px; }
 
-/* --- Section Groups --- */
+
 .aw-section {
   margin-bottom: 12px;
 }
@@ -223,7 +220,7 @@
   gap: 5px;
 }
 
-/* --- Toggle Button Cards --- */
+
 .aw-btn {
   display: flex;
   flex-direction: column;
@@ -299,7 +296,7 @@
   font-weight: 600;
 }
 
-/* --- Slider Row --- */
+
 .aw-slider-row {
   background: var(--aw-bg);
   border: 1px solid var(--aw-border);
@@ -423,7 +420,7 @@
   outline-offset: 3px;
 }
 
-/* --- Color Mode Chips --- */
+
 .aw-color-chips {
   display: flex;
   gap: 5px;
@@ -470,7 +467,7 @@
   flex-shrink: 0;
 }
 
-/* --- Color blind section wrapper --- */
+
 .aw-cb-section {
   background: var(--aw-bg);
   border: 1px solid var(--aw-border);
@@ -485,7 +482,7 @@
   margin-bottom: 8px;
 }
 
-/* --- TTS Controls --- */
+
 .aw-tts-row {
   background: var(--aw-bg);
   border: 1px solid var(--aw-border);
@@ -553,7 +550,7 @@
   flex-shrink: 0;
 }
 
-/* --- Reset Footer --- */
+
 .aw-footer {
   padding: 8px 12px 10px;
   border-top: 1px solid var(--aw-border);
@@ -596,11 +593,9 @@
   flex-shrink: 0;
 }
 
-/* ============================================================
-   ACTIVE STATE EFFECTS — injected on <html> via JS
-   ============================================================ */
 
-/* Reading mask overlay */
+
+
 .aw-reading-mask-overlay {
   position: fixed;
   inset: 0;
@@ -620,7 +615,7 @@
 .aw-reading-mask-overlay .aw-mask-top { top: 0; }
 .aw-reading-mask-overlay .aw-mask-bottom { bottom: 0; }
 
-/* Reading guide line */
+
 .aw-guide-line {
   position: fixed;
   left: 0;
@@ -632,7 +627,7 @@
   transition: top 60ms;
 }
 
-/* --- Image placeholder (shown when Hide Images is active) --- */
+
 .aw-img-placeholder {
   display: inline-flex;
   align-items: center;
@@ -676,7 +671,7 @@
 .aw-img-placeholder-btn:hover { color: #1d4ed8; }
 .aw-img-placeholder-btn:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; border-radius: 2px; }
 
-/* --- Highlight pulse for button pointed to from image placeholder --- */
+
 @keyframes aw-target-flash {
   0%, 100% {
     background: rgba(37,99,235,.14);
@@ -694,7 +689,7 @@
   animation: aw-target-flash 500ms ease-in-out 4 forwards !important;
 }
 
-/* Mobile adjustments */
+
 @media (max-width: 480px) {
   .aw-trigger {
     bottom: 16px;

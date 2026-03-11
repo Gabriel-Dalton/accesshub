@@ -380,11 +380,11 @@
 	
 
 	var searchIndex = [
-		{ title: "Overview", page: "Hub", url: "hub.html" },
-		{ title: "Getting Started", page: "Hub", url: "getting-started.html" },
-		{ title: "Disclaimers", page: "Hub", url: "disclaimers.html" },
-		{ title: "Acknowledgments", page: "Hub", url: "acknowledgments.html" },
-		{ title: "About the WRA Hub", page: "Getting Started", url: "getting-started.html" },
+		{ title: "Overview", page: "Platform", url: "hub.html" },
+		{ title: "Getting Started", page: "Platform", url: "getting-started.html" },
+		{ title: "Disclaimers", page: "Platform", url: "disclaimers.html" },
+		{ title: "Acknowledgments", page: "Platform", url: "acknowledgments.html" },
+		{ title: "About the WRA Platform", page: "Getting Started", url: "getting-started.html" },
 		{ title: "Recommended order", page: "Getting Started", url: "getting-started.html" },
 
 		{ title: "What does digital sustainability mean?", page: "Sustainability", url: "sustainability.html#section-0" },

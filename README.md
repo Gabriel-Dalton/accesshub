@@ -1,6 +1,6 @@
-# Web-Ready Access Hub
+# Web-Ready Access Platform
 
-The **Web-Ready Access (WRA) Hub** is a free resource created by [Oasis of Change](https://oasisofchange.org), a youth-led nonprofit focused on digital sustainability. It helps nonprofits, small organizations, and mission-driven teams build websites that are sustainable, accessible, and supported by in-kind technology grants — all without needing a big budget or a technical background.
+The **Web-Ready Access (WRA) Platform** is a free resource created by [Oasis of Change](https://oasisofchange.org), a youth-led nonprofit focused on digital sustainability. It helps nonprofits, small organizations, and mission-driven teams build websites that are sustainable, accessible, and supported by in-kind technology grants — all without needing a big budget or a technical background.
 
 Live site: **[w-ra.org](https://w-ra.org)**
 
@@ -10,7 +10,7 @@ Supported by the **GLOCAL Foundation** and a **Government of Canada** grant thro
 
 ## What's inside
 
-The Hub is organized into three learning tracks:
+The Platform is organized into three learning tracks:
 
 | Track | Topic | Description |
 |---|---|---|
@@ -28,8 +28,8 @@ accesshub/
 ├── 404.html            # Custom 404 error page
 ├── CNAME               # Custom domain (w-ra.org)
 ├── assets/             # Images and favicons
-└── _dev/               # Hub documentation pages (in development)
-    ├── hub.html            # Learning hub overview
+└── _dev/               # Platform documentation pages (in development)
+    ├── hub.html            # Learning platform overview
     ├── getting-started.html
     ├── sustainability.html
     ├── accessibility.html

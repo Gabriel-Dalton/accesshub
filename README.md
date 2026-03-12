@@ -1,6 +1,6 @@
-# Web-Ready Access Hub
+# Web-Ready Access Platform
 
-The **Web-Ready Access (WRA) Hub** is a free resource created by [Oasis of Change](https://oasisofchange.org), a youth-led nonprofit focused on digital sustainability. It helps nonprofits, small organizations, and mission-driven teams build websites that are sustainable, accessible, and supported by in-kind technology grants — all without needing a big budget or a technical background.
+The **Web-Ready Access (WRA) Platform** is a free resource created by [Oasis of Change](https://oasisofchange.org), a youth-led nonprofit focused on digital sustainability. It helps nonprofits, small organizations, and mission-driven teams build websites that are sustainable, accessible, and supported by in-kind technology grants — all without needing a big budget or a technical background.
 
 Live site: **[w-ra.org](https://w-ra.org)**
 
@@ -10,7 +10,7 @@ Supported by the **GLOCAL Foundation** and a **Government of Canada** grant thro
 
 ## What's inside
 
-The Hub is organized into three learning tracks:
+The Platform is organized into three learning tracks:
 
 | Track | Topic | Description |
 |---|---|---|
@@ -28,8 +28,8 @@ accesshub/
 ├── 404.html            # Custom 404 error page
 ├── CNAME               # Custom domain (w-ra.org)
 ├── assets/             # Images and favicons
-└── _dev/               # Hub documentation pages (in development)
-    ├── hub.html            # Learning hub overview
+└── _dev/               # Platform documentation pages (in development)
+    ├── hub.html            # Learning platform overview
     ├── getting-started.html
     ├── sustainability.html
     ├── accessibility.html
@@ -40,21 +40,61 @@ accesshub/
 
 ---
 
-## Getting started locally
+## Language checker and accessibility widget
 
-No build step required. Open any HTML file directly in your browser:
+The site ships with two built-in front-end tools that can be added to any page without a build step.
 
-```bash
-# Clone the repository
-git clone https://github.com/web-ready/accesshub.git
-cd accesshub
+### 1) Language checker (language selector)
 
-# Open the landing page
-open index.html
+File: `assets/js/language-selector.js`
 
-# Or open the learning hub
-open _dev/hub.html
+What it does:
+- Adds a fixed language trigger and searchable language panel
+- Uses Google Translate in the background while hiding default Google UI
+- Remembers the selected language between visits (localStorage + cookie)
+- Supports reset back to English
+
+Include on root-level pages:
+
+```html
+<script src="assets/js/language-selector.js" defer></script>
 ```
+
+Include on pages inside `_dev/`:
+
+```html
+<script src="../assets/js/language-selector.js" defer></script>
+```
+
+### 2) Accessibility widget
+
+Files:
+- `assets/css/accessibility-widget.css`
+- `assets/js/accessibility-widget.js`
+
+What it does:
+- Adds a floating accessibility button and control panel
+- Stores user preferences locally
+- Provides text spacing/size controls, readable font modes, contrast and color filters, reduced motion, cursor, reading guide/mask, and media visibility toggles
+
+Include on root-level pages:
+
+```html
+<link rel="stylesheet" href="assets/css/accessibility-widget.css" />
+<script src="assets/js/accessibility-widget.js"></script>
+```
+
+Include on pages inside `_dev/`:
+
+```html
+<link rel="stylesheet" href="../assets/css/accessibility-widget.css" />
+<script src="../assets/js/accessibility-widget.js"></script>
+```
+
+Load order recommendation:
+1. Accessibility widget CSS in `<head>`
+2. Accessibility widget script near end of `<body>`
+3. Language selector script after it (with `defer`)
 
 ---
 

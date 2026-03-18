@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>In Development | Web-Ready Access Platform</title>
+		<meta name="description" content="The Web-Ready Access Hub is actively being built. Check back soon." />
+		<meta name="robots" content="noindex, nofollow" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/x-icon" href="../assets/favicon/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+		<style>
+			:root {
+				--bg: #f8f6f3;
+				--surface: #ffffff;
+				--text: #1a1a1a;
+				--text-secondary: #4a4a4a;
+				--text-muted: #6b6b6b;
+				--accent: #c44d2a;
+				--accent-hover: #a33f22;
+				--accent-subtle: rgba(196, 77, 42, 0.08);
+				--border: #e5e2de;
+				--radius: 8px;
+			}
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: "Work Sans", system-ui, sans-serif;
+				background: var(--bg);
+				color: var(--text);
+				line-height: 1.6;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: clamp(24px, 6vw, 48px) clamp(20px, 6vw, 40px);
+				-webkit-font-smoothing: antialiased;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.animated-bg {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 0;
+				opacity: 0.03;
+			}
+
+			.code-line {
+				position: absolute;
+				font-family: "Courier New", monospace;
+				font-size: 14px;
+				color: var(--accent);
+				white-space: nowrap;
+				animation: typeCode 3s steps(1) infinite;
+			}
+
+			@keyframes typeCode {
+				0% { width: 0; }
+				80% { width: 100%; }
+				100% { width: 100%; }
+			}
+
+			.code-line:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+			.code-line:nth-child(2) { top: 25%; right: 8%; animation-delay: 1s; }
+			.code-line:nth-child(3) { top: 45%; left: 10%; animation-delay: 2s; }
+			.code-line:nth-child(4) { top: 65%; right: 5%; animation-delay: 0.5s; }
+			.code-line:nth-child(5) { top: 80%; left: 15%; animation-delay: 1.5s; }
+
+			.card {
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: 16px;
+				max-width: 560px;
+				width: 100%;
+				padding: clamp(32px, 7vw, 56px) clamp(28px, 6vw, 48px);
+				text-align: center;
+				position: relative;
+				z-index: 1;
+				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+			}
+
+			.badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				background: var(--accent-subtle);
+				color: var(--accent);
+				font-size: 0.8rem;
+				font-weight: 600;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				padding: 6px 14px;
+				border-radius: 999px;
+				margin-bottom: 24px;
+			}
+
+			.badge svg {
+				flex-shrink: 0;
+			}
+
+			.pulse {
+				display: inline-block;
+				width: 8px;
+				height: 8px;
+				background: var(--accent);
+				border-radius: 50%;
+				animation: pulse 1.8s ease-in-out infinite;
+			}
+
+			@keyframes pulse {
+				0%, 100% { opacity: 1; transform: scale(1); }
+				50% { opacity: 0.4; transform: scale(0.75); }
+			}
+
+			h1 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 700;
+				font-size: clamp(1.75rem, 5vw, 2.4rem);
+				letter-spacing: -0.02em;
+				line-height: 1.15;
+				margin-bottom: 16px;
+			}
+
+			p {
+				color: var(--text-secondary);
+				font-size: 1.05rem;
+				max-width: 420px;
+				margin: 0 auto 32px;
+			}
+
+			.back-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				color: var(--accent);
+				font-weight: 500;
+				text-decoration: none;
+				font-size: 0.95rem;
+				transition: color 0.15s;
+			}
+
+			.back-link:hover {
+				color: var(--accent-hover);
+			}
+
+			.back-link svg {
+				transition: transform 0.15s;
+			}
+
+			.back-link:hover svg {
+				transform: translateX(-3px);
+			}
+
+			.divider {
+				border: none;
+				border-top: 1px solid var(--border);
+				margin: 32px 0;
+			}
+
+			.footer-note {
+				font-size: 0.85rem;
+				color: var(--text-muted);
+			}
+
+			.footer-note a {
+				color: var(--accent);
+				text-decoration: none;
+			}
+
+			.footer-note a:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="animated-bg">
+			<div class="code-line">&lt;div class="container"&gt;</div>
+			<div class="code-line">const result = await buildAwesome();</div>
+			<div class="code-line">&lt;Component isReady={true} /&gt;</div>
+			<div class="code-line">function deploy() { return success; }</div>
+			<div class="code-line">&lt;/div&gt;</div>
+		</div>
+
+		<div class="card">
+			<div class="badge">
+				<span class="pulse" aria-hidden="true"></span>
+				Actively in development
+			</div>
+
+			<h1>Launching soon...</h1>
+
+			<p>
+			Our guides, checklists, and learning tracks will be ready soon.
+			</p>
+
+			<a href="../index.html" class="back-link">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+				</svg>
+				Back to home
+			</a>
+
+			<hr class="divider" />
+
+			<p class="footer-note">
+				Web-Ready Access Platform &mdash; a project of <a href="https://oasisofchange.org/" target="_blank">Oasis of Change</a>
+			</p>
+		</div>
+	</body>
+</html>

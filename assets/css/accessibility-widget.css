@@ -51,6 +51,14 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.aw-trigger.aw-draggable-hint {
+  cursor: grab;
+}
+
+.aw-trigger.aw-dragging {
+  cursor: grabbing;
+}
+
 .aw-trigger:hover {
   transform: scale(1.06);
   background: #1d4ed8;

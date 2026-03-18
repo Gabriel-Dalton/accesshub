@@ -4,6 +4,7 @@
 
   
   const SK = 'aw_prefs_v1';
+  const POS_SK = 'aw_pos_v1';
 
   
   const DEFAULTS = {
@@ -34,6 +35,21 @@
     } catch { return Object.assign({}, DEFAULTS); }
   }
 
+  function loadPosition() {
+    try {
+      const raw = localStorage.getItem(POS_SK);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function savePosition(pos) {
+    try {
+      localStorage.setItem(POS_SK, JSON.stringify(pos));
+    } catch {}
+  }
+
   function save(state) {
     try { localStorage.setItem(SK, JSON.stringify(state)); } catch {}
   }
@@ -45,6 +61,17 @@
   let ttsSpeaking = false;
   let maskOverlay = null;
   let guideLine = null;
+  let dragState = {
+    active: false,
+    pointerDown: false,
+    moved: false,
+    startX: 0,
+    startY: 0,
+    offsetX: 0,
+    offsetY: 0,
+    justEnded: false
+  };
+  let storedPos = loadPosition();
 
   
   const ICONS = {
@@ -368,6 +395,86 @@
     save(S);
   }
 
+  function setTriggerPositionFromPixels(trigger, x, y) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const size = trigger.getBoundingClientRect();
+    const margin = 8;
+
+    const maxX = vw - size.width - margin;
+    const maxY = vh - size.height - margin;
+
+    const clampedX = Math.min(Math.max(margin, x), Math.max(margin, maxX));
+    const clampedY = Math.min(Math.max(margin, y), Math.max(margin, maxY));
+
+    trigger.style.left = clampedX + 'px';
+    trigger.style.top = clampedY + 'px';
+    trigger.style.right = 'auto';
+    trigger.style.bottom = 'auto';
+
+    const xPct = clampedX / vw;
+    const yPct = clampedY / vh;
+    storedPos = { xPct, yPct };
+    savePosition(storedPos);
+  }
+
+  function applyStoredPosition(trigger) {
+    if (!storedPos) return;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const x = storedPos.xPct * vw;
+    const y = storedPos.yPct * vh;
+    setTriggerPositionFromPixels(trigger, x, y);
+  }
+
+  function positionPanelRelativeToTrigger() {
+    const trigger = document.getElementById('aw-trigger');
+    const panel = document.getElementById('aw-panel');
+    if (!trigger || !panel) return;
+
+    const tRect = trigger.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const margin = 12;
+
+    // Temporarily remove inline max-height to measure natural content height.
+    panel.style.maxHeight = '';
+
+    const naturalHeight = panel.scrollHeight;
+    const availableViewportHeight = Math.max(120, vh - margin * 2);
+    const desiredHeight = Math.min(naturalHeight, availableViewportHeight);
+    const spaceAbove = Math.max(0, tRect.top - margin);
+    const spaceBelow = Math.max(0, vh - tRect.bottom - margin);
+
+    let placeBelow = false;
+    if (desiredHeight <= spaceBelow) {
+      placeBelow = true;
+    } else if (desiredHeight <= spaceAbove) {
+      placeBelow = false;
+    } else {
+      placeBelow = spaceBelow >= spaceAbove;
+    }
+
+    const availableOnSide = placeBelow ? spaceBelow : spaceAbove;
+    const effectiveHeight = Math.max(120, Math.min(desiredHeight, availableOnSide || availableViewportHeight));
+    panel.style.maxHeight = Math.floor(effectiveHeight) + 'px';
+
+    const pRect = panel.getBoundingClientRect();
+    let left = tRect.right - pRect.width;
+    let top = placeBelow ? (tRect.bottom + margin) : (tRect.top - pRect.height - margin);
+
+    if (left + pRect.width > vw - margin) left = vw - pRect.width - margin;
+    if (left < margin) left = margin;
+
+    if (top + pRect.height > vh - margin) top = vh - pRect.height - margin;
+    if (top < margin) top = margin;
+
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
+    panel.style.right = 'auto';
+    panel.style.bottom = 'auto';
+  }
+
   
   function buildPanel() {
     const panel = document.createElement('div');
@@ -655,6 +762,7 @@
     const trigger = document.getElementById('aw-trigger');
     if (!panel) return;
     panelOpen = true;
+    positionPanelRelativeToTrigger();
     panel.classList.add('aw-open');
     trigger.setAttribute('aria-expanded', 'true');
     const firstFocusable = panel.querySelector('button, [tabindex="0"]');
@@ -726,10 +834,82 @@
 
   
   function wireEvents() {
-    
-    document.getElementById('aw-trigger').addEventListener('click', () => {
+    const trigger = document.getElementById('aw-trigger');
+    const DRAG_THRESHOLD = 6;
+
+    trigger.addEventListener('click', (e) => {
+      // If a drag just finished, ignore the click toggle
+      if (dragState.justEnded) {
+        dragState.justEnded = false;
+        return;
+      }
       panelOpen ? closePanel() : openPanel();
     });
+
+    trigger.classList.add('aw-draggable-hint');
+
+    function startDrag(e) {
+      if (e.type === 'mousedown' && e.button !== 0) return;
+      const rect = trigger.getBoundingClientRect();
+      const point = e.touches ? e.touches[0] : e;
+      dragState.pointerDown = true;
+      dragState.active = false;
+      dragState.moved = false;
+      dragState.startX = point.clientX;
+      dragState.startY = point.clientY;
+      dragState.offsetX = point.clientX - rect.left;
+      dragState.offsetY = point.clientY - rect.top;
+
+      window.addEventListener('mousemove', onDragMove);
+      window.addEventListener('mouseup', endDrag);
+      window.addEventListener('touchmove', onDragMove, { passive: false });
+      window.addEventListener('touchend', endDrag);
+
+      if (e.type === 'touchstart') {
+        e.preventDefault();
+      }
+    }
+
+    function onDragMove(e) {
+      if (!dragState.pointerDown) return;
+      const point = e.touches ? e.touches[0] : e;
+      const dx = point.clientX - dragState.startX;
+      const dy = point.clientY - dragState.startY;
+      const distance = Math.hypot(dx, dy);
+
+      if (!dragState.active && distance < DRAG_THRESHOLD) return;
+      if (!dragState.active) {
+        dragState.active = true;
+        dragState.moved = true;
+        trigger.classList.add('aw-dragging');
+      }
+
+      const x = point.clientX - dragState.offsetX;
+      const y = point.clientY - dragState.offsetY;
+      setTriggerPositionFromPixels(trigger, x, y);
+      if (panelOpen) {
+        positionPanelRelativeToTrigger();
+      }
+      if (e.type === 'touchmove') {
+        e.preventDefault();
+      }
+    }
+
+    function endDrag() {
+      if (!dragState.pointerDown) return;
+      dragState.pointerDown = false;
+      dragState.justEnded = dragState.moved;
+      dragState.active = false;
+      trigger.classList.remove('aw-dragging');
+      window.removeEventListener('mousemove', onDragMove);
+      window.removeEventListener('mouseup', endDrag);
+      window.removeEventListener('touchmove', onDragMove);
+      window.removeEventListener('touchend', endDrag);
+      setTimeout(() => { dragState.justEnded = false; }, 150);
+    }
+
+    trigger.addEventListener('mousedown', startDrag);
+    trigger.addEventListener('touchstart', startDrag, { passive: false });
 
     
     document.getElementById('aw-close').addEventListener('click', closePanel);
@@ -881,16 +1061,29 @@
     trigger.setAttribute('aria-controls', 'aw-panel');
     trigger.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true" fill="white"><circle cx="12" cy="4.5" r="2.25"/><path d="M3.5 9.5h17v1.75l-5.75.9V16l2.25 6H14.5l-2.5-6-2.5 6H7l2.25-6v-3.85L3.5 11.25V9.5z"/></svg>`;
 
-    
     const panel = buildPanel();
 
     document.body.appendChild(trigger);
     document.body.appendChild(panel);
 
+    if (storedPos) {
+      applyStoredPosition(trigger);
+    }
+
     injectSVGFilters();
     applyAll();
     syncUI();
     wireEvents();
+
+    window.addEventListener('resize', () => {
+      const t = document.getElementById('aw-trigger');
+      if (t && storedPos) {
+        applyStoredPosition(t);
+      }
+      if (panelOpen) {
+        positionPanelRelativeToTrigger();
+      }
+    });
   }
 
   if (document.readyState === 'loading') {

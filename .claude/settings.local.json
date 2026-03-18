@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"Get started\\\\|Get Started\" /c/Users/Gabriel/Documents/GitHub/accesshub/_dev/*.html)"
+    ]
+  }
+}

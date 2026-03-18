@@ -43,7 +43,41 @@
 				justify-content: center;
 				padding: clamp(24px, 6vw, 48px) clamp(20px, 6vw, 40px);
 				-webkit-font-smoothing: antialiased;
+				position: relative;
+				overflow: hidden;
 			}
+
+			.animated-bg {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 0;
+				opacity: 0.03;
+			}
+
+			.code-line {
+				position: absolute;
+				font-family: "Courier New", monospace;
+				font-size: 14px;
+				color: var(--accent);
+				white-space: nowrap;
+				animation: typeCode 3s steps(1) infinite;
+			}
+
+			@keyframes typeCode {
+				0% { width: 0; }
+				80% { width: 100%; }
+				100% { width: 100%; }
+			}
+
+			.code-line:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+			.code-line:nth-child(2) { top: 25%; right: 8%; animation-delay: 1s; }
+			.code-line:nth-child(3) { top: 45%; left: 10%; animation-delay: 2s; }
+			.code-line:nth-child(4) { top: 65%; right: 5%; animation-delay: 0.5s; }
+			.code-line:nth-child(5) { top: 80%; left: 15%; animation-delay: 1.5s; }
 
 			.card {
 				background: var(--surface);
@@ -53,6 +87,9 @@
 				width: 100%;
 				padding: clamp(32px, 7vw, 56px) clamp(28px, 6vw, 48px);
 				text-align: center;
+				position: relative;
+				z-index: 1;
+				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 			}
 
 			.badge {
@@ -137,9 +174,26 @@
 				font-size: 0.85rem;
 				color: var(--text-muted);
 			}
+
+			.footer-note a {
+				color: var(--accent);
+				text-decoration: none;
+			}
+
+			.footer-note a:hover {
+				text-decoration: underline;
+			}
 		</style>
 	</head>
 	<body>
+		<div class="animated-bg">
+			<div class="code-line">&lt;div class="container"&gt;</div>
+			<div class="code-line">const result = await buildAwesome();</div>
+			<div class="code-line">&lt;Component isReady={true} /&gt;</div>
+			<div class="code-line">function deploy() { return success; }</div>
+			<div class="code-line">&lt;/div&gt;</div>
+		</div>
+
 		<div class="card">
 			<div class="badge">
 				<span class="pulse" aria-hidden="true"></span>
@@ -162,7 +216,7 @@
 			<hr class="divider" />
 
 			<p class="footer-note">
-				Web-Ready Access Platform &mdash; a project of <a href="https://oasisofchange.org/" target="_blank" style="color: var(--accent); text-decoration: none;">Oasis of Change</a>
+				Web-Ready Access Platform &mdash; a project of <a href="https://oasisofchange.org/" target="_blank">Oasis of Change</a>
 			</p>
 		</div>
 	</body>

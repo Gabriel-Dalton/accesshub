@@ -76,6 +76,8 @@ What it does:
 - Adds a floating accessibility button and control panel
 - Stores user preferences locally
 - Provides text spacing/size controls, readable font modes, contrast and color filters, reduced motion, cursor, reading guide/mask, and media visibility toggles
+- Lets users drag the accessibility button anywhere on the screen; its position is saved per device so it stays out of the way on return visits
+- Automatically positions the accessibility panel near the button while keeping it fully within the visible viewport (no off-screen panels or extra scrolling needed)
 
 Include on root-level pages:
 

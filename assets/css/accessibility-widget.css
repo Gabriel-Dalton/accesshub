@@ -49,6 +49,7 @@
               background 150ms ease;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .aw-trigger.aw-draggable-hint {

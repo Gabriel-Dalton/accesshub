@@ -864,10 +864,6 @@
       window.addEventListener('mouseup', endDrag);
       window.addEventListener('touchmove', onDragMove, { passive: false });
       window.addEventListener('touchend', endDrag);
-
-      if (e.type === 'touchstart') {
-        e.preventDefault();
-      }
     }
 
     function onDragMove(e) {

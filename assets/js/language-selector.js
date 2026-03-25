@@ -22,7 +22,7 @@
     { code: 'cs',    name: 'Czech',                 native: 'Čeština'          },
     { code: 'da',    name: 'Danish',                native: 'Dansk'            },
     { code: 'nl',    name: 'Dutch',                 native: 'Nederlands'       },
-    { code: 'en',    name: 'English',               native: 'English'          },
+    { code: 'en',    name: 'Canadian English',      native: 'Canadian English' },
     { code: 'et',    name: 'Estonian',              native: 'Eesti'            },
     { code: 'fi',    name: 'Finnish',               native: 'Suomi'            },
     { code: 'fr',    name: 'French',                native: 'Français'         },
@@ -93,7 +93,7 @@
   var FLAGS = {
     'af':'🇿🇦','sq':'🇦🇱','am':'🇪🇹','ar':'🇸🇦','hy':'🇦🇲','az':'🇦🇿','eu':'🌐',
     'be':'🇧🇾','bn':'🇧🇩','bs':'🇧🇦','bg':'🇧🇬','ca':'🌐','zh-CN':'🇨🇳',
-    'zh-TW':'🇹🇼','hr':'🇭🇷','cs':'🇨🇿','da':'🇩🇰','nl':'🇳🇱','en':'🇬🇧',
+    'zh-TW':'🇹🇼','hr':'🇭🇷','cs':'🇨🇿','da':'🇩🇰','nl':'🇳🇱','en':'🇨🇦',
     'et':'🇪🇪','fi':'🇫🇮','fr':'🇫🇷','gl':'🌐','ka':'🇬🇪','de':'🇩🇪','el':'🇬🇷',
     'gu':'🇮🇳','ht':'🇭🇹','ha':'🇳🇬','he':'🇮🇱','hi':'🇮🇳','hu':'🇭🇺','is':'🇮🇸',
     'ig':'🇳🇬','id':'🇮🇩','ga':'🇮🇪','it':'🇮🇹','ja':'🇯🇵','kn':'🇮🇳','kk':'🇰🇿',
@@ -108,6 +108,9 @@
 
   var SUGGESTED = ['es','fr','de','zh-CN','ja','ar','pt','hi','ru','ko'];
   var ORIGINAL  = 'en';
+  // Google Translate uses generic "en" as the source language for English pages.
+  // We label it as Canadian English in the UI while keeping ORIGINAL = 'en'.
+  var ORIGINAL_LABEL = 'EN-CA';
   var STORE_KEY = 'ls_selected_lang';
 
   // Map language codes -> ISO 3166-1 alpha-2 country codes (for flag-icons).
@@ -115,7 +118,7 @@
   var FLAG_COUNTRY = {
     'af':'za','sq':'al','am':'et','ar':'sa','hy':'am','az':'az',
     'be':'by','bn':'bd','bs':'ba','bg':'bg','zh-CN':'cn','zh-TW':'tw',
-    'hr':'hr','cs':'cz','da':'dk','nl':'nl','en':'gb','et':'ee','fi':'fi',
+    'hr':'hr','cs':'cz','da':'dk','nl':'nl','en':'ca','et':'ee','fi':'fi',
     'fr':'fr','ka':'ge','de':'de','el':'gr','gu':'in','ht':'ht','ha':'ng',
     'he':'il','hi':'in','hu':'hu','is':'is','ig':'ng','id':'id','ga':'ie',
     'it':'it','ja':'jp','kn':'in','kk':'kz','km':'kh','ko':'kr','lo':'la',
@@ -677,7 +680,7 @@
     var label = document.getElementById('ls-trig-lbl');
     if (current === ORIGINAL) {
       trig.classList.remove('ls-on');
-      label.textContent = ORIGINAL.toUpperCase();
+      label.textContent = ORIGINAL_LABEL;
     } else {
       trig.classList.add('ls-on');
       label.textContent = current.split('-')[0].toUpperCase();

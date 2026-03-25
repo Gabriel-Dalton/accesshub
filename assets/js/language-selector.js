@@ -110,6 +110,23 @@
   var ORIGINAL  = 'en';
   var STORE_KEY = 'ls_selected_lang';
 
+  // Map language codes -> ISO 3166-1 alpha-2 country codes (for flag-icons).
+  // Some languages are not country-specific; those fall back to a globe icon.
+  var FLAG_COUNTRY = {
+    'af':'za','sq':'al','am':'et','ar':'sa','hy':'am','az':'az',
+    'be':'by','bn':'bd','bs':'ba','bg':'bg','zh-CN':'cn','zh-TW':'tw',
+    'hr':'hr','cs':'cz','da':'dk','nl':'nl','en':'gb','et':'ee','fi':'fi',
+    'fr':'fr','ka':'ge','de':'de','el':'gr','gu':'in','ht':'ht','ha':'ng',
+    'he':'il','hi':'in','hu':'hu','is':'is','ig':'ng','id':'id','ga':'ie',
+    'it':'it','ja':'jp','kn':'in','kk':'kz','km':'kh','ko':'kr','lo':'la',
+    'lv':'lv','lt':'lt','lb':'lu','mk':'mk','ms':'my','ml':'in','mt':'mt',
+    'mi':'nz','mr':'in','mn':'mn','my':'mm','ne':'np','no':'no','fa':'ir',
+    'pl':'pl','pt':'pt','pa':'in','ro':'ro','ru':'ru','sr':'rs','si':'lk',
+    'sk':'sk','sl':'si','so':'so','es':'es','sw':'ke','sv':'se','tl':'ph',
+    'ta':'in','te':'in','th':'th','tr':'tr','uk':'ua','ur':'pk','uz':'uz',
+    'vi':'vn','cy':'gb-wls','xh':'za','yo':'ng','zu':'za'
+  };
+
 
   var current   = ORIGINAL;
   var panelOpen = false;
@@ -122,7 +139,22 @@
     return null;
   }
 
-  function getFlag(code) { return FLAGS[code] || '🌐'; }
+  function ensureFlagIconsCss() {
+    if (document.getElementById('ls-flag-icons')) return;
+    var link = document.createElement('link');
+    link.id = 'ls-flag-icons';
+    link.rel = 'stylesheet';
+    // flag-icons provides SVG flags via CSS classes (no emoji rendering needed).
+    link.href = 'https://cdn.jsdelivr.net/npm/flag-icons@7.5.0/css/flag-icons.min.css';
+    document.head.appendChild(link);
+  }
+
+  function getFlag(code) {
+    // Return markup (not emoji) to avoid unsupported emoji rendering on Windows 10.
+    var cc = Object.prototype.hasOwnProperty.call(FLAG_COUNTRY, code) ? FLAG_COUNTRY[code] : null;
+    if (!cc) return S.globeMini;
+    return '<span class="ls-flag fi fi-' + cc + '" aria-hidden="true"></span>';
+  }
 
   function readStore()   { try { return localStorage.getItem(STORE_KEY); } catch(e) { return null; } }
   function writeStore(v) { try { localStorage.setItem(STORE_KEY, v);     } catch(e) {} }
@@ -325,7 +357,7 @@
       '.ls-chip:hover{border-color:var(--lsa);background:var(--lsas)}' +
       '.ls-chip:focus-visible{outline:2px solid var(--lsa);outline-offset:2px}' +
       '.ls-chip.ls-sel{border-color:var(--lsa);background:var(--lsas);box-shadow:0 0 0 1px var(--lsa)}' +
-      '.ls-cf{font-size:1.1rem;line-height:1;flex-shrink:0}' +
+      '.ls-cf{line-height:1;flex-shrink:0;display:flex;align-items:center}' +
       '.ls-ct{min-width:0;flex:1}' +
       '.ls-cn{display:block;font-size:.8rem;font-weight:600;color:var(--lst);' +
         'white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
@@ -334,6 +366,10 @@
       '.ls-ck{margin-left:auto;flex-shrink:0;color:var(--lsa);display:none}' +
       '.ls-sel .ls-ck{display:flex;align-items:center}' +
       '.ls-ck svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}' +
+      '.ls-flag{width:1.15rem;height:.86rem;display:inline-block;border-radius:3px;' +
+        'box-shadow:0 1px 4px rgba(0,0,0,.10);border:1px solid rgba(0,0,0,.10)}' +
+      '.ls-flag--globe{width:1.05rem;height:1.05rem;border:none;border-radius:0;box-shadow:none;' +
+        'stroke:var(--lstm);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}' +
 
       
       '.ls-ll{display:flex;flex-direction:column;gap:1px}' +
@@ -346,7 +382,7 @@
       '.ls-li:hover{background:var(--lsbg);border-color:var(--lsbd)}' +
       '.ls-li:focus-visible{outline:2px solid var(--lsa);outline-offset:2px}' +
       '.ls-li.ls-sel{background:var(--lsas);border-color:var(--lsa)}' +
-      '.ls-lf{font-size:1.3rem;line-height:1;flex-shrink:0;width:26px;text-align:center}' +
+      '.ls-lf{line-height:1;flex-shrink:0;width:26px;display:flex;align-items:center;justify-content:center}' +
       '.ls-lt{flex:1;min-width:0}' +
       '.ls-ln{display:block;font-size:.875rem;font-weight:600;color:var(--lst);' +
         'white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
@@ -469,6 +505,13 @@
       '</svg>',
     globeNi:
       '<svg class="ls-ni-icon" viewBox="0 0 24 24" aria-hidden="true">' +
+        '<circle cx="12" cy="12" r="10"/>' +
+        '<path d="M2 12h20"/>' +
+        '<path d="M12 2c-2.5 3.3-4 6.6-4 10s1.5 6.7 4 10"/>' +
+        '<path d="M12 2c2.5 3.3 4 6.6 4 10s-1.5 6.7-4 10"/>' +
+      '</svg>',
+    globeMini:
+      '<svg class="ls-flag ls-flag--globe" viewBox="0 0 24 24" aria-hidden="true">' +
         '<circle cx="12" cy="12" r="10"/>' +
         '<path d="M2 12h20"/>' +
         '<path d="M12 2c-2.5 3.3-4 6.6-4 10s1.5 6.7 4 10"/>' +
@@ -787,6 +830,7 @@
 
 
   function init() {
+    ensureFlagIconsCss();
     injectStyles();
     buildDOM();
     buildSuggested();

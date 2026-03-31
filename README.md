@@ -24,18 +24,18 @@ The Platform is organized into three learning tracks:
 
 ```
 accesshub/
-├── index.html          # Coming-soon landing page
-├── 404.html            # Custom 404 error page
-├── CNAME               # Custom domain (w-ra.org)
-├── assets/             # Images and favicons
-└── _dev/               # Platform documentation pages (in development)
-    ├── hub.html            # Learning platform overview
-    ├── getting-started.html
-    ├── sustainability.html
-    ├── accessibility.html
-    ├── tech-grants.html
-    ├── hub-theme.css
-    └── hub-theme.js
+├── index.html                  # Landing page
+├── hub.html                    # Learning platform overview
+├── getting-started.html        # Getting started guide
+├── eligibility.html            # Eligibility checker
+├── sustainability.html         # Digital sustainability track
+├── accessibility.html          # Web accessibility track
+├── tech-grants.html            # Tech grants track
+├── disclaimers.html            # Legal disclaimers
+├── acknowledgments.html        # Acknowledgments and credits
+├── 404.html                    # Custom 404 error page
+├── CNAME                       # Custom domain (w-ra.org)
+└── assets/                     # Images, CSS, JavaScript, and favicons
 ```
 
 ---
@@ -44,7 +44,7 @@ accesshub/
 
 The site ships with two built-in front-end tools that can be added to any page without a build step.
 
-### 1) Language checker (language selector)
+### 1) Language selector
 
 File: `assets/js/language-selector.js`
 
@@ -54,16 +54,10 @@ What it does:
 - Remembers the selected language between visits (localStorage + cookie)
 - Supports reset back to English
 
-Include on root-level pages:
+Include on pages:
 
 ```html
 <script src="assets/js/language-selector.js" defer></script>
-```
-
-Include on pages inside `_dev/`:
-
-```html
-<script src="../assets/js/language-selector.js" defer></script>
 ```
 
 ### 2) Accessibility widget
@@ -79,18 +73,11 @@ What it does:
 - Lets users drag the accessibility button anywhere on the screen; its position is saved per device so it stays out of the way on return visits
 - Automatically positions the accessibility panel near the button while keeping it fully within the visible viewport (no off-screen panels or extra scrolling needed)
 
-Include on root-level pages:
+Include on pages:
 
 ```html
 <link rel="stylesheet" href="assets/css/accessibility-widget.css" />
 <script src="assets/js/accessibility-widget.js"></script>
-```
-
-Include on pages inside `_dev/`:
-
-```html
-<link rel="stylesheet" href="../assets/css/accessibility-widget.css" />
-<script src="../assets/js/accessibility-widget.js"></script>
 ```
 
 Load order recommendation:

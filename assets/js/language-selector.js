@@ -555,8 +555,7 @@
     
     var discLink = document.getElementById('ls-disc-link');
     if (discLink) {
-      var inDev = /\/_dev\//.test(location.pathname) || /\/_dev\//.test(location.href);
-      discLink.href = inDev ? 'disclaimers.html#language-translations' : '_dev/disclaimers.html#language-translations';
+      discLink.href = 'disclaimers.html#language-translations';
     }
   }
 

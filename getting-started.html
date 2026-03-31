@@ -3,20 +3,20 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Disclaimers | Web-Ready Access Hub</title>
-		<meta name="description" content="Legal disclaimers and terms of use for the Web-Ready Access Hub." />
+		<title>Getting Started | Web-Ready Access Hub</title>
+		<meta name="description" content="About the Web-Ready Access Hub: a youth-led program by Oasis of Change helping nonprofits build sustainable, accessible, grant-supported websites." />
 		<meta property="og:image" content="https://w-ra.org/assets/img/WRA-OG-Image.png" />
-		<meta property="og:title" content="Disclaimers | Web-Ready Access Hub" />
-		<meta property="og:description" content="Legal disclaimers and terms of use for the Web-Ready Access Hub." />
+		<meta property="og:title" content="Getting Started | Web-Ready Access Hub" />
+		<meta property="og:description" content="About the Web-Ready Access Hub: a youth-led program by Oasis of Change helping nonprofits build sustainable, accessible, grant-supported websites." />
 		<meta property="og:type" content="website" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-		<link rel="stylesheet" href="../assets/css/hub-theme.css" />
+		<link rel="stylesheet" href="assets/css/hub-theme.css" />
 		<script>document.documentElement.setAttribute("data-theme",localStorage.getItem("accesshub-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));document.documentElement.setAttribute("data-mode",localStorage.getItem("accesshub-mode")||"simple");document.documentElement.setAttribute("data-keyboard",localStorage.getItem("accesshub-keyboard")||(/Mac|iPhone|iPad|iPod/.test(navigator.userAgent||navigator.platform||"")?"mac":"windows"));</script>
-		<link rel="stylesheet" href="../assets/css/accessibility-widget.css" />
+		<link rel="stylesheet" href="assets/css/accessibility-widget.css" />
 	</head>
-	<body class="docs" data-page="disclaimers">
+	<body class="docs" data-page="getting-started">
 
 		<aside class="sidebar" id="sidebar">
 			<div class="sidebar-top">
@@ -30,7 +30,8 @@
 				<button class="search-trigger" id="search-trigger" type="button">
 					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
 					<span>Quick search...</span>
-					<kbd>Ctrl K</kbd>
+					<kbd class="keyboard-windows-only">Ctrl K</kbd>
+					<kbd class="keyboard-mac-only">⌘ K</kbd>
 				</button>
 			</div>
 			<div class="sidebar-nav">
@@ -40,7 +41,7 @@
 					<a href="getting-started.html" data-page-link="getting-started">Getting Started</a>
 					<a href="eligibility.html" data-page-link="eligibility">Do you qualify?</a>
 				</div>
-				<div class="nav-group nav-group--tracks">
+				<div class="nav-group">
 					<span class="nav-label">Tracks</span>
 					<a href="sustainability.html" data-page-link="sustainability">Sustainability</a>
 					<a href="accessibility.html" data-page-link="accessibility">Accessibility</a>
@@ -57,7 +58,7 @@
 						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.318 6.318a4.5 4.5 0 0 0 0 6.364L12 20.364l7.682-7.682a4.5 4.5 0 0 0-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 0 0-6.364 0z"/></svg>
 						<span>Acknowledgments</span>
 					</a>
-					<a href="../index.html" class="sidebar-footer-link sidebar-footer-link--primary">
+					<a href="index.html" class="sidebar-footer-link sidebar-footer-link--primary">
 						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
 						<span>Back to homepage</span>
 					</a>
@@ -73,7 +74,7 @@
 					<button class="icon-btn" id="sidebar-open" type="button" aria-label="Toggle sidebar">
 						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
 					</button>
-					<span class="topbar-crumb">Disclaimers</span>
+					<span class="topbar-crumb">Getting Started</span>
 				</div>
 				<div class="topbar-right">
 					<div class="keyboard-toggle" role="group" aria-label="Keyboard shortcuts">
@@ -88,32 +89,68 @@
 			</header>
 
 			<main class="main">
-				<h1>Disclaimers</h1>
+				<h1>Getting Started</h1>
 				<p class="lead">
-					Legal disclaimers and terms of use for the Web-Ready Access Platform.
+					Everything you need to know about the Web-Ready Access Platform, who it is for, and how to make the most of it.
 				</p>
 
-				<div class="prose">
-					<h2>General disclaimer</h2>
-					<p>Content on the Web-Ready Access Platform is provided for <strong>educational and informational purposes only</strong>. It does not constitute legal, financial, tax, or other professional advice. Users should obtain advice from qualified professionals regarding their specific circumstances.</p>
-					<p>Information is current as of the date indicated (February 2026). Program details, eligibility criteria, pricing, and availability are set by third parties and may change without notice. Users must verify current terms directly with the relevant program or grant administrators.</p>
-
-					<h2>Terms of use</h2>
-					<p>The Web-Ready Access Platform is a free educational resource operated by Oasis of Change Inc. (“Oasis of Change,” “we,” “us”). Use of this resource is at the user’s sole risk.</p>
+				<section class="hub-features-callout" aria-labelledby="hub-features-heading">
+					<h2 id="hub-features-heading">Platform features</h2>
+					<p>Here's what you can do in the Web-Ready Access Platform:</p>
 					<ul>
-						<li><strong>Limitation of liability:</strong> To the maximum extent permitted by applicable law, Oasis of Change and its directors, officers, staff, and funders shall not be liable for any direct, indirect, incidental, consequential, or punitive loss, damage, or claim arising from use of or reliance on this resource or any linked materials.</li>
-						<li><strong>No warranty:</strong> The resource is provided “as is” and “as available” without warranties of any kind, express or implied. We do not warrant accuracy, completeness, uninterrupted access, or fitness for a particular purpose.</li>
-						<li><strong>Third-party content:</strong> References to external programs, grants, tools, or websites are for information only. Such references do not constitute endorsement. Use of third-party services is subject to those parties’ terms and policies.</li>
+						<li><strong>Quick search</strong> — Press <kbd class="keyboard-windows-only">Ctrl+K</kbd><kbd class="keyboard-mac-only">⌘K</kbd> to search across all tracks and pages.</li>
+						<li><strong>Mac / Win</strong> — Switch the toggle in the top bar to see keyboard shortcuts for your platform.</li>
+						<li><strong>Plain English / Technical</strong> — On each track page, toggle between simple explanations and detailed specs.</li>
+						<li><strong>Theme</strong> — Use the sun/moon icon to switch light or dark mode.</li>
+						<li><strong>Sidebar</strong> — Use the menu icon to open or collapse the navigation.</li>
 					</ul>
-					<p>By using the Web-Ready Access Platform, you acknowledge that you have read, understood, and agree to these disclaimers and terms of use.</p>
+					<p><button type="button" class="tips-trigger" id="tips-trigger-getting-started">Customize device & content style</button></p>
+				</section>
 
-					<h2>In-kind technology grant figures</h2>
-					<p>Dollar figures cited in the Platform regarding in-kind technology grants (e.g., maximum aggregate eligible value) are based on commercial pricing equivalents as of February 2026 and represent <strong>maximum eligible value</strong> under the programs described. Actual value to any organization depends on eligibility, usage, and products activated. Program terms, eligibility, and availability are determined solely by the providing organizations and may change. Users must confirm current details with the official program sources.</p>
+				<div class="prose">
+					<h2>About the WRA Platform</h2>
+					<p>The Web-Ready Access (WRA) Platform is a free resource created by Oasis of Change, a youth-led nonprofit focused on digital sustainability. The Platform helps nonprofits, small organizations, and mission-driven teams build websites that are sustainable, accessible, and supported by in-kind technology grants: all without needing a big budget or a technical background.</p>
+					<p>Whether you are a community organization just getting started online or an established nonprofit looking to improve your digital presence, this playbook is for you. You will find clear, jargon-free guides on three pillars:</p>
+					<ol>
+						<li><strong>Digital Sustainability</strong>: How to reduce your website's carbon footprint and build an energy-efficient online presence</li>
+						<li><strong>Web Accessibility</strong>: How to make your website usable for everyone, including people with disabilities, and understand the legal requirements</li>
+						<li><strong>In-Kind Technology Grants</strong>: How to unlock free software and tools from companies like Google, Microsoft, Canva, and Atlassian</li>
+					</ol>
+					<p>At Oasis of Change, we have helped nonprofits secure over $865,000 in in-kind technology grants based on the maximum eligible value of the programs listed. We have also achieved up to 98% reductions in website carbon emissions for our clients. If a youth-led organization can do it, your team can do it too.</p>
 
-					<h2 id="language-translations">Language &amp; translations</h2>
-					<p>This site offers translated versions of its content for convenience, powered by Google Translate. Translations are generated automatically and may not always capture the exact meaning, nuance, or intent of the original English content.</p>
-					<p>Where accuracy matters — for example, when assessing eligibility, legal terms, or program requirements — please refer to the original English version of each page. Oasis of Change does not warrant the accuracy or completeness of any translated content and is not responsible for errors or omissions resulting from translation.</p>
-					<p class="prose-footer-note">For funding acknowledgments, see <a href="acknowledgments.html">Acknowledgments</a>.</p>
+					<h2>Recommended order</h2>
+					<p>Start with accessibility foundations, optimize sustainability next, then package outcomes into stronger tech-grant applications.</p>
+
+					<section class="card-grid" aria-label="Suggested order">
+						<article class="card">
+							<h2>1. Accessibility first</h2>
+							<p>Fix contrast, semantics, focus order, and form labeling. Improves outcomes immediately and is usually fast to deliver.</p>
+							<div class="card-action">
+								<a class="btn btn-primary" href="accessibility.html">Open track</a>
+							</div>
+						</article>
+						<article class="card">
+							<h2>2. Sustainability next</h2>
+							<p>Reduce page weight and hosting impact after core usability. Performance work also helps low-bandwidth audiences.</p>
+							<div class="card-action">
+								<a class="btn btn-primary" href="sustainability.html">Open track</a>
+							</div>
+						</article>
+						<article class="card">
+							<h2>3. Grants and growth</h2>
+							<p>Use progress from the first two tracks as evidence in applications for in-kind credits, software, and support.</p>
+							<div class="card-action">
+								<a class="btn btn-primary" href="tech-grants.html">Open track</a>
+							</div>
+						</article>
+					</section>
+
+					<p class="callout" style="margin-top: 24px;">Each track has a <strong>Key takeaways</strong> section at the top. Toggle <strong>Plain English</strong> for essentials (no jargon) or <strong>Technical</strong> for specs and implementation details. Assign one owner per track and run a 30-minute weekly checkpoint to maintain momentum.</p>
+
+					<h2>About this resource</h2>
+					<p>The Web-Ready Access Platform was created by <strong>Oasis of Change Inc.</strong>, a federal not-for-profit corporation based in Vancouver, Canada. Oasis of Change is a youth-led organization focused on digital sustainability and environmental impact reduction, founded by Gabriel Dalton.</p>
+					<p>This resource was developed with support from a Government of Canada grant through Service Canada, as part of Oasis of Change's mission to equip nonprofits with the practical tools they need to thrive in the digital world.</p>
+					<p class="callout">For disclaimers (accuracy, grant figures, third-party programs), see <a href="disclaimers.html">Disclaimers</a>. For funding acknowledgments, see <a href="acknowledgments.html">Acknowledgments</a>.</p>
 				</div>
 			</main>
 		</div>
@@ -134,8 +171,8 @@
 		</div>
 	</div>
 
-	<script src="../assets/js/hub-theme.js"></script>
-		<script src="../assets/js/accessibility-widget.js"></script>
-		<script src="../assets/js/language-selector.js" defer></script>
+	<script src="assets/js/hub-theme.js"></script>
+		<script src="assets/js/accessibility-widget.js"></script>
+		<script src="assets/js/language-selector.js" defer></script>
 	</body>
 </html>

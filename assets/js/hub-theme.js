@@ -688,4 +688,36 @@
 			}
 		});
 	}
+
+	var waiTrigger = document.getElementById("wai-lightbox-trigger");
+	var waiLightbox = document.getElementById("lightbox-wai");
+	if (waiTrigger && waiLightbox) {
+		var waiLightboxClose = waiLightbox.querySelector(".lightbox-close");
+		var waiLightboxBackdrop = waiLightbox.querySelector(".lightbox-backdrop");
+
+		function openWaiLightbox() {
+			waiLightbox.classList.add("open");
+			waiLightbox.setAttribute("aria-hidden", "false");
+			document.body.style.overflow = "hidden";
+			if (waiLightboxClose) waiLightboxClose.focus();
+		}
+
+		function closeWaiLightbox() {
+			waiLightbox.classList.remove("open");
+			waiLightbox.setAttribute("aria-hidden", "true");
+			document.body.style.overflow = "";
+			waiTrigger.focus();
+		}
+
+		waiTrigger.addEventListener("click", openWaiLightbox);
+		if (waiLightboxClose) waiLightboxClose.addEventListener("click", closeWaiLightbox);
+		if (waiLightboxBackdrop) waiLightboxBackdrop.addEventListener("click", closeWaiLightbox);
+
+		document.addEventListener("keydown", function (e) {
+			if (e.key === "Escape" && waiLightbox.classList.contains("open")) {
+				e.preventDefault();
+				closeWaiLightbox();
+			}
+		});
+	}
 })();

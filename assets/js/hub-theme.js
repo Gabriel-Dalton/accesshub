@@ -720,4 +720,36 @@
 			}
 		});
 	}
+
+	var googleAdsTrigger = document.getElementById("google-ads-lightbox-trigger");
+	var googleAdsLightbox = document.getElementById("lightbox-google-ads");
+	if (googleAdsTrigger && googleAdsLightbox) {
+		var googleAdsLightboxClose = googleAdsLightbox.querySelector(".lightbox-close");
+		var googleAdsLightboxBackdrop = googleAdsLightbox.querySelector(".lightbox-backdrop");
+
+		function openGoogleAdsLightbox() {
+			googleAdsLightbox.classList.add("open");
+			googleAdsLightbox.setAttribute("aria-hidden", "false");
+			document.body.style.overflow = "hidden";
+			if (googleAdsLightboxClose) googleAdsLightboxClose.focus();
+		}
+
+		function closeGoogleAdsLightbox() {
+			googleAdsLightbox.classList.remove("open");
+			googleAdsLightbox.setAttribute("aria-hidden", "true");
+			document.body.style.overflow = "";
+			googleAdsTrigger.focus();
+		}
+
+		googleAdsTrigger.addEventListener("click", openGoogleAdsLightbox);
+		if (googleAdsLightboxClose) googleAdsLightboxClose.addEventListener("click", closeGoogleAdsLightbox);
+		if (googleAdsLightboxBackdrop) googleAdsLightboxBackdrop.addEventListener("click", closeGoogleAdsLightbox);
+
+		document.addEventListener("keydown", function (e) {
+			if (e.key === "Escape" && googleAdsLightbox.classList.contains("open")) {
+				e.preventDefault();
+				closeGoogleAdsLightbox();
+			}
+		});
+	}
 })();

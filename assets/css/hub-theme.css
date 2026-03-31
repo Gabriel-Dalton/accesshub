@@ -2320,6 +2320,41 @@ body[data-page="acknowledgments"] .main h1 {
 	margin: 0;
 }
 
+/* Wider lightbox for dense screenshots (e.g. Google Ad Grants) — uses more viewport so embedded text stays readable */
+.lightbox.lightbox--wide {
+	padding: clamp(12px, 3vh, 40px) clamp(8px, 2vw, 16px) clamp(8px, 2vh, 16px);
+}
+
+.lightbox.lightbox--wide .lightbox-panel {
+	max-width: min(98vw, 1440px);
+	max-height: 96vh;
+	width: min(98vw, 1440px);
+	padding: 40px 12px 0;
+}
+
+.lightbox.lightbox--wide .lightbox-img {
+	max-width: none;
+	width: 100%;
+	height: auto;
+	/* Leave room for caption + close button; keeps dense UI screenshots legible */
+	max-height: min(82vh, 1100px);
+	object-fit: contain;
+}
+
+.lightbox.lightbox--wide .lightbox-caption {
+	padding: 18px 16px 22px;
+	max-width: 48rem;
+	margin: 0 auto;
+}
+
+.lightbox.lightbox--wide .lightbox-caption h2 {
+	font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+}
+
+.lightbox.lightbox--wide .lightbox-caption p {
+	font-size: clamp(0.95rem, 2vw, 1.05rem);
+}
+
 .prose .checklist-todo {
 	list-style: none;
 	padding-left: 0;

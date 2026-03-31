@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Google Ad Grants for Nonprofits | Web-Ready Access Platform</title>
+		<meta name="description" content="Everything nonprofits need to know about Google Ad Grants: $10,000/month in free advertising, eligibility, application process, compliance, and management." />
+		<meta property="og:image" content="https://w-ra.org/assets/img/WRA-OG-Image.png" />
+		<meta property="og:title" content="Google Ad Grants for Nonprofits | Web-Ready Access Platform" />
+		<meta property="og:description" content="Eligible nonprofits can access $10,000/month in free Google Ads. Learn how to apply, stay compliant, and make the most of this program." />
+		<meta property="og:type" content="website" />
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/android-chrome-512x512.png" />
+		<link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+		<style>
+			:root {
+				--bg: #f8f6f3;
+				--surface: #ffffff;
+				--surface-inset: #f1efeb;
+				--text: #1a1a1a;
+				--text-secondary: #4a4a4a;
+				--text-muted: #6b6b6b;
+				--accent: #1a73e8;
+				--accent-hover: #1557b0;
+				--accent-subtle: rgba(26, 115, 232, 0.07);
+				--green: #0d9f4f;
+				--green-subtle: rgba(13, 159, 79, 0.08);
+				--amber: #e8a317;
+				--amber-subtle: rgba(232, 163, 23, 0.08);
+				--border: #e5e2de;
+				--radius: 10px;
+				--radius-lg: 16px;
+				--section-gap: clamp(48px, 8vw, 72px);
+				--content-max: 820px;
+			}
+
+			* { box-sizing: border-box; margin: 0; padding: 0; }
+			html { scroll-behavior: smooth; }
+
+			body {
+				font-family: "Work Sans", system-ui, sans-serif;
+				background: var(--bg);
+				color: var(--text);
+				line-height: 1.6;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			.page-wrap {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: clamp(24px, 5vw, 48px) clamp(20px, 6vw, 56px);
+			}
+
+			/* --- NAV BAR --- */
+			.page-nav {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 16px;
+				margin-bottom: clamp(32px, 6vw, 56px);
+			}
+
+			.page-nav-brand {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 700;
+				font-size: 1.1rem;
+				color: var(--text);
+				text-decoration: none;
+				letter-spacing: -0.02em;
+			}
+
+			.page-nav-brand:hover { opacity: 0.8; }
+
+			.page-nav-links {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.nav-link {
+				font-size: 0.85rem;
+				font-weight: 500;
+				color: var(--text-secondary);
+				text-decoration: none;
+				padding: 8px 14px;
+				border-radius: var(--radius);
+				transition: background 0.15s, color 0.15s;
+			}
+
+			.nav-link:hover {
+				background: var(--surface);
+				color: var(--text);
+			}
+
+			/* --- HERO --- */
+			.hero-section {
+				text-align: center;
+				margin-bottom: var(--section-gap);
+			}
+
+			.hero-badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				padding: 6px 16px;
+				background: var(--accent-subtle);
+				color: var(--accent);
+				border-radius: 99px;
+				font-size: 0.8rem;
+				font-weight: 600;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
+				margin-bottom: 20px;
+			}
+
+			.hero-badge svg { flex-shrink: 0; }
+
+			.hero-section h1 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 700;
+				font-size: clamp(2rem, 5vw, 3rem);
+				line-height: 1.15;
+				letter-spacing: -0.03em;
+				color: var(--text);
+				max-width: 18ch;
+				margin: 0 auto 20px;
+			}
+
+			.hero-section .lead {
+				font-size: clamp(1rem, 1.5vw, 1.15rem);
+				color: var(--text-secondary);
+				max-width: 52ch;
+				margin: 0 auto 32px;
+				line-height: 1.7;
+			}
+
+			.hero-stats {
+				display: flex;
+				justify-content: center;
+				gap: clamp(24px, 4vw, 48px);
+				flex-wrap: wrap;
+			}
+
+			.hero-stat {
+				text-align: center;
+			}
+
+			.hero-stat-value {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 700;
+				font-size: clamp(1.5rem, 3vw, 2rem);
+				color: var(--accent);
+				line-height: 1.1;
+			}
+
+			.hero-stat-label {
+				font-size: 0.8rem;
+				color: var(--text-muted);
+				font-weight: 500;
+				margin-top: 4px;
+			}
+
+			/* --- SECTION STRUCTURE --- */
+			.content-section {
+				margin-bottom: var(--section-gap);
+			}
+
+			.section-header {
+				margin-bottom: 24px;
+			}
+
+			.section-kicker {
+				font-size: 0.75rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: var(--accent);
+				margin-bottom: 8px;
+			}
+
+			.section-header h2 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 700;
+				font-size: clamp(1.5rem, 3vw, 1.9rem);
+				line-height: 1.2;
+				letter-spacing: -0.02em;
+				color: var(--text);
+			}
+
+			.section-header p {
+				font-size: 0.95rem;
+				color: var(--text-secondary);
+				max-width: 60ch;
+				margin-top: 8px;
+				line-height: 1.65;
+			}
+
+			/* --- PROSE --- */
+			.prose p {
+				font-size: 0.93rem;
+				line-height: 1.75;
+				color: var(--text-secondary);
+				margin-bottom: 14px;
+			}
+
+			.prose p:last-child { margin-bottom: 0; }
+
+			.prose strong { color: var(--text); font-weight: 600; }
+
+			.prose a {
+				color: var(--accent);
+				text-decoration: underline;
+				text-underline-offset: 2px;
+				text-decoration-color: rgba(26, 115, 232, 0.3);
+			}
+
+			.prose a:hover {
+				text-decoration-color: var(--accent);
+			}
+
+			.prose ul, .prose ol {
+				padding-left: 22px;
+				margin-bottom: 14px;
+			}
+
+			.prose li {
+				font-size: 0.93rem;
+				line-height: 1.7;
+				color: var(--text-secondary);
+				margin-bottom: 6px;
+			}
+
+			.prose li strong { color: var(--text); }
+
+			/* --- BENEFITS GRID --- */
+			.benefits-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+				gap: 16px;
+			}
+
+			.benefit-card {
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				padding: 24px;
+				transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+			}
+
+			.benefit-card:hover {
+				border-color: #d0ccc7;
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+				transform: translateY(-2px);
+			}
+
+			.benefit-icon {
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 10px;
+				margin-bottom: 14px;
+				background: var(--accent-subtle);
+				color: var(--accent);
+			}
+
+			.benefit-card h3 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 600;
+				font-size: 1.05rem;
+				color: var(--text);
+				margin-bottom: 6px;
+			}
+
+			.benefit-card p {
+				font-size: 0.88rem;
+				color: var(--text-secondary);
+				line-height: 1.6;
+			}
+
+			/* --- WHAT YOU CAN PROMOTE --- */
+			.promote-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 12px;
+			}
+
+			.promote-item {
+				display: flex;
+				align-items: flex-start;
+				gap: 12px;
+				padding: 16px;
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+			}
+
+			.promote-item svg {
+				flex-shrink: 0;
+				margin-top: 2px;
+				color: var(--green);
+			}
+
+			.promote-item-text h4 {
+				font-size: 0.9rem;
+				font-weight: 600;
+				color: var(--text);
+				margin-bottom: 2px;
+			}
+
+			.promote-item-text p {
+				font-size: 0.82rem;
+				color: var(--text-muted);
+				line-height: 1.5;
+			}
+
+			/* --- INFO BOX --- */
+			.info-box {
+				padding: 24px 28px;
+				border-radius: var(--radius);
+				margin-bottom: 20px;
+			}
+
+			.info-box--blue {
+				background: var(--accent-subtle);
+				border: 1px solid rgba(26, 115, 232, 0.15);
+			}
+
+			.info-box--green {
+				background: var(--green-subtle);
+				border: 1px solid rgba(13, 159, 79, 0.15);
+			}
+
+			.info-box--amber {
+				background: var(--amber-subtle);
+				border: 1px solid rgba(232, 163, 23, 0.15);
+			}
+
+			.info-box h3 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 600;
+				font-size: 1.05rem;
+				color: var(--text);
+				margin-bottom: 8px;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.info-box p, .info-box li {
+				font-size: 0.9rem;
+				color: var(--text-secondary);
+				line-height: 1.65;
+			}
+
+			.info-box ul, .info-box ol {
+				padding-left: 22px;
+				margin-top: 8px;
+			}
+
+			.info-box li { margin-bottom: 4px; }
+
+			/* --- ELIGIBILITY COLUMNS --- */
+			.eligibility-columns {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 20px;
+				margin-bottom: 24px;
+			}
+
+			.eligibility-col {
+				padding: 24px;
+				border-radius: var(--radius);
+				border: 1px solid var(--border);
+				background: var(--surface);
+			}
+
+			.eligibility-col--yes { border-top: 4px solid var(--green); }
+			.eligibility-col--no { border-top: 4px solid #c44d2a; }
+
+			.eligibility-col h3 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 600;
+				font-size: 1.05rem;
+				margin-bottom: 12px;
+			}
+
+			.eligibility-col ul {
+				padding-left: 20px;
+				font-size: 0.9rem;
+				color: var(--text-secondary);
+				line-height: 1.65;
+			}
+
+			.eligibility-col li { margin-bottom: 6px; }
+
+			/* --- TIMELINE --- */
+			.timeline {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 16px;
+				margin-bottom: 24px;
+			}
+
+			.timeline-step {
+				position: relative;
+				padding: 24px;
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+			}
+
+			.timeline-step-number {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 28px;
+				height: 28px;
+				border-radius: 50%;
+				background: var(--accent);
+				color: #fff;
+				font-size: 0.8rem;
+				font-weight: 700;
+				margin-bottom: 12px;
+			}
+
+			.timeline-step h4 {
+				font-size: 0.92rem;
+				font-weight: 600;
+				color: var(--text);
+				margin-bottom: 4px;
+			}
+
+			.timeline-step p {
+				font-size: 0.82rem;
+				color: var(--text-muted);
+				line-height: 1.55;
+			}
+
+			.timeline-step .step-time {
+				display: inline-block;
+				margin-top: 8px;
+				font-size: 0.75rem;
+				font-weight: 600;
+				color: var(--accent);
+				background: var(--accent-subtle);
+				padding: 3px 10px;
+				border-radius: 99px;
+			}
+
+			/* --- NUMBERED STEPS --- */
+			.numbered-steps {
+				counter-reset: step-counter;
+			}
+
+			.numbered-step {
+				counter-increment: step-counter;
+				padding: 24px 24px 24px 72px;
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				margin-bottom: 12px;
+				position: relative;
+			}
+
+			.numbered-step::before {
+				content: counter(step-counter);
+				position: absolute;
+				left: 24px;
+				top: 24px;
+				width: 32px;
+				height: 32px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 50%;
+				background: var(--accent-subtle);
+				color: var(--accent);
+				font-size: 0.85rem;
+				font-weight: 700;
+			}
+
+			.numbered-step h4 {
+				font-size: 0.95rem;
+				font-weight: 600;
+				color: var(--text);
+				margin-bottom: 4px;
+			}
+
+			.numbered-step p {
+				font-size: 0.88rem;
+				color: var(--text-secondary);
+				line-height: 1.65;
+			}
+
+			/* --- COMPLIANCE RULES --- */
+			.compliance-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 16px;
+				margin-bottom: 20px;
+			}
+
+			.compliance-rule {
+				padding: 20px;
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				border-left: 4px solid var(--accent);
+			}
+
+			.compliance-rule h4 {
+				font-size: 0.9rem;
+				font-weight: 600;
+				color: var(--text);
+				margin-bottom: 4px;
+			}
+
+			.compliance-rule p {
+				font-size: 0.85rem;
+				color: var(--text-secondary);
+				line-height: 1.6;
+			}
+
+			/* --- CTA BANNER --- */
+			.cta-banner {
+				text-align: center;
+				padding: clamp(32px, 5vw, 48px) 28px;
+				background: var(--accent);
+				border-radius: var(--radius-lg);
+				margin-bottom: var(--section-gap);
+			}
+
+			.cta-banner h2 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 700;
+				font-size: clamp(1.4rem, 3vw, 1.8rem);
+				color: #fff;
+				margin-bottom: 12px;
+			}
+
+			.cta-banner p {
+				font-size: 0.95rem;
+				color: rgba(255, 255, 255, 0.9);
+				max-width: 48ch;
+				margin: 0 auto 24px;
+				line-height: 1.65;
+			}
+
+			.cta-banner .btn-white {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				padding: 14px 28px;
+				background: #fff;
+				color: var(--accent);
+				font-family: "Work Sans", sans-serif;
+				font-size: 1rem;
+				font-weight: 600;
+				border-radius: var(--radius);
+				text-decoration: none;
+				transition: transform 0.15s, box-shadow 0.15s;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+			}
+
+			.cta-banner .btn-white:hover {
+				transform: translateY(-1px);
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+			}
+
+			/* --- MANAGER SECTION --- */
+			.manager-benefits {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 12px;
+				margin-bottom: 20px;
+			}
+
+			.manager-benefit {
+				display: flex;
+				align-items: flex-start;
+				gap: 10px;
+				padding: 14px 16px;
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				font-size: 0.88rem;
+				color: var(--text-secondary);
+				line-height: 1.55;
+			}
+
+			.manager-benefit svg {
+				flex-shrink: 0;
+				margin-top: 1px;
+				color: var(--green);
+			}
+
+			/* --- FOOTER --- */
+			.page-footer {
+				margin-top: 48px;
+				padding-top: 24px;
+				border-top: 1px solid var(--border);
+				text-align: center;
+			}
+
+			.page-footer-back {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				font-size: 0.9rem;
+				font-weight: 600;
+				color: var(--accent);
+				text-decoration: none;
+				margin-bottom: 16px;
+			}
+
+			.page-footer-back:hover { text-decoration: underline; }
+
+			.page-footer-meta {
+				font-size: 0.82rem;
+				color: var(--text-muted);
+				line-height: 1.7;
+			}
+
+			/* --- TABLE OF CONTENTS --- */
+			.toc {
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				padding: 24px 28px;
+				margin-bottom: var(--section-gap);
+			}
+
+			.toc h2 {
+				font-family: "Fredoka", sans-serif;
+				font-weight: 600;
+				font-size: 1rem;
+				color: var(--text);
+				margin-bottom: 12px;
+			}
+
+			.toc ol {
+				padding-left: 20px;
+				columns: 2;
+				column-gap: 32px;
+			}
+
+			.toc li {
+				font-size: 0.88rem;
+				margin-bottom: 6px;
+				break-inside: avoid;
+			}
+
+			.toc a {
+				color: var(--text-secondary);
+				text-decoration: none;
+				transition: color 0.15s;
+			}
+
+			.toc a:hover { color: var(--accent); }
+
+			/* --- RESPONSIVE --- */
+			@media (max-width: 768px) {
+				.eligibility-columns { grid-template-columns: 1fr; }
+				.toc ol { columns: 1; }
+				.page-nav-links { display: none; }
+			}
+
+			@media (max-width: 480px) {
+				.page-wrap { padding: 16px 14px; }
+				.hero-section h1 { font-size: clamp(1.6rem, 7vw, 2rem); }
+				.benefit-card { padding: 20px; }
+				.numbered-step { padding: 20px 20px 20px 60px; }
+				.numbered-step::before { left: 18px; top: 20px; }
+				.cta-banner { padding: 28px 20px; }
+			}
+		</style>
+		<link rel="stylesheet" href="assets/css/accessibility-widget.css" />
+	</head>
+	<body>
+		<div class="page-wrap">
+
+			<nav class="page-nav" aria-label="Page navigation">
+				<a href="index.html" class="page-nav-brand">Web-Ready Access Platform</a>
+				<div class="page-nav-links">
+					<a href="hub.html" class="nav-link">Learning Hub</a>
+					<a href="tech-grants.html" class="nav-link">Tech Grants</a>
+					<a href="eligibility.html" class="nav-link">Eligibility</a>
+				</div>
+			</nav>
+
+			<!-- HERO -->
+			<section class="hero-section" aria-labelledby="hero-heading">
+				<div class="hero-badge">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+					Featured Resource
+				</div>
+				<h1 id="hero-heading">Google Ad Grants for Nonprofits</h1>
+				<p class="lead">Eligible nonprofits receive up to $10,000 per month in free Google Search advertising. That's up to $120,000 a year to amplify your mission, attract supporters, and grow your impact — without spending a dime on ads.</p>
+				<div class="hero-stats">
+					<div class="hero-stat">
+						<div class="hero-stat-value">$10,000</div>
+						<div class="hero-stat-label">per month, free</div>
+					</div>
+					<div class="hero-stat">
+						<div class="hero-stat-value">$120K</div>
+						<div class="hero-stat-label">annual ad credits</div>
+					</div>
+					<div class="hero-stat">
+						<div class="hero-stat-value">115,000+</div>
+						<div class="hero-stat-label">nonprofits enrolled</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- TABLE OF CONTENTS -->
+			<nav class="toc" aria-label="Table of contents">
+				<h2>On this page</h2>
+				<ol>
+					<li><a href="#what-are-google-ad-grants">What Are Google Ad Grants?</a></li>
+					<li><a href="#how-do-the-ads-appear">How Do the Ads Appear?</a></li>
+					<li><a href="#benefits">Key Benefits</a></li>
+					<li><a href="#what-you-can-promote">What You Can Promote</a></li>
+					<li><a href="#who-benefits-most">Who Benefits Most?</a></li>
+					<li><a href="#eligibility">Eligibility Requirements</a></li>
+					<li><a href="#website-requirements">Website Requirements</a></li>
+					<li><a href="#how-to-apply">How to Apply</a></li>
+					<li><a href="#application-timeline">Application Timeline</a></li>
+					<li><a href="#managing-your-grant">Managing Your Grant</a></li>
+					<li><a href="#compliance">Compliance Requirements</a></li>
+					<li><a href="#hiring-a-manager">Hiring a Grant Manager</a></li>
+				</ol>
+			</nav>
+
+			<!-- WHAT ARE GOOGLE AD GRANTS -->
+			<section id="what-are-google-ad-grants" class="content-section">
+				<div class="section-header">
+					<div class="section-kicker">Overview</div>
+					<h2>What Are Google Ad Grants?</h2>
+				</div>
+				<div class="prose">
+					<p>Google Ad Grants provides qualifying nonprofit organizations with <strong>$10,000 per month in complimentary Google Search advertising</strong>. This translates to up to $120,000 in yearly ad spend that nonprofits can leverage to build awareness, drive donations, find volunteers, and advance their causes through targeted search advertising.</p>
+					<p>Since its inception in 2003, the program has distributed over $10 billion in free advertising to more than 115,000 nonprofit organizations across 51 countries. It remains one of the most valuable in-kind technology programs available to the nonprofit sector.</p>
+				</div>
+			</section>
+
+			<!-- HOW DO ADS APPEAR -->
+			<section id="how-do-the-ads-appear" class="content-section">
+				<div class="section-header">
+					<h2>How Do the Ads Appear?</h2>
+				</div>
+				<div class="prose">
+					<p>Ad Grant campaigns show up on Google's search results page, positioned just like standard paid Search Ads. They are activated by keywords — the same mechanism used in regular Search campaigns — which means you can reach people actively searching for terms connected to your cause or services.</p>
+					<p>From the user's perspective, these ads are indistinguishable from regular Google Search Ads. The only difference? <strong>They cost your organization nothing.</strong></p>
+				</div>
+			</section>
+
+			<!-- BENEFITS -->
+			<section id="benefits" class="content-section">
+				<div class="section-header">
+					<div class="section-kicker">Why it matters</div>
+					<h2>Key Benefits of Google Ad Grants</h2>
+					<p>The program gives eligible nonprofits a powerful set of advantages that would otherwise require significant marketing budgets.</p>
+				</div>
+				<div class="benefits-grid">
+					<div class="benefit-card">
+						<div class="benefit-icon">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+						</div>
+						<h3>Zero-Cost Advertising</h3>
+						<p>Up to $10,000 per month in ad credits significantly reduces or completely eliminates out-of-pocket advertising expenses.</p>
+					</div>
+					<div class="benefit-card">
+						<div class="benefit-icon">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+						</div>
+						<h3>Worldwide Reach</h3>
+						<p>Organizations with an international mission can connect with supporters across the globe, building a worldwide base of advocacy and funding.</p>
+					</div>
+					<div class="benefit-card">
+						<div class="benefit-icon">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+						</div>
+						<h3>High-Value Fundraising</h3>
+						<p>Reach potential donors actively searching for causes to support. This opens the door to outsized returns on investment — rare in any form of marketing.</p>
+					</div>
+					<div class="benefit-card">
+						<div class="benefit-icon">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+						</div>
+						<h3>Free A/B Testing</h3>
+						<p>Experiment with different ad copy, keywords, and landing pages at no cost. Learn what resonates with your audience and refine campaigns over time.</p>
+					</div>
+					<div class="benefit-card">
+						<div class="benefit-icon">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+						</div>
+						<h3>Precise Targeting</h3>
+						<p>Build campaigns around specific keywords, locations, and demographics to make sure your message reaches the people most likely to engage.</p>
+					</div>
+					<div class="benefit-card">
+						<div class="benefit-icon">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+						</div>
+						<h3>Data-Driven Decisions</h3>
+						<p>Google Ads provides detailed performance analytics and reporting so you can track results, understand user behavior, and make informed decisions.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- WHAT YOU CAN PROMOTE -->
+			<section id="what-you-can-promote" class="content-section">
+				<div class="section-header">
+					<h2>What You Can Promote</h2>
+					<p>As long as your organization holds a valid Google for Nonprofits account, you can use the grant to advance your mission in a variety of ways.</p>
+				</div>
+				<div class="promote-grid">
+					<div class="promote-item">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+						<div class="promote-item-text">
+							<h4>Drive Donations</h4>
+							<p>Direct searchers to your donation pages to secure essential funding.</p>
+						</div>
+					</div>
+					<div class="promote-item">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+						<div class="promote-item-text">
+							<h4>Grow Your Email List</h4>
+							<p>Promote sign-up forms to build a database for ongoing engagement.</p>
+						</div>
+					</div>
+					<div class="promote-item">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+						<div class="promote-item-text">
+							<h4>Recruit Volunteers</h4>
+							<p>Reach people looking to contribute their time and skills.</p>
+						</div>
+					</div>
+					<div class="promote-item">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+						<div class="promote-item-text">
+							<h4>Promote Events</h4>
+							<p>Boost attendance for fundraisers, galas, and community events.</p>
+						</div>
+					</div>
+					<div class="promote-item">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+						<div class="promote-item-text">
+							<h4>Build Awareness</h4>
+							<p>Educate the public about your cause, mission, and available programs.</p>
+						</div>
+					</div>
+					<div class="promote-item">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+						<div class="promote-item-text">
+							<h4>Share Resources</h4>
+							<p>Direct users to educational materials, research, and articles aligned with your goals.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- WHO BENEFITS MOST -->
+			<section id="who-benefits-most" class="content-section">
+				<div class="section-header">
+					<h2>Who Benefits Most?</h2>
+				</div>
+				<div class="prose">
+					<p>If you're a smaller organization, you might wonder whether you can fully leverage this program. The good news: <strong>Google Ad Grants is built for nonprofits of every size.</strong> As long as people are searching for topics related to your work and you have a website to send them to, you can benefit.</p>
+					<p>In practice, the program helps level the playing field. Smaller nonprofits that might otherwise struggle to compete for visibility on Google can appear alongside much larger organizations — at no cost.</p>
+				</div>
+			</section>
+
+			<!-- ELIGIBILITY -->
+			<section id="eligibility" class="content-section">
+				<div class="section-header">
+					<div class="section-kicker">Requirements</div>
+					<h2>Eligibility Requirements</h2>
+					<p>To access the monthly $10,000 in free advertising, your organization must meet specific criteria established by Google.</p>
+				</div>
+
+				<div class="info-box info-box--blue">
+					<h3>
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+						What Does 501(c)(3) Status Mean?
+					</h3>
+					<p>In the United States, your nonprofit must hold official IRS recognition as a 501(c)(3) organization. This confirms tax-exempt status and indicates your organization operates exclusively for charitable, educational, religious, scientific, or literary purposes. To maintain this status, organizations must:</p>
+					<ul>
+						<li>Be registered with the IRS as a public charity or private foundation</li>
+						<li>Refrain from political campaigning or substantial lobbying activities</li>
+						<li>Ensure no earnings benefit private individuals or shareholders</li>
+						<li>Direct all resources toward their stated mission</li>
+					</ul>
+				</div>
+
+				<div class="eligibility-columns">
+					<div class="eligibility-col eligibility-col--yes">
+						<h3>Eligible Organizations</h3>
+						<ul>
+							<li>Animal welfare and conservation nonprofits</li>
+							<li>Educational initiatives and scholarship providers</li>
+							<li>Environmental and sustainability organizations</li>
+							<li>Social justice and human rights groups</li>
+							<li>Health and wellness nonprofits (non-hospital)</li>
+							<li>Arts, culture, and community organizations</li>
+						</ul>
+					</div>
+					<div class="eligibility-col eligibility-col--no">
+						<h3>Not Eligible</h3>
+						<ul>
+							<li>Government entities or agencies</li>
+							<li>Hospitals or healthcare institutions (charitable foundations tied to hospitals may still qualify)</li>
+							<li>Schools, universities, or academic institutions (educational nonprofits may qualify if not degree-granting or tuition-funded)</li>
+							<li>Fiscally sponsored projects without independent 501(c)(3) designation</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- WEBSITE REQUIREMENTS -->
+			<section id="website-requirements" class="content-section">
+				<div class="section-header">
+					<h2>Website Requirements</h2>
+					<p>Google evaluates your website to assess your organization's legitimacy and professionalism. Your site must meet these standards:</p>
+				</div>
+				<div class="prose">
+					<ul>
+						<li><strong>Secure domain (HTTPS)</strong> owned by your organization</li>
+						<li><strong>Clear mission statement</strong> explaining your programs and services</li>
+						<li><strong>No broken links</strong> or technical issues that hurt user experience</li>
+						<li><strong>Non-commercial purpose</strong> — products or services are acceptable only if they directly support your mission</li>
+						<li><strong>Mobile-responsive design</strong> that loads quickly across devices</li>
+						<li><strong>Content-rich landing pages</strong> — Google requires ads to drive users to relevant pages, not just a homepage</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- CTA BANNER -->
+			<div class="cta-banner">
+				<h2>Ready to See If You Qualify?</h2>
+				<p>Use our interactive eligibility checker to find out if your nonprofit meets the requirements for Google Ad Grants and other in-kind technology programs.</p>
+				<a href="eligibility.html" class="btn-white">
+					Check Eligibility
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</a>
+			</div>
+
+			<!-- HOW TO APPLY -->
+			<section id="how-to-apply" class="content-section">
+				<div class="section-header">
+					<div class="section-kicker">Step by step</div>
+					<h2>How to Apply for Google Ad Grants</h2>
+					<p>Once you've confirmed your eligibility, follow these steps to submit your application. You can handle it yourself or work with a grant management partner.</p>
+				</div>
+				<div class="numbered-steps">
+					<div class="numbered-step">
+						<h4>Register for a Google for Nonprofits Account</h4>
+						<p>You'll need your nonprofit's registration number (EIN in the US), physical address, and contact information. Start at <a href="https://www.google.com/nonprofits" target="_blank" rel="noopener">google.com/nonprofits</a>.</p>
+					</div>
+					<div class="numbered-step">
+						<h4>Wait for Verification</h4>
+						<p>Google partners with Goodstack (formerly Percent) to confirm your nonprofit's eligibility. This process typically takes 2 to 14 business days and may involve follow-up requests.</p>
+					</div>
+					<div class="numbered-step">
+						<h4>Submit Your Website for Review</h4>
+						<p>Google will verify that your site meets quality standards — including HTTPS security, relevant content, and no broken links or technical issues.</p>
+					</div>
+					<div class="numbered-step">
+						<h4>Watch the Required Welcome Video</h4>
+						<p>A short orientation video that outlines how the Ad Grant works and what's expected when managing your account.</p>
+					</div>
+					<div class="numbered-step">
+						<h4>Activate Your Google Ad Grant Account</h4>
+						<p>Once the previous steps are complete, submit your activation request. Google typically responds within 2 to 5 business days.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- APPLICATION TIMELINE -->
+			<section id="application-timeline" class="content-section">
+				<div class="section-header">
+					<h2>Application Timeline</h2>
+					<p>Here's a realistic breakdown of how long each stage takes. The full process typically spans 2 to 3 weeks if everything goes smoothly.</p>
+				</div>
+				<div class="timeline">
+					<div class="timeline-step">
+						<div class="timeline-step-number">1</div>
+						<h4>Prepare Website &amp; Documents</h4>
+						<p>Make sure your site meets Google's requirements and gather all necessary documentation.</p>
+						<span class="step-time">1 – 7 days</span>
+					</div>
+					<div class="timeline-step">
+						<div class="timeline-step-number">2</div>
+						<h4>Register for Google for Nonprofits</h4>
+						<p>Submit your nonprofit for verification. Timing varies by country.</p>
+						<span class="step-time">5 – 10 business days</span>
+					</div>
+					<div class="timeline-step">
+						<div class="timeline-step-number">3</div>
+						<h4>Complete Application</h4>
+						<p>Fill out the application with basic details about your organization.</p>
+						<span class="step-time">~20 minutes</span>
+					</div>
+					<div class="timeline-step">
+						<div class="timeline-step-number">4</div>
+						<h4>Review &amp; Approval</h4>
+						<p>Google reviews your application and provides feedback or approval.</p>
+						<span class="step-time">2 – 5 business days</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- MANAGING YOUR GRANT -->
+			<section id="managing-your-grant" class="content-section">
+				<div class="section-header">
+					<div class="section-kicker">Best practices</div>
+					<h2>Managing Your Grant Effectively</h2>
+					<p>Running a Google Ad Grant account takes more than launching a few ads. To fully use your monthly credit and keep your account in good standing, you need a strategic approach.</p>
+				</div>
+				<div class="numbered-steps">
+					<div class="numbered-step">
+						<h4>Set Clear Goals and Target Outcomes</h4>
+						<p>Before writing ad copy or choosing keywords, define what you want to achieve, who you're trying to reach, and whether you have a strong landing page for that goal. Build campaigns around your audience's needs.</p>
+					</div>
+					<div class="numbered-step">
+						<h4>Choose the Right Keywords</h4>
+						<p>Connect your goals with what your audience searches for. Trying to drive donations? Target phrases like "donate to [cause] online." Need volunteers? Try "volunteer opportunities near me." Be specific and mission-aligned.</p>
+					</div>
+					<div class="numbered-step">
+						<h4>Build Strong Landing Pages</h4>
+						<p>Make sure the page your ads link to matches the ad's goal, loads quickly on all devices, uses HTTPS, and clearly communicates your mission. Your landing page quality directly impacts conversion rates.</p>
+					</div>
+					<div class="numbered-step">
+						<h4>Track Conversions from Day One</h4>
+						<p>Conversion tracking measures whether your ads are driving real results. It's also required for compliance. Use tools like Google Tag Manager or Google Analytics to track donations, sign-ups, and other meaningful actions.</p>
+					</div>
+					<div class="numbered-step">
+						<h4>Maximize Your Monthly Budget</h4>
+						<p>Most nonprofits underutilize the full $10,000 cap. Target high-volume relevant keywords, improve your ad quality scores, and write compelling copy. A well-optimized campaign spending $6,000 effectively can outperform a scattered one using the full budget.</p>
+					</div>
+					<div class="numbered-step">
+						<h4>Run A/B Tests Regularly</h4>
+						<p>After your campaigns have been running for a month or two, start testing small changes: ad headlines, descriptions, landing page layouts, or bidding strategies. Let performance data guide your next moves.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- COMPLIANCE -->
+			<section id="compliance" class="content-section">
+				<div class="section-header">
+					<div class="section-kicker">Stay in good standing</div>
+					<h2>Compliance Requirements</h2>
+					<p>Google enforces clear rules about ad structure, keyword quality, and performance. Failing to comply can lead to account suspension or permanent loss of access.</p>
+				</div>
+
+				<div class="compliance-grid">
+					<div class="compliance-rule">
+						<h4>No Single-Word Keywords</h4>
+						<p>Single-word keywords are not permitted, with limited exceptions for branded terms and recognized medical conditions.</p>
+					</div>
+					<div class="compliance-rule">
+						<h4>No Overly Generic Terms</h4>
+						<p>Avoid vague keywords like "free videos" or "today's news." Every keyword should clearly relate to your organization's mission and audience.</p>
+					</div>
+					<div class="compliance-rule">
+						<h4>Quality Score Minimum of 3</h4>
+						<p>All active keywords must maintain a quality score of 3 or higher. Keywords scoring 1 or 2 should be paused or removed promptly.</p>
+					</div>
+					<div class="compliance-rule">
+						<h4>Maintain 5% Click-Through Rate</h4>
+						<p>Your account must sustain at least a 5% CTR each month. Falling below this threshold for two consecutive months can trigger suspension.</p>
+					</div>
+					<div class="compliance-rule">
+						<h4>Implement Conversion Tracking</h4>
+						<p>If you use Smart Bidding strategies, valid conversion tracking is mandatory. Track meaningful actions like donations, sign-ups, and event registrations.</p>
+					</div>
+					<div class="compliance-rule">
+						<h4>Proper Ad Structure</h4>
+						<p>Each ad group needs at least two active ads, every campaign needs at least two ad groups, and you must include at least two sitelink extensions.</p>
+					</div>
+				</div>
+
+				<div class="info-box info-box--amber">
+					<h3>
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+						Avoiding Suspension
+					</h3>
+					<p>Any suspension means lost impressions, clicks, and conversions. Protect your account by:</p>
+					<ul>
+						<li><strong>Setting up automated rules</strong> to pause low-quality keywords or alert you when CTR drops</li>
+						<li><strong>Reviewing campaigns weekly</strong> — automation helps, but manual oversight is still essential</li>
+						<li><strong>Staying current on policies</strong> — even small violations like a broken landing page can trigger issues</li>
+						<li><strong>Completing the annual program survey</strong> when prompted to avoid account flags</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- HIRING A MANAGER -->
+			<section id="hiring-a-manager" class="content-section">
+				<div class="section-header">
+					<div class="section-kicker">Getting help</div>
+					<h2>Should You Hire a Grant Manager?</h2>
+					<p>Unless your team has someone who can dedicate 4 to 5 hours per week to managing the account, working with a professional manager is often the smartest way to protect your grant and generate results.</p>
+				</div>
+
+				<div class="prose" style="margin-bottom: 24px;">
+					<p>A qualified Google Ad Grant manager handles everything from initial application through ongoing campaign optimization. Their work typically includes:</p>
+					<ul>
+						<li>Setting up your Google for Nonprofits and Ad Grant accounts</li>
+						<li>Researching and selecting high-performing keywords</li>
+						<li>Writing mission-aligned ad copy</li>
+						<li>Configuring conversion tracking and analytics</li>
+						<li>Creating and optimizing landing pages</li>
+						<li>Monitoring performance and adjusting strategy continuously</li>
+						<li>Running compliance audits and handling reactivations if needed</li>
+					</ul>
+				</div>
+
+				<div class="section-header" style="margin-top: 32px;">
+					<h3 style="font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.1rem;">Benefits of Professional Management</h3>
+				</div>
+				<div class="manager-benefits">
+					<div class="manager-benefit">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+						Faster setup with fewer application errors
+					</div>
+					<div class="manager-benefit">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+						Expert keyword research and campaign structure
+					</div>
+					<div class="manager-benefit">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+						Consistent testing and improvement cycles
+					</div>
+					<div class="manager-benefit">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+						Ongoing compliance monitoring
+					</div>
+					<div class="manager-benefit">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+						Account recovery support if flagged
+					</div>
+					<div class="manager-benefit">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+						Landing page optimization for conversions
+					</div>
+				</div>
+
+				<div class="info-box info-box--green">
+					<h3>
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+						How to Choose the Right Manager
+					</h3>
+					<ul>
+						<li><strong>Look for a certified Google Partner</strong> — these agencies have completed Google Ads certifications and manage significant portfolios</li>
+						<li><strong>Confirm Ad Grants experience</strong> — grant accounts have unique rules that standard Google Ads agencies may not be familiar with</li>
+						<li><strong>Schedule a consultation</strong> — discuss your goals and make sure the agency understands your nonprofit's specific needs</li>
+						<li><strong>Avoid long-term lock-in</strong> — if the agency can't deliver results, you need flexibility to make a change</li>
+					</ul>
+				</div>
+
+				<div class="prose" style="margin-top: 20px;">
+					<p><strong>What does management cost?</strong> Google Ad Grant management typically ranges from $750 to $2,000 per month depending on the agency and scope of services. Lower-cost providers may cover basic setup but offer limited support during account issues. Higher-tier agencies usually provide deeper strategy, ongoing testing, and hands-on troubleshooting.</p>
+					<p><strong>Allow time for results.</strong> Digital marketing takes time to optimize. Give your campaigns at least 90 days to see meaningful results, as this allows sufficient time for testing, learning, and refinement.</p>
+				</div>
+			</section>
+
+			<!-- BOTTOM CTA -->
+			<div class="cta-banner" style="background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);">
+				<h2>Start Using $10,000/Month in Free Ads</h2>
+				<p>Visit our Tech Grants guide for the full walkthrough on Google for Nonprofits, including Workspace, YouTube, and other in-kind programs.</p>
+				<a href="tech-grants.html" class="btn-white">
+					View Full Tech Grants Guide
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</a>
+			</div>
+
+			<!-- FOOTER -->
+			<footer class="page-footer" aria-label="Page footer">
+				<a href="index.html" class="page-footer-back">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+					Back to Web-Ready Access Platform
+				</a>
+				<div class="page-footer-meta">
+					<p>&copy; 2026 | Web-Ready Access Platform by Oasis of Change, Inc.</p>
+					<p>This page is provided as an informational resource. For official program details, visit <a href="https://www.google.com/nonprofits" target="_blank" rel="noopener" style="color: var(--accent);">google.com/nonprofits</a>.</p>
+				</div>
+			</footer>
+		</div>
+
+		<script src="assets/js/accessibility-widget.js"></script>
+		<script src="assets/js/language-selector.js" defer></script>
+	</body>
+</html>

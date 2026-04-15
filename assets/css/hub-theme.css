@@ -3013,9 +3013,12 @@ body[data-page="eligibility"] .kicker { color: #16a34a; }
 		max-width: calc(100vw - 32px);
 	}
 
-	.onboarding-dialog {
-		padding: 28px 20px 28px 20px;
-		max-width: calc(100vw - 32px);
+	.onboarding-overlay {
+		display: none;
+	}
+
+	#tips-btn {
+		display: none;
 	}
 
 	.eligibility-quiz {

@@ -250,7 +250,7 @@
 		}
 
 		var isGettingStarted = body.getAttribute("data-page") === "getting-started";
-		if (isGettingStarted && !localStorage.getItem(onboardingKey)) {
+		if (isGettingStarted && !localStorage.getItem(onboardingKey) && !isMobile.matches) {
 			setTimeout(openOnboarding, 400);
 		}
 
